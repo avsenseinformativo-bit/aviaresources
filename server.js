@@ -97,7 +97,11 @@ app.post('/api/send-registration-email', async (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`✅ Server running on http://localhost:${PORT}`);
-    console.log(`📧 Email notifications enabled`);
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`✅ Server running on http://localhost:${PORT}`);
+        console.log(`📧 Email notifications enabled`);
+    });
+}
+
+module.exports = app;
