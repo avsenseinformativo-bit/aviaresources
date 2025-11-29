@@ -11,7 +11,7 @@ const aiResources = [
         tier: "free",
         description: "📱 Quick social posts! Generate engaging content for Instagram, Twitter, and LinkedIn. Perfect for daily posting and maintaining consistency.",
         image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=400&fit=crop",
-        link: "resource.html"
+        link: "resources/social-media-generator.html"
     },
     {
         id: 2,
@@ -20,7 +20,7 @@ const aiResources = [
         tier: "free",
         description: "🐛 Fix bugs fast! Analyzes JavaScript errors, explains what went wrong, and suggests fixes. Great for beginners learning to code.",
         image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=800&h=400&fit=crop",
-        link: "#"
+        link: "resources/javascript-debugger.html"
     },
     {
         id: 3,
@@ -29,7 +29,7 @@ const aiResources = [
         tier: "free",
         description: "🌈 Beautiful color schemes! Creates harmonious color palettes for your projects. Includes hex codes and accessibility checks.",
         image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=400&fit=crop",
-        link: "#"
+        link: "resources/color-palette-generator.html"
     },
     {
         id: 4,
@@ -38,7 +38,7 @@ const aiResources = [
         tier: "free",
         description: "📝 Never stare at blank pages! Creates detailed blog post outlines with headers, subheaders, and key points to cover.",
         image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=400&fit=crop",
-        link: "#"
+        link: "resources/blog-post-outliner.html"
     },
     {
         id: 5,
@@ -47,7 +47,7 @@ const aiResources = [
         tier: "free",
         description: "📊 Excel made easy! Explains formulas, suggests functions, and helps create complex calculations. No more formula frustration.",
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
-        link: "#"
+        link: "resources/excel-formula-helper.html"
     },
     {
         id: 6,
@@ -56,7 +56,7 @@ const aiResources = [
         tier: "free",
         description: "📧 Boost open rates! Creates catchy email subject lines that get clicks. Includes A/B testing suggestions and emoji recommendations.",
         image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&h=400&fit=crop",
-        link: "#"
+        link: "resources/email-subject-creator.html"
     },
 
     // PREMIUM RESOURCES - 10 additional premium resources (total 16 with free)
