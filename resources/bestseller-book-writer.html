@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Bestseller Book Writer. Master the art of storytelling with our interactive Story Arc Architect. Generate plot outlines, character profiles, and beat sheets.">
+    <title>Bestseller Book Writer: Craft Your Masterpiece</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="blog-template-styles.css">
+
+    <!-- Pro Styles (Literary Theme) -->
+    <style>
+        :root {
+            --lit-paper: #fdfbf7;
+            --lit-ink: #2c2c2c;
+            --lit-accent: #8b4513;
+            /* SaddleBrown */
+            --lit-gold: #d4af37;
+            --font-serif: 'Merriweather', 'Georgia', serif;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        body {
+            background-color: var(--lit-paper);
+            font-family: var(--font-serif);
+            color: var(--lit-ink);
+            line-height: 1.8;
+        }
+
+        /* Literary Hero */
+        .pro-hero {
+            background: var(--lit-paper);
+            color: var(--lit-ink);
+            padding: 8rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #e0dcd3;
+            text-align: center;
+        }
+
+        .pro-hero::before {
+            content: '“';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20rem;
+            color: rgba(139, 69, 19, 0.05);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+        }
+
+        .hero-badge {
+            background: transparent;
+            border: 1px solid var(--lit-accent);
+            color: var(--lit-accent);
+            padding: 0.5rem 1.5rem;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--lit-ink);
+        }
+
+        .hero-title span {
+            color: var(--lit-accent);
+            font-style: italic;
+        }
+
+        /* Tool Container */
+        .story-tool {
+            background: white;
+            border: 1px solid #e0dcd3;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin: -4rem auto 4rem;
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+        }
+
+        .tool-sidebar {
+            background: #fcfcfc;
+            border-right: 1px solid #e0dcd3;
+            padding: 2rem;
+        }
+
+        .tool-main {
+            padding: 3rem;
+            background: white;
+        }
+
+        .control-group {
+            margin-bottom: 2rem;
+        }
+
+        .control-label {
+            display: block;
+            color: #888;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .lit-select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: var(--lit-ink);
+            background: white;
+        }
+
+        .generate-btn {
+            width: 100%;
+            background: var(--lit-accent);
+            color: white;
+            border: none;
+            padding: 1rem;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .generate-btn:hover {
+            background: #6d360f;
+        }
+
+        /* Story Output */
+        .story-output {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .act-marker {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .act-marker::before {
+            content: '';
+            display: block;
+            height: 1px;
+            background: #ddd;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            z-index: 0;
+        }
+
+        .act-marker span {
+            background: white;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            color: #999;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .beat-card {
+            border-left: 3px solid var(--lit-gold);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .beat-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--lit-ink);
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #333;
+        }
+
+        .article-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--lit-ink);
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-content h2::after {
+            content: '❧';
+            display: block;
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--lit-accent);
+            margin-top: 1rem;
+        }
+
+        .article-content h3 {
+            font-family: var(--font-sans);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #666;
+        }
+
+        .dropcap {
+            float: left;
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            line-height: 0.8;
+            margin-right: 1rem;
+            color: var(--lit-accent);
+        }
+
+        @media (max-width: 900px) {
+            .story-tool {
+                grid-template-columns: 1fr;
+            }
+
+            .tool-sidebar {
+                border-right: none;
+                border-bottom: 1px solid #e0dcd3;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@400;700&family=Courier+Prime&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta property="og:image" content="https://avfinanzas.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar"
+        style="background: rgba(253, 251, 247, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #e0dcd3;">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link" style="color: #333;">Home</a>
+                <a href="../free.html" class="nav-link" style="color: #333;">Free</a>
+                <a href="../premium.html" class="nav-link" style="color: #333;">Premium</a>
+                <a href="../pro.html" class="nav-link active" style="color: var(--lit-accent);">Pro</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="pro-hero">
+        <div class="container">
+            <span class="hero-badge">Narrative Engine</span>
+            <h1 class="hero-title">Bestseller <span>Writer</span></h1>
+            <p
+                style="font-family: var(--font-sans); font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto 2rem;">
+                Every great story has a structure. Use the <strong>Story Arc Architect</strong> to forge your plot,
+                define your characters, and break your writer's block forever.
+            </p>
+        </div>
+    </header>
+
+    <main class="content-section">
+        <div class="container">
+
+            <!-- Story Tool -->
+            <section id="tool" class="story-tool">
+                <div class="tool-sidebar">
+                    <h3 style="margin-top: 0; margin-bottom: 2rem; font-family: var(--font-sans); font-size: 1rem;">//
+                        PLOT SETTINGS</h3>
+
+                    <div class="control-group">
+                        <label class="control-label">Genre</label>
+                        <select id="genre" class="lit-select">
+                            <option value="thriller">Psychological Thriller</option>
+                            <option value="romance">Contemporary Romance</option>
+                            <option value="fantasy">Epic Fantasy</option>
+                            <option value="scifi">Dystopian Sci-Fi</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Structure Template</label>
+                        <select id="structure" class="lit-select">
+                            <option value="hero">The Hero's Journey (Campbell)</option>
+                            <option value="cat">Save the Cat (Snyder)</option>
+                            <option value="fichtean">The Fichtean Curve</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Protagonist Archetype</label>
+                        <select id="archetype" class="lit-select">
+                            <option value="chosen">The Chosen One</option>
+                            <option value="everyman">The Everyman</option>
+                            <option value="antihero">The Anti-Hero</option>
+                        </select>
+                    </div>
+
+                    <button class="generate-btn" onclick="generatePlot()">Generate Outline</button>
+                </div>
+
+                <div class="tool-main" id="outputArea">
+                    <div style="text-align: center; padding-top: 4rem; color: #999; font-family: var(--font-sans);">
+                        <p>Select your parameters and click "Generate Outline" to begin your story.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extensive Article Content -->
+            <article class="article-content">
+                <p>
+                    <span class="dropcap">T</span>he blank page is the writer's greatest enemy. But the blank page is a
+                    lie. No story starts from nothing. Every story starts from structure. Whether you are writing the
+                    next <em>Harry Potter</em> or a literary masterpiece, the underlying bones of storytelling remain
+                    the same.
+                </p>
+
+                <h2>Chapter 1: The Architecture of Belief</h2>
+                <p>
+                    Why do we tell stories? To make sense of the chaos of existence. A story is not just "stuff that
+                    happens." A story is a <strong>transformation</strong>.
+                </p>
+                <p>
+                    If your protagonist is the same person at the end of the book as they were at the beginning, you
+                    haven't written a story; you've written a travelogue. The "Arc" is the distance between who they are
+                    and who they need to become.
+                </p>
+
+                <h3>The Inciting Incident</h3>
+                <p>
+                    This is the moment the world changes. It's the letter from Hogwarts. It's the murder of the king.
+                    It's the moment the girl walks into the bar. Without this, there is no story. It must happen early
+                    (usually within the first 10-15% of your novel).
+                </p>
+
+                <h2>Chapter 2: The Middle Muddle</h2>
+                <p>
+                    The middle of a book is where novels go to die. This is the "Second Act." It is the desert. It is
+                    the long journey.
+                </p>
+                <p>
+                    The secret to surviving the middle is <strong>Progressive Complications</strong>. Things cannot just
+                    "happen." Things must get <em>worse</em>.
+                <ul>
+                    <li>If the hero tries to solve the problem, they must fail.</li>
+                    <li>If they fail, the consequences must be severe.</li>
+                    <li>If they succeed, it must lead to a bigger problem.</li>
+                </ul>
+                </p>
+
+                <h2>Chapter 3: The Climax</h2>
+                <p>
+                    The climax is not the biggest explosion. The climax is the <strong>Choice</strong>.
+                    The hero must be faced with a dilemma where they have to choose between two irreconcilable goods or
+                    two unavoidable evils.
+                </p>
+                <p>
+                    Does Frodo keep the ring (power) or destroy it (duty)? Does Katniss kill Peeta (survival) or defy
+                    the Capitol (rebellion)?
+                    The choice defines the character. The choice <em>is</em> the story.
+                </p>
+
+                <h2>Chapter 4: The Business of Publishing</h2>
+                <p>
+                    Writing is an art; publishing is a business. In 2025, you have two paths:
+                </p>
+                <h3>Traditional Publishing</h3>
+                <p>
+                    The gatekeepers are still there, but they are looking for specific things: "Voice" and "Platform."
+                    You need a literary agent. You need a query letter that hooks them in 300 words.
+                </p>
+                <h3>Indie Publishing</h3>
+                <p>
+                    You are the CEO of your book. You hire the editor, the cover designer, and manage the marketing.
+                    The margins are higher (70% vs 10%), but the risk is all yours.
+                </p>
+
+                <div
+                    style="margin-top: 5rem; text-align: center; border-top: 1px solid #e0dcd3; border-bottom: 1px solid #e0dcd3; padding: 4rem 0;">
+                    <h3 style="margin-top: 0;">Your story begins now</h3>
+                    <p style="margin-bottom: 2rem; font-family: var(--font-sans);">Don't let your idea die in your head.
+                        Outline it today.</p>
+                    <button onclick="document.getElementById('tool').scrollIntoView({behavior: 'smooth'})"
+                        class="generate-btn" style="width: auto; padding: 1rem 3rem;">Go to Architect ↑</button>
+                </div>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="background: #2c2c2c; color: #fdfbf7; padding: 4rem 0;">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" style="color: #fdfbf7;">
+                        <img src="../logo.png" alt="AV IA Resources" style="height: 40px; width: auto;">
+                        AV IA Resources
+                    </a>
+                    <p style="color: #999; font-family: var(--font-sans);">Empowering creators and businesses with
+                        premium AI tools.</p>
+                </div>
+            </div>
+            <div class="footer-bottom"
+                style="border-top: 1px solid #444; margin-top: 2rem; padding-top: 2rem; color: #666; font-family: var(--font-sans);">
+                <p>&copy; 2024 AV IA Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function generatePlot() {
+            const genre = document.getElementById('genre').value;
+            const structure = document.getElementById('structure').value;
+            const output = document.getElementById('outputArea');
+
+            // Simulate "Thinking"
+            output.innerHTML = '<div style="text-align: center; padding-top: 4rem; color: var(--lit-accent); font-family: var(--font-sans); font-weight: 700;">CONSULTING THE MUSES...<br>WEAVING NARRATIVE THREADS...</div>';
+
+            setTimeout(() => {
+                let beats = [];
+
+                if (structure === 'hero') {
+                    beats = [
+                        { title: "The Ordinary World", desc: "Introduce the hero in their normal life. Show their flaw/need." },
+                        { title: "The Call to Adventure", desc: "The inciting incident disrupts their world. A problem arises." },
+                        { title: "Refusal of the Call", desc: "The hero fears the unknown and tries to turn back." },
+                        { title: "Meeting the Mentor", desc: "A seasoned traveler gives the hero training, equipment, or advice." },
+                        { title: "Crossing the Threshold", desc: "The hero commits to the adventure and enters the Special World." },
+                        { title: "Tests, Allies, Enemies", desc: "The hero explores the new world, makes friends, and faces minor challenges." },
+                        { title: "The Ordeal", desc: "A major battle or crisis. The hero faces death or their greatest fear." },
+                        { title: "The Reward", desc: "The hero survives and seizes the prize (sword, elixir, knowledge)." },
+                        { title: "The Road Back", desc: "The hero must return home, but the enemy pursues them." },
+                        { title: "The Resurrection", desc: "The final battle. The hero is tested one last time and is reborn." },
+                        { title: "Return with the Elixir", desc: "The hero returns home, transformed, with something to heal their world." }
+                    ];
+                } else if (structure === 'cat') {
+                    beats = [
+                        { title: "Opening Image", desc: "A snapshot of the hero's life before the story begins." },
+                        { title: "Theme Stated", desc: "Someone (usually not the hero) states the theme/lesson of the story." },
+                        { title: "Catalyst", desc: "The life-changing event." },
+                        { title: "Debate", desc: "The hero doubts if they can do it." },
+                        { title: "Break into Two", desc: "The hero makes a choice and the journey begins." },
+                        { title: "B Story", desc: "Introduction of the love interest or mentor." },
+                        { title: "Fun and Games", desc: "The promise of the premise. The hero explores the new world." },
+                        { title: "Midpoint", desc: "A false victory or false defeat. The stakes are raised." },
+                        { title: "Bad Guys Close In", desc: "Internal and external forces tighten their grip." },
+                        { title: "All is Lost", desc: "The lowest point. The hero loses everything." },
+                        { title: "Dark Night of the Soul", desc: "The hero wallows in their misery but finds a solution." },
+                        { title: "Finale", desc: "The hero executes the plan and wins." }
+                    ];
+                } else {
+                    // Fichtean
+                    beats = [
+                        { title: "Inciting Incident", desc: "Start the story immediately with the problem." },
+                        { title: "Rising Action 1", desc: "First crisis. The hero fails." },
+                        { title: "Rising Action 2", desc: "Second crisis. The stakes get higher." },
+                        { title: "Rising Action 3", desc: "Third crisis. The situation seems hopeless." },
+                        { title: "Climax", desc: "The highest point of tension. The hero succeeds or fails." },
+                        { title: "Falling Action", desc: "Loose ends are tied up." },
+                        { title: "Resolution", desc: "The new normal is established." }
+                    ];
+                }
+
+                let html = `<h3 style="font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 2rem; color: var(--lit-ink);">The ${genre.charAt(0).toUpperCase() + genre.slice(1)} Outline</h3>`;
+
+                beats.forEach((beat, index) => {
+                    if (index === 0) html += `<div class="act-marker"><span>Act I</span></div>`;
+                    if (index === Math.floor(beats.length / 3)) html += `<div class="act-marker"><span>Act II</span></div>`;
+                    if (index === Math.floor(beats.length * 2 / 3)) html += `<div class="act-marker"><span>Act III</span></div>`;
+
+                    html += `
+                        <div class="beat-card">
+                            <div class="beat-title">${beat.title}</div>
+                            <div style="color: #666; font-size: 0.9rem;">${beat.desc}</div>
+                        </div>
+                    `;
+                });
+
+                output.innerHTML = `<div class="story-output">${html}</div>`;
+            }, 1000);
+        }
+    </script>
+<script src="../app.js"></script><script src="../auth.js"></script></body>
+
+</html>

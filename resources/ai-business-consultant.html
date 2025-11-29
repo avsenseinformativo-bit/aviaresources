@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI Business Consultant. Advanced strategic tools for SWOT analysis, financial modeling, and competitive positioning. Master the art of business strategy.">
+    <title>AI Business Consultant: C-Suite Strategic Intelligence</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="blog-template-styles.css">
+
+    <!-- Pro Styles (Executive Theme) -->
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #f3e5ab;
+            --gold-dim: #aa8c2c;
+            --navy-dark: #0a192f;
+            --navy-light: #112240;
+            --navy-lighter: #233554;
+            --text-slate: #8892b0;
+            --text-light: #ccd6f6;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
+            color: var(--navy-dark);
+        }
+
+        /* Executive Hero */
+        .pro-hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+            color: var(--text-light);
+            padding: 8rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pro-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .hero-badge {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 2px;
+            /* Sharper edges for professional look */
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            /* Elegant serif for headers */
+        }
+
+        .hero-title span {
+            color: var(--gold-primary);
+            background: linear-gradient(to right, #D4AF37, #f3e5ab, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Tool Container */
+        .strategy-tool {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            margin: -4rem auto 4rem;
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .tool-tabs {
+            display: flex;
+            background: var(--navy-dark);
+            padding: 0 1rem;
+        }
+
+        .tab-btn {
+            padding: 1.5rem 2rem;
+            background: transparent;
+            border: none;
+            color: var(--text-slate);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        .tab-btn:hover {
+            color: var(--gold-light);
+        }
+
+        .tab-btn.active {
+            color: var(--gold-primary);
+            border-bottom-color: var(--gold-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tool-content {
+            padding: 3rem;
+            min-height: 500px;
+            background: #fff;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Inputs & Controls */
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--navy-light);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .range-slider {
+            width: 100%;
+            margin: 1rem 0;
+            accent-color: var(--gold-primary);
+        }
+
+        /* Visualizations */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 1rem;
+            height: 400px;
+        }
+
+        .swot-box {
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .swot-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .swot-s {
+            background: #f0fdf4;
+            border-top: 4px solid #16a34a;
+        }
+
+        .swot-w {
+            background: #fef2f2;
+            border-top: 4px solid #dc2626;
+        }
+
+        .swot-o {
+            background: #eff6ff;
+            border-top: 4px solid #2563eb;
+        }
+
+        .swot-t {
+            background: #fff7ed;
+            border-top: 4px solid #ea580c;
+        }
+
+        .metric-card {
+            background: var(--navy-dark);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin: 1rem 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Article Typography */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #334155;
+        }
+
+        .article-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--navy-dark);
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--gold-primary);
+            padding-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .article-content h3 {
+            font-size: 1.8rem;
+            color: var(--navy-light);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(to right, var(--navy-dark), var(--navy-light));
+            color: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+            border-left: 6px solid var(--gold-primary);
+        }
+
+        .quote-box {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--navy-light);
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .btn-gold {
+            background: var(--gold-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-dim);
+            transform: translateY(-1px);
+        }
+    </style>
+    <!-- Google Fonts for Premium Feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta property="og:image" content="https://avfinanzas.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../free.html" class="nav-link">Free</a>
+                <a href="../premium.html" class="nav-link">Premium</a>
+                <a href="../pro.html" class="nav-link active">Pro</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="pro-hero">
+        <div class="container">
+            <span class="hero-badge">C-Suite Intelligence</span>
+            <h1 class="hero-title">AI Business <span>Consultant</span></h1>
+            <p
+                style="font-size: 1.4rem; color: var(--text-slate); max-width: 700px; margin-bottom: 2rem; font-weight: 300;">
+                Unlock enterprise-grade strategic insights. Analyze market position, simulate growth scenarios, and
+                master the frameworks of Fortune 500 CEOs.
+            </p>
+        </div>
+    </header>
+
+    <main class="content-section">
+        <div class="container">
+
+            <!-- Strategy Tool -->
+            <section id="tool" class="strategy-tool">
+                <div class="tool-tabs">
+                    <button class="tab-btn active" onclick="switchTab('swot')">SWOT Analyzer</button>
+                    <button class="tab-btn" onclick="switchTab('growth')">Growth Simulator</button>
+                    <button class="tab-btn" onclick="switchTab('market')">Market Position</button>
+                </div>
+
+                <div class="tool-content">
+                    <!-- Tab 1: SWOT -->
+                    <div id="swot" class="tab-pane active">
+                        <div style="text-align: center; margin-bottom: 2rem;">
+                            <h3 style="margin: 0; color: var(--navy-dark);">Strategic SWOT Matrix</h3>
+                            <p style="color: #64748b;">Input your key factors to visualize your strategic standing.</p>
+                        </div>
+
+                        <div class="input-grid">
+                            <div class="form-group">
+                                <label>Internal Strengths</label>
+                                <textarea class="form-control" rows="3"
+                                    placeholder="e.g. Proprietary tech, Strong brand..."
+                                    oninput="updateSWOT(this, 's')"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Internal Weaknesses</label>
+                                <textarea class="form-control" rows="3" placeholder="e.g. High churn, Limited budget..."
+                                    oninput="updateSWOT(this, 'w')"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>External Opportunities</label>
+                                <textarea class="form-control" rows="3"
+                                    placeholder="e.g. New market expansion, AI adoption..."
+                                    oninput="updateSWOT(this, 'o')"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>External Threats</label>
+                                <textarea class="form-control" rows="3"
+                                    placeholder="e.g. Competitor price cuts, Regulation..."
+                                    oninput="updateSWOT(this, 't')"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="swot-grid">
+                            <div class="swot-box swot-s">
+                                <h4 style="margin: 0 0 1rem 0; color: #16a34a;">STRENGTHS</h4>
+                                <ul id="list-s" style="padding-left: 1.2rem; color: #14532d;">
+                                    <li>Proprietary tech</li>
+                                </ul>
+                            </div>
+                            <div class="swot-box swot-w">
+                                <h4 style="margin: 0 0 1rem 0; color: #dc2626;">WEAKNESSES</h4>
+                                <ul id="list-w" style="padding-left: 1.2rem; color: #7f1d1d;">
+                                    <li>High churn</li>
+                                </ul>
+                            </div>
+                            <div class="swot-box swot-o">
+                                <h4 style="margin: 0 0 1rem 0; color: #2563eb;">OPPORTUNITIES</h4>
+                                <ul id="list-o" style="padding-left: 1.2rem; color: #1e3a8a;">
+                                    <li>New market expansion</li>
+                                </ul>
+                            </div>
+                            <div class="swot-box swot-t">
+                                <h4 style="margin: 0 0 1rem 0; color: #ea580c;">THREATS</h4>
+                                <ul id="list-t" style="padding-left: 1.2rem; color: #7c2d12;">
+                                    <li>Competitor price cuts</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Growth -->
+                    <div id="growth" class="tab-pane">
+                        <div class="input-grid" style="grid-template-columns: 1fr 1fr;">
+                            <div>
+                                <h3 style="margin-bottom: 2rem;">Unit Economics Calculator</h3>
+
+                                <div class="form-group">
+                                    <label>Customer Acquisition Cost (CAC): $<span id="val-cac">50</span></label>
+                                    <input type="range" class="range-slider" min="10" max="500" value="50"
+                                        oninput="updateGrowth()">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Monthly Revenue per User (ARPU): $<span id="val-arpu">25</span></label>
+                                    <input type="range" class="range-slider" min="5" max="200" value="25"
+                                        oninput="updateGrowth()">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Monthly Churn Rate: <span id="val-churn">5</span>%</label>
+                                    <input type="range" class="range-slider" min="1" max="20" value="5"
+                                        oninput="updateGrowth()">
+                                </div>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; justify-content: center; gap: 1rem;">
+                                <div class="metric-card">
+                                    <div style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.9rem;">
+                                        Lifetime Value (LTV)</div>
+                                    <div class="metric-value" id="res-ltv">$500</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.9rem;">
+                                        LTV:CAC Ratio</div>
+                                    <div class="metric-value" id="res-ratio">10.0x</div>
+                                    <div id="res-verdict" style="font-weight: 600; color: #4ade80;">Incredible! Scale
+                                        Aggressively.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 3: Market -->
+                    <div id="market" class="tab-pane">
+                        <div style="text-align: center; padding: 4rem;">
+                            <h3>Competitive Landscape Matrix</h3>
+                            <p>Coming soon in v2.0. Use the SWOT analyzer for now.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extensive Article Content -->
+            <article class="article-content">
+                <p class="lead" style="font-size: 1.3rem; font-weight: 400; color: var(--navy-light);">
+                    Strategy is not about being better at what you do; it's about being different at what you do.
+                    In the age of AI, the barrier to entry has collapsed, making strategic moats more critical than
+                    ever.
+                </p>
+
+                <h2>Chapter 1: The New Era of Strategic Moats</h2>
+                <p>
+                    For decades, businesses relied on "economies of scale" as their primary defense. If you were big,
+                    you were safe.
+                    Today, a team of three with AI agents can disrupt a multinational corporation. So, how do you defend
+                    your castle?
+                </p>
+                <p>
+                    We must look to the framework of <strong>"The 7 Powers"</strong> by Hamilton Helmer, adapted for the
+                    digital age.
+                </p>
+
+                <div class="highlight-box">
+                    <h3 style="color: white; margin-top: 0;">The 3 Indefensible Moats in 2025</h3>
+                    <ul style="list-style: none; padding: 0; margin-top: 1.5rem;">
+                        <li style="margin-bottom: 1rem;"><strong>❌ Code Quality:</strong> AI writes clean code for
+                            everyone. It's no longer a differentiator.</li>
+                        <li style="margin-bottom: 1rem;"><strong>❌ Feature Parity:</strong> Competitors can clone your
+                            features in days, not years.</li>
+                        <li><strong>❌ Information Asymmetry:</strong> Customers know everything. You can't hide high
+                            margins behind secrecy.</li>
+                    </ul>
+                </div>
+
+                <h3>The Only Moat That Matters: Switching Costs</h3>
+                <p>
+                    If your customer can leave you for a competitor with a single click, you don't have a business; you
+                    have a feature.
+                    High switching costs are the holy grail of SaaS. This doesn't mean trapping your user (that's
+                    hostile);
+                    it means integrating so deeply into their workflow that removing you would be painful.
+                </p>
+                <p>
+                    <strong>Data Network Effects</strong> are the modern version of this. The more your user uses your
+                    product,
+                    the smarter it gets for them specifically. If they leave, they lose that personalized intelligence.
+                </p>
+
+                <h2>Chapter 2: Unit Economics & The Physics of Profit</h2>
+                <p>
+                    Many founders obsess over revenue (vanity metric) instead of contribution margin (sanity metric).
+                    The tool above calculates your LTV:CAC ratio. Let's break down why this number determines your
+                    destiny.
+                </p>
+
+                <div class="quote-box">
+                    "Growth is the result of a great product, not the precursor."
+                </div>
+
+                <h3>The Rule of 3 (LTV:CAC)</h3>
+                <p>
+                    Your Lifetime Value (LTV) must be at least 3 times your Customer Acquisition Cost (CAC).
+                </p>
+                <ul>
+                    <li><strong>Ratio < 1x:</strong> You are losing money on every sale. Stop marketing immediately. Fix
+                                the product.</li>
+                    <li><strong>Ratio 1x - 3x:</strong> You are treading water. You might be growing, but you are
+                        fragile.</li>
+                    <li><strong>Ratio 3x+:</strong> You have a scalable machine. Pour fuel on the fire.</li>
+                    <li><strong>Ratio 5x+:</strong> You are likely under-spending. You could grow faster by accepting a
+                        lower efficiency.</li>
+                </ul>
+
+                <h2>Chapter 3: Blue Ocean Strategy in a Red Ocean World</h2>
+                <p>
+                    Most businesses fight in "Red Oceans"—crowded markets where everyone fights for the same customers,
+                    turning the water bloody.
+                    Competition drives prices down to zero.
+                </p>
+                <p>
+                    A "Blue Ocean" is an uncontested market space. It's not about fighting the competition; it's about
+                    making them irrelevant.
+                    Think of Cirque du Soleil. They didn't try to be a better circus (cheaper tickets, more animals).
+                    They eliminated the animals (high cost), added theater (high value), and raised prices. They created
+                    a new category.
+                </p>
+
+                <h3>The Four Actions Framework</h3>
+                <p>To create a Blue Ocean, ask four questions about your industry standard:</p>
+                <ol>
+                    <li><strong>Eliminate:</strong> Which factors that the industry takes for granted should be
+                        eliminated? (e.g., expensive physical offices)</li>
+                    <li><strong>Reduce:</strong> Which factors should be reduced well below the industry's standard?
+                        (e.g., complex support tiers)</li>
+                    <li><strong>Raise:</strong> Which factors should be raised well above the industry's standard?
+                        (e.g., speed of onboarding)</li>
+                    <li><strong>Create:</strong> Which factors should be created that the industry has never offered?
+                        (e.g., AI-driven proactive insights)</li>
+                </ol>
+
+                <h2>Chapter 4: The Psychology of Pricing</h2>
+                <p>
+                    Pricing is the most powerful lever in your business. A 1% improvement in price optimization results
+                    in an average profit increase of 11.1%.
+                    Yet, most founders pick a number out of thin air.
+                </p>
+                <p>
+                    You are not selling a product; you are selling a perception of value. Here are three psychological
+                    triggers to maximize LTV.
+                </p>
+
+                <h3>1. The Decoy Effect (Asymmetric Dominance)</h3>
+                <p>
+                    The Economist famously used this.
+                    Option A: Digital ($59).
+                    Option B: Print ($125).
+                    Option C: Print + Digital ($125).
+                </p>
+                <p>
+                    Option B is the "decoy". It exists only to make Option C look like a no-brainer.
+                    <strong>Strategy:</strong> Always offer three tiers. Make the middle tier slightly unattractive to
+                    push users to the highest tier (if your goal is revenue) or the lowest tier (if your goal is
+                    volume).
+                </p>
+
+                <h3>2. Price Anchoring</h3>
+                <p>
+                    Steve Jobs introduced the iPad by putting "$999" on the screen. He let it sit there. Then he smashed
+                    it and revealed the price was "$499".
+                    The crowd went wild. Why? Because $499 is expensive for a tablet, but it's cheap compared to $999.
+                    <strong>Strategy:</strong> Show a "Enterprise" price of $5,000/mo next to your "Pro" price of
+                    $50/mo. The Pro plan suddenly feels free.
+                </p>
+
+                <h2>Chapter 5: Building an AI-First Organization</h2>
+                <p>
+                    The final piece of the puzzle is execution. Strategy is useless without a team that can move at the
+                    speed of AI.
+                    Traditional org charts are dead. The future is "AI-Augmented Pods".
+                </p>
+
+                <div class="highlight-box" style="background: #f0fdf4; border-left-color: #16a34a; color: #14532d;">
+                    <h3 style="color: #14532d; margin-top: 0;">The 10x Team Structure</h3>
+                    <p>Instead of a 10-person marketing team, you need:</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><strong>1 Strategist (Human):</strong> Sets the direction and
+                            taste.</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>1 Technologist (Human):</strong> Connects the APIs
+                            and tools.</li>
+                        <li><strong>10 Agents (AI):</strong> Write copy, generate images, analyze data, and optimize ads
+                            24/7.</li>
+                    </ul>
+                </div>
+
+                <p>
+                    This structure reduces overhead by 80% while increasing output by 500%.
+                    The competitive advantage of the next decade isn't software; it's <strong>organizational
+                        agility</strong>.
+                </p>
+
+                <div
+                    style="margin-top: 5rem; text-align: center; background: #f8fafc; padding: 4rem; border-radius: 8px;">
+                    <h3 style="margin-top: 0;">Ready to build your strategy?</h3>
+                    <p style="margin-bottom: 2rem;">Use the <strong>Strategic Intelligence Engine</strong> above to
+                        model your growth.</p>
+                    <button onclick="document.getElementById('tool').scrollIntoView({behavior: 'smooth'})"
+                        class="btn-gold">Go to Strategy Tool ↑</button>
+                </div>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" style="color: white;">
+                        <img src="../logo.png" alt="AV IA Resources" style="height: 40px; width: auto;">
+                        AV IA Resources
+                    </a>
+                    <p>Empowering creators and businesses with premium AI tools.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AV IA Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab Logic
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+
+            // Show selected
+            document.getElementById(tabId).classList.add('active');
+
+            // Highlight button
+            event.target.classList.add('active');
+        }
+
+        // SWOT Logic
+        function updateSWOT(input, type) {
+            const listId = 'list-' + type;
+            const list = document.getElementById(listId);
+            const lines = input.value.split('\n');
+
+            list.innerHTML = lines
+                .filter(line => line.trim() !== '')
+                .map(line => `<li>${line}</li>`)
+                .join('');
+
+            if (list.innerHTML === '') list.innerHTML = '<li>...</li>';
+        }
+
+        // Growth Logic
+        function updateGrowth() {
+            // Get inputs
+            const inputs = document.querySelectorAll('.range-slider');
+            const cac = parseInt(inputs[0].value);
+            const arpu = parseInt(inputs[1].value);
+            const churn = parseInt(inputs[2].value);
+
+            // Update labels
+            document.getElementById('val-cac').innerText = cac;
+            document.getElementById('val-arpu').innerText = arpu;
+            document.getElementById('val-churn').innerText = churn;
+
+            // Calculate LTV = ARPU / Churn Rate (decimal)
+            // Example: $50 / 0.05 = $1000
+            const ltv = Math.round(arpu / (churn / 100));
+            const ratio = (ltv / cac).toFixed(1);
+
+            // Update results
+            document.getElementById('res-ltv').innerText = '$' + ltv;
+            document.getElementById('res-ratio').innerText = ratio + 'x';
+
+            // Verdict
+            const verdictEl = document.getElementById('res-verdict');
+            if (ratio < 1) {
+                verdictEl.innerText = "Critical: Losing money per user.";
+                verdictEl.style.color = "#ef4444";
+            } else if (ratio < 3) {
+                verdictEl.innerText = "Caution: Margins are tight.";
+                verdictEl.style.color = "#f59e0b";
+            } else if (ratio < 5) {
+                verdictEl.innerText = "Healthy: Good for scaling.";
+                verdictEl.style.color = "#10b981";
+            } else {
+                verdictEl.innerText = "Incredible: Scale Aggressively!";
+                verdictEl.style.color = "#3b82f6";
+            }
+        }
+    </script>
+<script src="../app.js"></script><script src="../auth.js"></script></body>
+
+</html>

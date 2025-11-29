@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Limpio - Sin Caché</title>
+    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="auth.css?v=2">
+</head>
+
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="free.html" class="nav-link">Free</a>
+                <a href="premium.html" class="nav-link">Premium</a>
+                <a href="pro.html" class="nav-link">Pro</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <button class="btn-primary btn-small" id="loginBtn">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    🧪 Página de Prueba
+                    <span class="gradient-text">Sistema de Autenticación</span>
+                </h1>
+                <p class="hero-description">
+                    Esta es una página limpia sin caché. Haz clic en el botón "Login" arriba a la derecha.
+                </p>
+                <div style="background: #f3f4f6; padding: 2rem; border-radius: 12px; margin-top: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">📋 Instrucciones:</h3>
+                    <ol style="line-height: 2; margin-left: 1.5rem;">
+                        <li>Haz clic en el botón <strong>"Login"</strong> arriba a la derecha</li>
+                        <li>Debería aparecer un modal deslizándose desde la derecha</li>
+                        <li>Cambia a la pestaña <strong>"Register"</strong></li>
+                        <li>Llena el formulario de registro</li>
+                        <li>Haz clic en <strong>"Create Account"</strong></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts con cache-busting -->
+    <script src="analytics.js?v=999"></script>
+    <script src="adsense-config.js?v=999"></script>
+    <script src="app.js?v=999"></script>
+    <script src="auth.js?v=999"></script>
+
+    <script>
+        // Forzar limpieza al cargar
+        console.log('%c🧹 LIMPIANDO CACHÉ...', 'color: red; font-size: 20px; font-weight: bold;');
+        localStorage.clear();
+        console.log('%c✅ Caché limpiada!', 'color: green; font-size: 16px;');
+        console.log('%c📍 Haz clic en el botón LOGIN arriba', 'color: blue; font-size: 14px;');
+    </script>
+</body>
+
+</html>

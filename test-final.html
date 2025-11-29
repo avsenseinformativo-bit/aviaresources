@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✅ Test Final - Sistema de Autenticación</title>
+    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="auth.css?v=3">
+    <style>
+        .test-banner {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+        }
+
+        body {
+            padding-top: 50px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test-banner">
+        ✅ VERSIÓN CORREGIDA - Haz clic en "Login" arriba a la derecha →
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="free.html" class="nav-link">Free</a>
+                <a href="premium.html" class="nav-link">Premium</a>
+                <a href="pro.html" class="nav-link">Pro</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <button class="btn-primary btn-small" id="loginBtn">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Unlock the Power of AI
+                    <span class="gradient-text">Resources & Agents</span>
+                </h1>
+                <p class="hero-description">
+                    Discover curated AI tools, advanced prompts, and ready-to-use agents for marketing, coding, design,
+                    and more. Get instant access to premium configurations and implementation guides.
+                </p>
+                <div class="hero-cta">
+                    <a href="#resources" class="btn-primary btn-large">
+                        Explore Resources
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#pricing" class="btn-secondary btn-large">View Pricing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts con versión actualizada -->
+    <script src="analytics.js?v=3"></script>
+    <script src="adsense-config.js?v=3"></script>
+    <script src="app.js?v=3"></script>
+    <script src="auth.js?v=3"></script>
+
+    <script>
+        // Limpiar localStorage en Safari
+        console.log('%c🧹 Limpiando sesión...', 'color: orange; font-size: 16px; font-weight: bold;');
+        localStorage.clear();
+        console.log('%c✅ Listo! Haz clic en LOGIN', 'color: green; font-size: 14px;');
+    </script>
+</body>
+
+</html>

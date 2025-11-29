@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI-powered Long-Form Content Writer. Generate comprehensive article outlines, compelling hooks, and SEO-optimized structures for 3000+ word blog posts.">
+    <title>Long-Form Content Writer: The Article Architect</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="blog-template-styles.css">
+    <!-- Google Fonts for Preview (keeping for tool preview only) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Premium Styles (Editorial Theme) -->
+    <style>
+        :root {
+            --writer-accent: #2c3e50;
+            --writer-paper: #fdfbf7;
+            --writer-ink: #2d3436;
+            --writer-highlight: #eab308;
+        }
+
+        body {
+            background-color: var(--writer-paper);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
+            color: var(--writer-ink);
+        }
+
+        /* Editorial Hero */
+        .premium-hero {
+            background: white;
+            color: var(--writer-ink);
+            padding: 6rem 0 5rem;
+            position: relative;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .hero-badge {
+            background: var(--writer-ink);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-title span {
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            /* Keeping serif for artistic title accent */
+            color: #555;
+            font-weight: 400;
+        }
+
+        /* Tool Container */
+        .writer-tool {
+            background: white;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin: -3rem auto 4rem;
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+            background: #fafafa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tool-body {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .input-area {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .output-area {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 2rem;
+            min-height: 400px;
+            font-family: 'Lora', serif;
+            /* Preview font */
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .output-area::before {
+            content: 'PREVIEW';
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            font-size: 0.7rem;
+            color: #ccc;
+            font-family: sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .control-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .control-input,
+        .control-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .control-input:focus {
+            outline: none;
+            border-color: var(--writer-ink);
+        }
+
+        .generate-btn {
+            background: var(--writer-ink);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: auto;
+            transition: opacity 0.2s;
+        }
+
+        .generate-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.125rem;
+            line-height: 1.8;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            color: #374151;
+        }
+
+        .tip-box {
+            background: #f8fafc;
+            border-left: 3px solid var(--writer-ink);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+
+        .structure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .structure-card {
+            border: 1px solid #e5e7eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .structure-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #e5e7eb;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .tool-body {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta property="og:image" content="https://avfinanzas.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../free.html" class="nav-link">Free</a>
+                <a href="../premium.html" class="nav-link active">Premium</a>
+                <a href="../pro.html" class="nav-link">Pro</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="premium-hero">
+        <div class="container">
+            <span class="hero-badge">Editorial Suite</span>
+            <h1 class="hero-title">Long-Form <span>Architect</span></h1>
+            <p style="font-size: 1.25rem; color: #666; max-width: 600px; margin-bottom: 2rem;">
+                Writer's block is a myth. Generate structured, SEO-optimized outlines and compelling hooks for your next
+                viral article in seconds.
+            </p>
+        </div>
+    </header>
+
+    <main class="content-section">
+        <div class="container">
+
+            <!-- Writer Tool -->
+            <section id="tool" class="writer-tool">
+                <div class="tool-header">
+                    <div style="font-weight: 700;">Drafting Mode</div>
+                    <div style="font-size: 0.9rem; color: #666;">AI Assistant: Ready</div>
+                </div>
+                <div class="tool-body">
+                    <div class="input-area">
+                        <div>
+                            <label class="control-label">Topic / Keyword</label>
+                            <input type="text" id="topic" class="control-input"
+                                placeholder="e.g. The Future of Remote Work">
+                        </div>
+
+                        <div>
+                            <label class="control-label">Target Audience</label>
+                            <input type="text" id="audience" class="control-input" placeholder="e.g. HR Managers">
+                        </div>
+
+                        <div>
+                            <label class="control-label">Tone</label>
+                            <select id="tone" class="control-select">
+                                <option value="authoritative">Authoritative & Professional</option>
+                                <option value="conversational">Conversational & Friendly</option>
+                                <option value="controversial">Controversial & Edgy</option>
+                                <option value="storyteller">Narrative & Emotional</option>
+                            </select>
+                        </div>
+
+                        <button onclick="generateOutline()" class="generate-btn">
+                            🖋️ Generate Outline
+                        </button>
+                    </div>
+
+                    <div class="output-area" id="output">
+                        <p style="color: #999; text-align: center; margin-top: 40%;">
+                            Your structured outline will appear here...
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extensive Article Content -->
+            <article class="article-content">
+                <h2>The Anatomy of a Viral Article</h2>
+                <p>
+                    Writing 3,000 words is easy. Writing 3,000 words that people actually read is hard.
+                    In the age of TikTok attention spans, long-form content must be <strong>architected</strong>, not
+                    just written.
+                </p>
+
+                <div class="tip-box">
+                    "The sole purpose of the first sentence is to get you to read the second sentence." — Joe Sugarman
+                </div>
+
+                <h3>1. The Hook (The First 50 Words)</h3>
+                <p>
+                    You have exactly 3 seconds to convince a reader to stay. Never start with "In this article, I will
+                    discuss...". Boring.
+                    Instead, use one of these proven openers:
+                </p>
+                <ul>
+                    <li><strong>The Contrarian:</strong> "Everything you know about [Topic] is wrong."</li>
+                    <li><strong>The Story:</strong> "It was 2 AM on a Tuesday when I realized..."</li>
+                    <li><strong>The Stat:</strong> "90% of startups fail because of this one mistake."</li>
+                </ul>
+
+                <h3>2. Structure for Skimmers</h3>
+                <p>
+                    Nobody reads word-for-word anymore. They scan. If your article is a wall of text, they will bounce.
+                    Optimize for "skimmability":
+                </p>
+                <div class="structure-grid">
+                    <div class="structure-card">
+                        <div class="structure-number">H2</div>
+                        <strong>Descriptive Headings</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Don't use "Introduction". Use "Why [Topic]
+                            Matters Now".</p>
+                    </div>
+                    <div class="structure-card">
+                        <div class="structure-number">3</div>
+                        <strong>Sentence Paragraphs</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Keep paragraphs short. 3-4 lines max. It
+                            creates white space.</p>
+                    </div>
+                </div>
+
+                <h3>3. The "Bucket Brigade" Technique</h3>
+                <p>
+                    This is a classic copywriting trick to keep people reading. It involves using short bridge phrases
+                    to connect paragraphs.
+                    Examples include:
+                </p>
+                <ul>
+                    <li>"Here's the deal:"</li>
+                    <li>"But there's a catch."</li>
+                    <li>"Let me explain."</li>
+                    <li>"Why does this matter?"</li>
+                </ul>
+                <p>
+                    These little phrases act as grease on a slide, moving the reader effortlessly down the page.
+                </p>
+
+                <div style="margin-top: 4rem; text-align: center;">
+                    <h3>Ready to write your masterpiece?</h3>
+                    <p style="margin-bottom: 2rem;">Use the <strong>Article Architect</strong> above to structure your
+                        thoughts.</p>
+                    <button onclick="document.getElementById('tool').scrollIntoView({behavior: 'smooth'})"
+                        class="generate-btn" style="display: inline-block; width: auto; padding: 1rem 2rem;">Go to Tool
+                        ↑</button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" style="color: white;">
+                        <img src="../logo.png" alt="AV IA Resources" style="height: 40px; width: auto;">
+                        AV IA Resources
+                    </a>
+                    <p>Empowering creators and businesses with premium AI tools.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AV IA Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function generateOutline() {
+            const topic = document.getElementById('topic').value;
+            const audience = document.getElementById('audience').value;
+            const tone = document.getElementById('tone').value;
+
+            if (!topic) {
+                alert('Please enter a topic.');
+                return;
+            }
+
+            const output = document.getElementById('output');
+            output.innerHTML = '<p style="color: #666; text-align: center; margin-top: 40%;">Thinking...</p>';
+
+            // Simulation of AI generation
+            setTimeout(() => {
+                const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                let hook = '';
+                if (tone === 'controversial') hook = `Stop doing ${topic} the old way. It's killing your results. Here is why everything you've been told is a lie.`;
+                else if (tone === 'storyteller') hook = `I still remember the first time I encountered ${topic}. It changed everything.`;
+                else hook = `${topic} is the most important skill you can master in 2025. Here is the definitive guide.`;
+
+                const html = `
+                    <h1 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem;">${topic}: The Ultimate Guide</h1>
+                    <p style="font-size: 0.8rem; color: #999; margin-bottom: 2rem; font-family: sans-serif;">Generated for: ${audience} | Tone: ${tone} | ${date}</p>
+                    
+                    <h3 style="font-weight: bold; margin-top: 1.5rem;">I. The Hook</h3>
+                    <p><em>${hook}</em></p>
+
+                    <h3 style="font-weight: bold; margin-top: 1.5rem;">II. The Core Problem</h3>
+                    <ul>
+                        <li>Why most people fail at ${topic}.</li>
+                        <li>The hidden cost of ignoring this.</li>
+                        <li>Common misconceptions.</li>
+                    </ul>
+
+                    <h3 style="font-weight: bold; margin-top: 1.5rem;">III. The Solution (Step-by-Step)</h3>
+                    <p><strong>Step 1: Foundation.</strong> Setting up for success.</p>
+                    <p><strong>Step 2: Execution.</strong> The nitty-gritty details.</p>
+                    <p><strong>Step 3: Optimization.</strong> How to scale.</p>
+
+                    <h3 style="font-weight: bold; margin-top: 1.5rem;">IV. Conclusion</h3>
+                    <p>Summarize key takeaways. Call to action: "Start your ${topic} journey today."</p>
+                `;
+
+                output.innerHTML = html;
+            }, 1000);
+        }
+    </script>
+<script src="../app.js"></script><script src="../auth.js"></script></body>
+
+</html>

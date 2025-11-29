@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI-powered UX Research Analyzer. Generate detailed user personas, research plans, and interview scripts instantly to understand your users better.">
+    <title>UX Research Analyzer: Decode User Behavior</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="blog-template-styles.css">
+
+    <!-- Premium Styles (Research Theme) -->
+    <style>
+        :root {
+            --ux-primary: #8b5cf6;
+            --ux-secondary: #7c3aed;
+            --ux-bg: #f5f3ff;
+            --ux-dark: #4c1d95;
+        }
+
+        body {
+            background-color: #fafafa;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
+        }
+
+        /* Research Hero */
+        .premium-hero {
+            background: linear-gradient(135deg, #4c1d95 0%, #1e1b4b 100%);
+            color: white;
+            padding: 6rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-badge {
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid var(--ux-primary);
+            color: #d8b4fe;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-title span {
+            color: var(--ux-primary);
+            background: linear-gradient(to right, #a78bfa, #c4b5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Tool Container */
+        .research-tool {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin: -3rem auto 4rem;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            max-width: 1000px;
+        }
+
+        .tool-tabs {
+            display: flex;
+            background: #f3f4f6;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .tool-tab {
+            flex: 1;
+            padding: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tool-tab.active {
+            background: white;
+            color: var(--ux-dark);
+            border-bottom-color: var(--ux-primary);
+        }
+
+        .tool-content {
+            padding: 2rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--ux-primary);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .generate-btn {
+            width: 100%;
+            background: var(--ux-primary);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .generate-btn:hover {
+            background: var(--ux-secondary);
+        }
+
+        /* Results Area */
+        .result-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .persona-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .persona-avatar {
+            width: 64px;
+            height: 64px;
+            background: #ddd;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #ede9fe;
+            color: var(--ux-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Article Content */
+        .article-content h2 {
+            font-weight: 800;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #111;
+            letter-spacing: -0.02em;
+        }
+
+        .article-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4b5563;
+            margin-bottom: 2rem;
+        }
+
+        .method-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--ux-primary);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: var(--ux-bg);
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--ux-primary);
+            margin-bottom: 0.5rem;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta property="og:image" content="https://avfinanzas.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../free.html" class="nav-link">Free</a>
+                <a href="../premium.html" class="nav-link active">Premium</a>
+                <a href="../pro.html" class="nav-link">Pro</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="premium-hero">
+        <div class="container">
+            <span class="hero-badge">User Intelligence</span>
+            <h1 class="hero-title">UX Research <span>Analyzer</span></h1>
+            <p style="font-size: 1.25rem; color: #e5e7eb; max-width: 600px; margin-bottom: 4rem;">
+                Stop guessing what your users want. Generate data-driven personas, interview scripts, and usability test
+                scenarios in seconds.
+            </p>
+        </div>
+    </header>
+
+    <main class="content-section">
+        <div class="container">
+
+            <!-- UX Tool -->
+            <section id="tool" class="research-tool">
+                <div class="tool-tabs">
+                    <div class="tool-tab active" onclick="switchTab('persona')">User Persona</div>
+                    <div class="tool-tab" onclick="switchTab('interview')">Interview Script</div>
+                    <div class="tool-tab" onclick="switchTab('audit')">Heuristic Audit</div>
+                </div>
+
+                <div class="tool-content">
+                    <div class="input-group">
+                        <label class="input-label">Product / Feature Description</label>
+                        <textarea id="productDesc" class="input-field" rows="3"
+                            placeholder="e.g. A mobile app for tracking daily water intake with gamification elements."></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Target Audience</label>
+                        <input type="text" id="targetAudience" class="input-field"
+                            placeholder="e.g. Health-conscious office workers, 25-40 years old">
+                    </div>
+
+                    <button onclick="generateInsight()" class="generate-btn">
+                        ✨ Generate Insights
+                    </button>
+
+                    <!-- Results -->
+                    <div id="resultPersona" class="result-card">
+                        <div class="persona-header">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150" alt="Persona"
+                                class="persona-avatar">
+                            <div>
+                                <h3 style="margin: 0; font-size: 1.5rem;">Sarah Jenkins</h3>
+                                <p style="margin: 0.25rem 0; color: #666;">Marketing Manager • 32 years old</p>
+                                <div style="margin-top: 0.5rem;">
+                                    <span class="tag">Busy</span>
+                                    <span class="tag">Tech-savvy</span>
+                                    <span class="tag">Health-conscious</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                            <div>
+                                <h4 style="color: var(--ux-primary);">Goals</h4>
+                                <ul style="padding-left: 1.2rem; color: #4b5563;">
+                                    <li>Drink 2L of water daily without thinking about it.</li>
+                                    <li>Improve skin health and energy levels.</li>
+                                    <li>Compete with friends for motivation.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: #ef4444;">Frustrations</h4>
+                                <ul style="padding-left: 1.2rem; color: #4b5563;">
+                                    <li>Forgets to log water manually.</li>
+                                    <li>Finds existing apps "boring" or "ugly".</li>
+                                    <li>Hates intrusive notifications during meetings.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="resultInterview" class="result-card">
+                        <h3 style="margin-top: 0;">User Interview Script</h3>
+                        <p style="color: #666; font-style: italic; margin-bottom: 1.5rem;">Goal: Understand current
+                            hydration habits and pain points.</p>
+
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid #eee;">
+                            <p><strong>Q1:</strong> "Can you walk me through your typical day? When do you usually
+                                remember to drink water?"</p>
+                            <p><strong>Q2:</strong> "Have you tried tracking your intake before? If so, what made you
+                                stop?"</p>
+                            <p><strong>Q3:</strong> "How do you currently remind yourself to stay hydrated?"</p>
+                            <p><strong>Q4:</strong> "If you could wave a magic wand and solve one problem about your
+                                health routine, what would it be?"</p>
+                        </div>
+                    </div>
+
+                    <div id="resultAudit" class="result-card">
+                        <h3 style="margin-top: 0;">Heuristic Evaluation Checklist</h3>
+                        <p style="color: #666;">Based on Nielsen's 10 Usability Heuristics.</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 1rem; display: flex; align-items: start; gap: 1rem;">
+                                <span
+                                    style="background: #dbeafe; color: #1e40af; padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: bold;">H1</span>
+                                <div>
+                                    <strong>Visibility of System Status:</strong> Does the user know how much water
+                                    they've drunk instantly?
+                                </div>
+                            </li>
+                            <li style="margin-bottom: 1rem; display: flex; align-items: start; gap: 1rem;">
+                                <span
+                                    style="background: #dbeafe; color: #1e40af; padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: bold;">H4</span>
+                                <div>
+                                    <strong>Consistency and Standards:</strong> Do the icons for "Add Water" look like
+                                    standard buttons?
+                                </div>
+                            </li>
+                            <li style="margin-bottom: 1rem; display: flex; align-items: start; gap: 1rem;">
+                                <span
+                                    style="background: #dbeafe; color: #1e40af; padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: bold;">H8</span>
+                                <div>
+                                    <strong>Aesthetic and Minimalist Design:</strong> Is the interface cluttered with
+                                    unnecessary stats?
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extensive Article Content -->
+            <article class="article-content" style="max-width: 800px; margin: 0 auto;">
+                <h2>The Art & Science of User Research</h2>
+                <p>
+                    Building a product without user research is like building a house without a blueprint. You might end
+                    up with something that stands,
+                    but it probably won't be what the client wanted. UX Research bridges the gap between
+                    <strong>business goals</strong> and <strong>user needs</strong>.
+                </p>
+
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <span class="stat-number">$100</span>
+                        <p>Return for every $1 invested in UX</p>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">50%</span>
+                        <p>Reduction in development time</p>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">400%</span>
+                        <p>Increase in conversion rates</p>
+                    </div>
+                </div>
+
+                <h3>1. Qualitative vs. Quantitative Research</h3>
+                <p>
+                    The most common mistake beginners make is confusing "what" with "why". To get a complete picture,
+                    you need both:
+                </p>
+
+                <div class="method-card">
+                    <h4 style="margin-top: 0; color: var(--ux-dark);">📊 Quantitative (The "What")</h4>
+                    <p style="margin-bottom: 0;">
+                        Analytics, A/B Testing, Heatmaps. These tell you <em>what</em> is happening. <br>
+                        <em>Example: "70% of users drop off at the checkout page."</em>
+                    </p>
+                </div>
+
+                <div class="method-card" style="border-left-color: #ec4899;">
+                    <h4 style="margin-top: 0; color: #831843;">🗣️ Qualitative (The "Why")</h4>
+                    <p style="margin-bottom: 0;">
+                        Interviews, Usability Testing, Diary Studies. These tell you <em>why</em> it is happening. <br>
+                        <em>Example: "Users drop off because they don't trust the shipping cost calculation."</em>
+                    </p>
+                </div>
+
+                <h3>2. The Power of Personas</h3>
+                <p>
+                    A persona is not just a fictional character; it's an archetype based on real data. It helps your
+                    team develop empathy.
+                    Instead of saying "the user might like this," you say "Sarah (our persona) wouldn't have time for
+                    this feature."
+                </p>
+
+                <h3>3. Usability Heuristics</h3>
+                <p>
+                    Jakob Nielsen defined 10 general principles for interaction design. These are the "rules of thumb"
+                    that every great interface follows.
+                    The most critical ones for modern apps are:
+                </p>
+                <ul>
+                    <li><strong>Match between system and real world:</strong> Speak the user's language, not system
+                        jargon.</li>
+                    <li><strong>User control and freedom:</strong> Always provide a "back" button or "undo" option.</li>
+                    <li><strong>Error prevention:</strong> A good design prevents problems from occurring in the first
+                        place.</li>
+                </ul>
+
+                <div
+                    style="margin-top: 4rem; text-align: center; padding: 3rem; background: #f3f4f6; border-radius: 16px;">
+                    <h3>Start Understanding Your Users</h3>
+                    <p>Use the <strong>UX Analyzer</strong> above to generate your first research artifacts.</p>
+                    <button onclick="document.getElementById('tool').scrollIntoView({behavior: 'smooth'})"
+                        class="btn-primary"
+                        style="background: var(--ux-primary); color: white; border: none; display: inline-block;">Go to
+                        Tool ↑</button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" style="color: white;">
+                        <img src="../logo.png" alt="AV IA Resources" style="height: 40px; width: auto;">
+                        AV IA Resources
+                    </a>
+                    <p>Empowering creators and businesses with premium AI tools.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AV IA Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentTab = 'persona';
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.result-card').forEach(c => c.style.display = 'none');
+
+            // Find the clicked tab element by text content is tricky, so we rely on index or just re-render logic
+            // Simplified:
+            const tabs = ['persona', 'interview', 'audit'];
+            document.querySelectorAll('.tool-tab')[tabs.indexOf(tab)].classList.add('active');
+        }
+
+        function generateInsight() {
+            const product = document.getElementById('productDesc').value;
+            const audience = document.getElementById('targetAudience').value;
+
+            if (!product) {
+                alert('Please enter a product description.');
+                return;
+            }
+
+            // Simulate AI Loading
+            const btn = document.querySelector('.generate-btn');
+            const originalText = btn.innerText;
+            btn.innerText = '🧠 Analyzing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.disabled = false;
+
+                // Show specific result based on active tab
+                document.querySelectorAll('.result-card').forEach(c => c.style.display = 'none');
+
+                if (currentTab === 'persona') {
+                    document.getElementById('resultPersona').style.display = 'block';
+                } else if (currentTab === 'interview') {
+                    document.getElementById('resultInterview').style.display = 'block';
+                } else {
+                    document.getElementById('resultAudit').style.display = 'block';
+                }
+            }, 1000);
+        }
+    </script>
+<script src="../app.js"></script><script src="../auth.js"></script></body>
+
+</html>

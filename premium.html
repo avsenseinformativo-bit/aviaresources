@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Unlock Premium AI Resources. Get 10+ advanced tools, system instructions, and configuration files for $4.99/month. Level up your AI workflow.">
+    <title>Premium AI Resources | AV Finanzas</title>
+    <link rel="canonical" href="https://avfinanzas.com/premium.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avfinanzas.com/premium.html">
+    <meta property="og:title" content="Premium AI Resources | AV Finanzas">
+    <meta property="og:description"
+        content="Unlock Premium AI Resources. Get 10+ advanced tools, system instructions, and configuration files.">
+    <meta property="og:image" content="https://avfinanzas.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Premium AI Resources | AV Finanzas">
+    <meta name="twitter:description"
+        content="Unlock Premium AI Resources. Get 10+ advanced tools, system instructions, and configuration files.">
+    <meta name="twitter:image" content="https://avfinanzas.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="free.html" class="nav-link">Free</a>
+                <a href="premium.html" class="nav-link active">Premium</a>
+                <a href="pro.html" class="nav-link">Pro</a>
+                <a href="index.html#pricing" class="nav-link">Pricing</a>
+                <button class="btn-primary btn-small" id="loginBtn">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">💎 <span style="color: #f59e0b;">PREMIUM</span> Resources</h1>
+            <p class="hero-description">
+                Get access to 16 powerful AI resources (10 premium + 6 free) with advanced configurations, downloadable
+                files, and video tutorials. One-time payment of $4.99 - lifetime access.
+            </p>
+            <div class="hero-buttons">
+                <a href="#premium-resources" class="btn-primary">Explore Premium Resources</a>
+                <a href="pro.html" class="btn-secondary">Upgrade to Pro →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Resources Section -->
+    <section class="resources-section" id="premium-resources">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">10 Premium Resources</h2>
+                <p class="section-description">Advanced AI tools with professional configurations and tutorials</p>
+            </div>
+
+            <div class="resources-grid" id="premiumResourcesGrid">
+                <!-- Premium resources will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Resources Included Section -->
+    <section class="resources-section" style="background: #f9fafb; padding: 4rem 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">6 Free Resources Included</h2>
+                <p class="section-description">All free resources are included in your premium plan</p>
+            </div>
+
+            <div class="resources-grid" id="freeResourcesGrid">
+                <!-- Free resources will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Upgrade CTA -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title">Need Even More Power?</h2>
+                <p class="newsletter-description">Upgrade to Pro and get access to 26 total resources with
+                    enterprise-level tools, priority support, and early access to new features.</p>
+                <div class="hero-buttons" style="justify-content: center; margin-top: 2rem;">
+                    <a href="pro.html" class="btn-primary">View Pro Plan →</a>
+                    <a href="index.html#pricing" class="btn-secondary">Compare Plans</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AV IA Resources</h3>
+                    <p>Recursos de IA curados para profesionales</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Planes</h4>
+                    <div class="footer-links">
+                        <a href="free.html">Free (6 recursos)</a>
+                        <a href="premium.html">Premium (16 recursos)</a>
+                        <a href="pro.html">Pro (26 recursos)</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <div class="footer-links">
+                        <a href="#">Privacidad</a>
+                        <a href="#">Términos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AV IA Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="analytics.js"></script>
+    <script src="adsense-config.js"></script>
+    <script src="app.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        // PREMIUM RESOURCES (10)
+        const premiumResources = [
+            {
+                id: 7,
+                title: "ChatGPT Marketing Agent",
+                category: "marketing",
+                tier: "premium",
+                description: "🚀 Transform your marketing in minutes! This AI agent creates complete campaigns with social posts, email sequences, and ad copy. Includes 50+ templates and video tutorials.",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
+                link: "resources/chatgpt-marketing-agent.html"
+            },
+            {
+                id: 8,
+                title: "SEO Content Optimizer",
+                category: "marketing",
+                tier: "premium",
+                description: "📈 Rank #1 on Google! Advanced prompt that analyzes keywords, creates SEO-optimized content, and suggests meta tags. Perfect for bloggers and agencies.",
+                image: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=800&h=400&fit=crop",
+                link: "resources/seo-content-optimizer.html"
+            },
+            {
+                id: 9,
+                title: "Python Code Assistant Pro",
+                category: "coding",
+                tier: "premium",
+                description: "💻 Your AI pair programmer! Writes clean Python code, suggests optimizations, and explains complex algorithms. Includes debugging templates and best practices.",
+                image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=400&fit=crop",
+                link: "resources/python-code-assistant.html"
+            },
+            {
+                id: 10,
+                title: "React Component Generator",
+                category: "coding",
+                tier: "premium",
+                description: "⚛️ Build React apps faster! Generates production-ready components with TypeScript, tests, and Storybook docs. Saves hours of boilerplate coding.",
+                image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=400&fit=crop",
+                link: "resources/react-component-generator.html"
+            },
+            {
+                id: 11,
+                title: "Brand Identity Designer",
+                category: "design",
+                tier: "premium",
+                description: "🎨 Create stunning brands! AI-powered designer that generates color palettes, typography systems, and brand guidelines. Perfect for startups and freelancers.",
+                image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=400&fit=crop",
+                link: "resources/brand-identity-designer.html"
+            },
+            {
+                id: 12,
+                title: "UX Research Analyzer",
+                category: "design",
+                tier: "premium",
+                description: "🔍 Understand your users deeply! Analyzes user feedback, creates personas, and suggests UX improvements. Includes interview templates and analysis frameworks.",
+                image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&h=400&fit=crop",
+                link: "resources/ux-research-analyzer.html"
+            },
+            {
+                id: 13,
+                title: "Long-Form Content Writer",
+                category: "writing",
+                tier: "premium",
+                description: "✍️ Write 3000+ word articles in minutes! Creates in-depth, well-researched content with proper structure, citations, and SEO optimization.",
+                image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&h=400&fit=crop",
+                link: "resources/long-form-content-writer.html"
+            },
+            {
+                id: 14,
+                title: "Copywriting Genius",
+                category: "writing",
+                tier: "premium",
+                description: "💰 Copy that converts! Master persuasive writing with frameworks like AIDA, PAS, and FAB. Includes 100+ proven templates for ads, landing pages, and emails.",
+                image: "https://images.unsplash.com/photo-1542435503-956c469947f6?w=800&h=400&fit=crop",
+                link: "resources/copywriting-genius.html"
+            },
+            {
+                id: 15,
+                title: "Data Visualization Expert",
+                category: "data",
+                tier: "premium",
+                description: "📊 Turn data into insights! Creates stunning charts, dashboards, and reports. Suggests best visualization types and tells compelling data stories.",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
+                link: "resources/data-visualization-expert.html"
+            },
+            {
+                id: 16,
+                title: "SQL Query Optimizer",
+                category: "data",
+                tier: "premium",
+                description: "⚡ Lightning-fast queries! Analyzes and optimizes SQL queries, suggests indexes, and explains execution plans. Supports PostgreSQL, MySQL, and SQL Server.",
+                image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&h=400&fit=crop",
+                link: "resources/sql-query-optimizer.html"
+            }
+        ];
+
+        // FREE RESOURCES (6)
+        const freeResources = [
+            {
+                id: 1,
+                title: "Social Media Post Generator",
+                category: "marketing",
+                tier: "free",
+                description: "📱 Quick social posts! Generate engaging content for Instagram, Twitter, and LinkedIn. Perfect for daily posting and maintaining consistency.",
+                image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=400&fit=crop",
+                link: "resources/social-media-generator.html"
+            },
+            {
+                id: 2,
+                title: "JavaScript Debugger",
+                category: "coding",
+                tier: "free",
+                description: "🐛 Fix bugs fast! Analyzes JavaScript errors, explains what went wrong, and suggests fixes. Great for beginners learning to code.",
+                image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=800&h=400&fit=crop",
+                link: "resources/javascript-debugger.html"
+            },
+            {
+                id: 3,
+                title: "Color Palette Generator",
+                category: "design",
+                tier: "free",
+                description: "🌈 Beautiful color schemes! Creates harmonious color palettes for your projects. Includes hex codes and accessibility checks.",
+                image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=400&fit=crop",
+                link: "resources/color-palette-generator.html"
+            },
+            {
+                id: 4,
+                title: "Blog Post Outliner",
+                category: "writing",
+                tier: "free",
+                description: "📝 Never stare at blank pages! Creates detailed blog post outlines with headers, subheaders, and key points to cover.",
+                image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=400&fit=crop",
+                link: "resources/blog-post-outliner.html"
+            },
+            {
+                id: 5,
+                title: "Excel Formula Helper",
+                category: "data",
+                tier: "free",
+                description: "📊 Excel made easy! Explains formulas, suggests functions, and helps create complex calculations. No more formula frustration.",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
+                link: "resources/excel-formula-helper.html"
+            },
+            {
+                id: 6,
+                title: "Email Subject Line Creator",
+                category: "marketing",
+                tier: "free",
+                description: "📧 Boost open rates! Creates catchy email subject lines that get clicks. Includes A/B testing suggestions and emoji recommendations.",
+                image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&h=400&fit=crop",
+                link: "resources/email-subject-creator.html"
+            }
+        ];
+
+        // Render premium resources
+        const premiumGrid = document.getElementById('premiumResourcesGrid');
+        premiumGrid.innerHTML = premiumResources.map(resource => `
+            <div class="resource-card">
+                <img src="${resource.image}" alt="${resource.title}" class="resource-thumbnail">
+                <div class="resource-content">
+                    <span class="tier-badge tier-${resource.tier}">${resource.tier.toUpperCase()}</span>
+                    <h3 class="resource-title">${resource.title}</h3>
+                    <p class="resource-description">${resource.description}</p>
+                    <a href="${resource.link}" class="btn-primary">View Resource</a>
+                </div>
+            </div>
+        `).join('');
+
+        // Render free resources
+        const freeGrid = document.getElementById('freeResourcesGrid');
+        freeGrid.innerHTML = freeResources.map(resource => `
+            <div class="resource-card">
+                <img src="${resource.image}" alt="${resource.title}" class="resource-thumbnail">
+                <div class="resource-content">
+                    <span class="tier-badge tier-${resource.tier}">${resource.tier.toUpperCase()}</span>
+                    <h3 class="resource-title">${resource.title}</h3>
+                    <p class="resource-description">${resource.description}</p>
+                    <a href="${resource.link}" class="btn-primary">View Resource</a>
+                </div>
+            </div>
+        `).join('');
+
+        // Scroll progress
+        function updateScrollProgress() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            if (!scrollProgress) return;
+
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        }
+
+        window.addEventListener('scroll', updateScrollProgress);
+        updateScrollProgress();
+    </script>
+</body>
+
+</html>
+
+const premiumResources = [
+// PREMIUM RESOURCES FIRST (10)
+{
+id: 7,
+title: "ChatGPT Marketing Agent",
+category: "marketing",
+tier: "premium",
+description: "🚀 Transform your marketing in minutes! This AI agent creates complete campaigns with social posts,
+email sequences, and ad copy. Includes 50+ templates and video tutorials.",
+image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
+link: "resource.html"
+},
+{
+id: 8,
+title: "SEO Content Optimizer",
+category: "marketing",
+tier: "premium",
+description: "📈 Rank #1 on Google! Advanced prompt that analyzes keywords, creates SEO-optimized content, and
+suggests meta tags. Perfect for bloggers and agencies.",
+image: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=800&h=400&fit=crop",
+link: "#"
+},
+{
+id: 9,
+title: "Python Code Assistant Pro",
+category: "coding",
+tier: "premium",
+description: "💻 Your AI pair programmer! Writes clean Python code, suggests optimizations, and explains complex
+algorithms. Includes debugging templates and best practices.",
+image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=400&fit=crop",
+link: "#"
+},
+{
+id: 10,
+title: "React Component Generator",
+category: "coding",
+tier: "premium",
+description: "⚛️ Build React apps faster! Generates production-ready components with TypeScript, tests, and
+Storybook docs. Saves hours of boilerplate coding.",
+image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=400&fit=crop",
+link: "#"
+},
+{
+id: 11,
+title: "Brand Identity Designer",
+category: "design",
+tier: "premium",
+description: "🎨 Create stunning brands! AI-powered designer that generates color palettes, typography systems, and
+brand guidelines. Perfect for startups and freelancers.",
+image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=400&fit=crop",
+link: "#"
+},
+{
+id: 12,
+title: "UX Research Analyzer",
+category: "design",
+tier: "premium",
+description: "🔍 Understand your users deeply! Analyzes user feedback, creates personas, and suggests UX
+improvements. Includes interview templates and analysis frameworks.",
+image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&h=400&fit=crop",
+link: "#"
+},
+{
+id: 13,
+title: "Long-Form Content Writer",
+category: "writing",
+tier: "premium",
+description: "✍️ Write 3000+ word articles in minutes! Creates in-depth, well-researched content with proper
+structure, citations, and SEO optimization.",
+image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&h=400&fit=crop",
+link: "#"
+},
+{
+id: 14,
+title: "Copywriting Genius",
+category: "writing",
+tier: "premium",
+description: "💰 Copy that converts! Master persuasive writing with frameworks like AIDA, PAS, and FAB. Includes
+100+ proven templates for ads, landing pages, and emails.",
+image: "https://images.unsplash.com/photo-1542435503-956c469947f6?w=800&h=400&fit=crop",
+link: "#"
+},
+{
+id: 15,
+title: "Data Visualization Expert",
+category: "data",
+tier: "premium",
+description: "📊 Turn data into insights! Creates stunning charts, dashboards, and reports. Suggests best
+visualization types and tells compelling data stories.",
+image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
+link: "#"
+},
+{
+id: 16,
+title: "SQL Query Optimizer",
+category: "data",
+tier: "premium",
+description: "⚡ Lightning-fast queries! Analyzes and optimizes SQL queries, suggests indexes, and explains execution
+plans. Supports PostgreSQL, MySQL, and SQL Server.",
+image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&h=400&fit=crop",
+link: "#"
+},
+// FREE RESOURCES INCLUDED (6)
+{
+id: 1,
+title: "Social Media Post Generator",
+category: "marketing",
+tier: "free",
+description: "📱 Quick social posts! Generate engaging content for Instagram, Twitter, and LinkedIn. Perfect for
+daily posting and maintaining consistency.",
+image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=400&fit=crop",
+link: "resource.html"
+},
+{
+id: 2,
+title: "JavaScript Debugger",
+category: "coding",
+tier: "free",
+description: "🐛 Fix bugs fast! Analyzes JavaScript errors, explains what went wrong, and suggests fixes. Great for
+beginners learning to code.",
+image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=800&h=400&fit=crop",
+link: "#"
+},
+{
+id: 3,
+title: "Color Palette Generator",
+category: "design",
+tier: "free",
+description: "🌈 Beautiful color schemes! Creates harmonious color palettes for your projects. Includes hex codes
+and accessibility checks.",
+image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=400&fit=crop",
+link: "#"
+},
+{
+id: 4,
+title: "Blog Post Outliner",
+category: "writing",
+tier: "free",
+description: "📝 Never stare at blank pages! Creates detailed blog post outlines with headers, subheaders, and key
+points to cover.",
+image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=400&fit=crop",
+link: "#"
+},
+{
+id: 5,
+title: "Excel Formula Helper",
+category: "data",
+tier: "free",
+description: "📊 Excel made easy! Explains formulas, suggests functions, and helps create complex calculations. No
+more formula frustration.",
+image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
+link: "#"
+},
+{
+id: 6,
+title: "Email Subject Line Creator",
+category: "marketing",
+tier: "free",
+description: "📧 Boost open rates! Creates catchy email subject lines that get clicks. Includes A/B testing
+suggestions and emoji recommendations.",
+image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&h=400&fit=crop",
+link: "#"
+}
+];
+
+// Render resources
+const resourcesGrid = document.getElementById('resourcesGrid');
+resourcesGrid.innerHTML = premiumResources.map(resource => `
+<div class="resource-card">
+    <img src="${resource.image}" alt="${resource.title}" class="resource-thumbnail">
+    <div class="resource-content">
+        <span class="tier-badge tier-${resource.tier}">${resource.tier.toUpperCase()}</span>
+        <h3 class="resource-title">${resource.title}</h3>
+        <p class="resource-description">${resource.description}</p>
+        <a href="${resource.link}" class="btn-primary">Ver Recurso</a>
+    </div>
+</div>
+`).join('');
+
+// Scroll progress
+function updateScrollProgress() {
+const scrollProgress = document.getElementById('scrollProgress');
+if (!scrollProgress) return;
+
+const windowHeight = window.innerHeight;
+const documentHeight = document.documentElement.scrollHeight;
+const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+scrollProgress.style.width = scrollPercent + '%';
+}
+
+window.addEventListener('scroll', updateScrollProgress);
+updateScrollProgress();
+</script>
+</body>
+
+</html>

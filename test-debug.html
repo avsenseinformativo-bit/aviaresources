@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Debug - Sistema Auth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body style="padding: 2rem; font-family: system-ui;">
+    <h1>🔍 Test de Autenticación</h1>
+
+    <div style="background: #f3f4f6; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+        <h2>Paso 1: Verificar que los archivos cargan</h2>
+        <div id="loadStatus"></div>
+    </div>
+
+    <div style="background: #f3f4f6; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+        <h2>Paso 2: Probar el botón Login</h2>
+        <button class="btn-primary btn-small" id="loginBtn"
+            style="padding: 1rem 2rem; background: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">
+            Login
+        </button>
+        <div id="clickStatus" style="margin-top: 1rem; color: #059669; font-weight: 600;"></div>
+    </div>
+
+    <div style="background: #f3f4f6; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+        <h2>Paso 3: Consola del navegador</h2>
+        <p>Abre la consola (Cmd + Option + I) y revisa si hay errores en rojo.</p>
+        <div id="consoleOutput"
+            style="background: #1e293b; color: #10b981; padding: 1rem; border-radius: 8px; font-family: monospace; margin-top: 1rem; max-height: 300px; overflow-y: auto;">
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="analytics.js?v=6"></script>
+    <script src="adsense-config.js?v=6"></script>
+    <script src="app.js?v=6"></script>
+    <script src="auth.js?v=6"></script>
+
+    <script>
+        // Capturar logs de consola
+        const consoleDiv = document.getElementById('consoleOutput');
+        const originalLog = console.log;
+        const originalError = console.error;
+
+        console.log = function (...args) {
+            originalLog.apply(console, args);
+            consoleDiv.innerHTML += '<div style="color: #10b981;">✓ ' + args.join(' ') + '</div>';
+        };
+
+        console.error = function (...args) {
+            originalError.apply(console, args);
+            consoleDiv.innerHTML += '<div style="color: #ef4444;">✗ ERROR: ' + args.join(' ') + '</div>';
+        };
+
+        // Verificar carga de archivos
+        setTimeout(() => {
+            const status = document.getElementById('loadStatus');
+            let html = '';
+
+            if (typeof AuthSystem !== 'undefined') {
+                html += '<div style="color: #10b981; font-weight: 600;">✅ auth.js cargado correctamente</div>';
+            } else {
+                html += '<div style="color: #ef4444; font-weight: 600;">❌ auth.js NO cargado</div>';
+            }
+
+            if (window.authSystem) {
+                html += '<div style="color: #10b981; font-weight: 600;">✅ AuthSystem inicializado</div>';
+            } else {
+                html += '<div style="color: #ef4444; font-weight: 600;">❌ AuthSystem NO inicializado</div>';
+            }
+
+            status.innerHTML = html;
+        }, 1000);
+
+        // Probar click en botón
+        document.getElementById('loginBtn').addEventListener('click', function (e) {
+            console.log('🖱️ Botón Login clickeado!');
+            document.getElementById('clickStatus').innerHTML = '✅ Click detectado! Revisando si se abre el modal...';
+
+            setTimeout(() => {
+                const modal = document.getElementById('authModalOverlay');
+                if (modal) {
+                    document.getElementById('clickStatus').innerHTML = '✅ ¡MODAL ABIERTO CORRECTAMENTE!';
+                } else {
+                    document.getElementById('clickStatus').innerHTML = '❌ Modal NO se abrió. Revisa la consola para ver errores.';
+                }
+            }, 500);
+        });
+    </script>
+</body>
+
+</html>

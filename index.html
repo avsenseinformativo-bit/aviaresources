@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO Meta Tags -->
+    <title>AV Finanzas | Premium AI Resources, Agents & ChatGPT Prompts</title>
+    <meta name="description"
+        content="Unlock the full potential of AI with AV Finanzas. Access 100+ premium ChatGPT prompts, autonomous agents, and ready-to-use configurations for marketing, coding, and design.">
+    <meta name="keywords"
+        content="AI prompts, ChatGPT prompts, AI tools, AI agents, system instructions, AI configurations, marketing AI, coding AI, design AI, premium prompts, av finanzas">
+    <meta name="author" content="AV Finanzas">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://avfinanzas.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avfinanzas.com/">
+    <meta property="og:title" content="AV Finanzas | Premium AI Resources & Agents">
+    <meta property="og:description"
+        content="Unlock the full potential of AI. Access 100+ premium ChatGPT prompts, autonomous agents, and ready-to-use configurations.">
+    <meta property="og:image" content="https://avfinanzas.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="AV Finanzas">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://avfinanzas.com/">
+    <meta name="twitter:title" content="AV Finanzas | Premium AI Resources & Agents">
+    <meta name="twitter:description"
+        content="Unlock the full potential of AI. Access 100+ premium ChatGPT prompts, autonomous agents, and ready-to-use configurations.">
+    <meta name="twitter:image" content="https://avfinanzas.com/og-image.png">
+    <meta name="twitter:creator" content="@avfinanzas">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+
+    <!-- JSON-LD Schema Markup - Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "AV Finanzas",
+        "url": "https://avfinanzas.com",
+        "logo": "https://avfinanzas.com/logo.png",
+        "description": "Premium AI prompts, agents, and tools for ChatGPT, Claude, and more",
+        "sameAs": [
+            "https://twitter.com/avfinanzas",
+            "https://linkedin.com/company/avfinanzas"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Support",
+            "email": "support@avfinanzas.com"
+        }
+    }
+    </script>
+
+    <!-- JSON-LD Schema Markup - WebSite -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "AV Finanzas",
+        "url": "https://avfinanzas.com",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://avfinanzas.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <!-- JSON-LD Schema Markup - ItemList (Resources) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "AI Resources and Tools",
+        "description": "Curated collection of premium AI prompts and tools",
+        "numberOfItems": "50+",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@type": "Product",
+                    "name": "ChatGPT Marketing Agent",
+                    "description": "Advanced AI-powered marketing agent for comprehensive campaigns",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "4.99",
+                        "priceCurrency": "USD"
+                    }
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- SCRIPT DE LIMPIEZA TEMPORAL - ELIMINADO -->
+    <!-- Este código limpiaba localStorage y causaba pérdida de datos -->
+</head>
+
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="free.html" class="nav-link">Free</a>
+                <a href="premium.html" class="nav-link">Premium</a>
+                <a href="pro.html" class="nav-link">Pro</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <button class="btn-primary btn-small" id="loginBtn">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Unlock the Power of AI
+                    <span class="gradient-text">Resources & Agents</span>
+                </h1>
+                <p class="hero-description">
+                    Discover curated AI tools, advanced prompts, and ready-to-use agents for marketing, coding, design,
+                    and more. Get instant access to premium configurations and implementation guides.
+                </p>
+                <div class="hero-cta">
+                    <a href="#resources" class="btn-primary btn-large">
+                        Explore Resources
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#pricing" class="btn-secondary btn-large">View Pricing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="filters" id="resources">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All Resources</button>
+                <button class="filter-btn" data-category="marketing">Marketing</button>
+                <button class="filter-btn" data-category="coding">Coding</button>
+                <button class="filter-btn" data-category="design">Design</button>
+                <button class="filter-btn" data-category="writing">Writing</button>
+                <button class="filter-btn" data-category="data">Data Analysis</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Grid -->
+    <section class="resources-section">
+        <div class="container">
+            <div class="resources-grid" id="resourcesGrid">
+                <!-- Resources will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <p class="section-description">Choose the plan that works best for you</p>
+            </div>
+
+            <div class="pricing-toggle-container">
+                <span class="toggle-label">Monthly</span>
+                <label class="switch">
+                    <input type="checkbox" id="billingToggle" onchange="toggleBilling()">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggle-label">Annual <span class="save-badge">Save 40%</span></span>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Free Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Free</h3>
+                        <div class="pricing-price">
+                            <span class="price">$0</span>
+                            <span class="period">/forever</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Access to all AI tool links
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Basic prompt examples
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Resource descriptions
+                        </li>
+                        <li class="disabled">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                            Advanced prompts
+                        </li>
+                        <li class="disabled">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                            Configuration files
+                        </li>
+                    </ul>
+                    <button class="btn-secondary btn-full">Current Plan</button>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="pricing-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Premium</h3>
+                        <div class="pricing-price">
+                            <span class="price" id="premiumPrice">$4.99</span>
+                            <span class="period" id="premiumPeriod">/month</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Everything in Free
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Advanced system instructions
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Downloadable config files
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Implementation video tutorials
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Lifetime access
+                        </li>
+                    </ul>
+                    <a href="https://buy.stripe.com/3cI14obQf049aZYbZxc7u02" class="btn-primary btn-full"
+                        id="premiumBtn">Subscribe Now</a>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Pro</h3>
+                        <div class="pricing-price">
+                            <span class="price" id="proPrice">$9.99</span>
+                            <span class="period" id="proPeriod">/month</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Everything in Premium
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            New resources every week
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Priority support
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Custom prompt requests
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Private community access
+                        </li>
+                    </ul>
+                    <a href="https://buy.stripe.com/9B68wQdYnaINc42aVtc7u03" class="btn-secondary btn-full"
+                        id="proBtn">Subscribe Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Signals Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-stats">
+                <div class="trust-stat">
+                    <div class="trust-stat-number">10,000+</div>
+                    <div class="trust-stat-label">Active Users</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="trust-stat-number">500+</div>
+                    <div class="trust-stat-label">Premium Resources</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="trust-stat-number">4.9/5</div>
+                    <div class="trust-stat-label">User Rating</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="trust-stat-number">24/7</div>
+                    <div class="trust-stat-label">Support Available</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Users Say</h2>
+                <p class="section-description">Join thousands of satisfied professionals</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">"These AI prompts have transformed my marketing workflow. I'm creating
+                        campaigns 10x faster with better results. The premium content is worth every penny!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="Sarah Johnson" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Marketing Director, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">"As a developer, the coding assistants and prompts have been
+                        game-changing. The configuration files are production-ready and save me hours of setup time."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=12" alt="Michael Chen" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Michael Chen</h4>
+                            <p>Senior Developer, StartupXYZ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                        <svg viewBox="0 0 20 20">
+                            <path
+                                d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">"The design prompts and AI tools have elevated my creative process. I
+                        can iterate on concepts faster and deliver better results to my clients."</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Emma Rodriguez" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Emma Rodriguez</h4>
+                            <p>Creative Director, DesignStudio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section with Schema Markup -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">Everything you need to know</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What are AI prompts and how do they work?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>AI prompts are carefully crafted instructions that guide AI models like ChatGPT to produce
+                            specific, high-quality outputs. Our premium prompts include advanced system instructions,
+                            context settings, and example outputs to help you get professional results instantly.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What's included in the Premium plan?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Premium includes advanced system instructions, downloadable configuration files (JSON/YAML),
+                            implementation video tutorials, and lifetime access to all current and future resources.
+                            It's a one-time payment of $4.99 with no recurring fees.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I use these prompts with any AI model?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Our prompts work with ChatGPT, Claude, Gemini, and most other AI language models. We
+                            provide specific optimization tips for each platform to ensure the best results.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Do you offer refunds?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, we offer a 30-day money-back guarantee. If you're not satisfied with the premium
+                            content, contact us within 30 days for a full refund, no questions asked.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How often do you add new resources?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We add new resources weekly. Premium members get instant access to all new content at no
+                            additional cost. Pro plan members get early access and can request custom prompts.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is there customer support available?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! We offer email support for all users. Premium members get priority support with 24-hour
+                            response time. Pro members get access to our private community and direct chat support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What are AI prompts and how do they work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "AI prompts are carefully crafted instructions that guide AI models like ChatGPT to produce specific, high-quality outputs. Our premium prompts include advanced system instructions, context settings, and example outputs to help you get professional results instantly."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What's included in the Premium plan?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Premium includes advanced system instructions, downloadable configuration files (JSON/YAML), implementation video tutorials, and lifetime access to all current and future resources. It's a one-time payment of $4.99 with no recurring fees."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use these prompts with any AI model?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Our prompts work with ChatGPT, Claude, Gemini, and most other AI language models. We provide specific optimization tips for each platform to ensure the best results."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you offer refunds?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we offer a 30-day money-back guarantee. If you're not satisfied with the premium content, contact us within 30 days for a full refund, no questions asked."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How often do you add new resources?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We add new resources weekly. Premium members get instant access to all new content at no additional cost. Pro plan members get early access and can request custom prompts."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is there customer support available?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! We offer email support for all users. Premium members get priority support with 24-hour response time. Pro members get access to our private community and direct chat support."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title">Stay Updated with AI Trends</h2>
+                <p class="newsletter-description">Get weekly AI tips, new prompts, and exclusive resources delivered to
+                    your inbox</p>
+                <form class="newsletter-form" id="newsletterForm" onsubmit="handleNewsletterSubmit(event)">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required
+                        id="newsletterEmail">
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+                </form>
+                <p class="newsletter-privacy">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        style="display: inline; vertical-align: middle;">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    We respect your privacy. Unsubscribe anytime.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="color: white;">
+                        <img src="logo.png" alt="AV IA Resources" style="height: 40px; width: auto;">
+                        AV IA Resources
+                    </a>
+                    <p>Empowering creators and businesses with premium AI tools, prompts, and agents. Level up your
+                        productivity today.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="#resources">Resources</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="premium.html">Premium</a>
+                        <a href="pro.html">Pro</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                        <a href="#">Refund Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AV IA Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="analytics.js?v=8"></script>
+    <script src="adsense-config.js?v=8"></script>
+    <script src="app.js?v=8"></script>
+    <script src="auth.js?v=8"></script>
+    <script>
+        function toggleBilling() {
+            const isAnnual = document.getElementById('billingToggle').checked;
+
+            // Elements
+            const premiumPrice = document.getElementById('premiumPrice');
+            const premiumPeriod = document.getElementById('premiumPeriod');
+            const premiumBtn = document.getElementById('premiumBtn');
+
+            const proPrice = document.getElementById('proPrice');
+            const proPeriod = document.getElementById('proPeriod');
+            const proBtn = document.getElementById('proBtn');
+
+            if (isAnnual) {
+                // Annual Pricing
+                premiumPrice.textContent = '$34.99';
+                premiumPeriod.textContent = '/year';
+                premiumBtn.href = 'https://buy.stripe.com/00w6oI9I7aIN0lk4x5c7u01';
+
+                proPrice.textContent = '$69.99';
+                proPeriod.textContent = '/year';
+                proBtn.href = 'https://buy.stripe.com/9B6fZi7zZ4kpfge3t1c7u04';
+            } else {
+                // Monthly Pricing
+                premiumPrice.textContent = '$4.99';
+                premiumPeriod.textContent = '/month';
+                premiumBtn.href = 'https://buy.stripe.com/3cI14obQf049aZYbZxc7u02';
+
+                proPrice.textContent = '$9.99';
+                proPeriod.textContent = '/month';
+                proBtn.href = 'https://buy.stripe.com/9B68wQdYnaINc42aVtc7u03';
+            }
+        }
+    </script>
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚙️ Settings</h2>
+                <span class="close-settings">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="user-profile-section">
+                    <div class="user-avatar" id="settingsAvatar">
+                        U
+                    </div>
+                    <h3 id="settingsName" class="user-name">User Name</h3>
+                    <p id="settingsEmail" class="user-email">user@example.com</p>
+                </div>
+
+                <div class="subscription-section">
+                    <h4 class="subscription-title">Current Subscription</h4>
+
+                    <div class="subscription-status-row">
+                        <div>
+                            <span id="settingsPlan" class="plan-name">Free Plan</span>
+                            <div id="settingsStatus" class="plan-status">Active</div>
+                        </div>
+                        <div id="planBadge" class="status-badge">
+                            ACTIVE
+                        </div>
+                    </div>
+
+                    <div id="cancelSubscriptionSection" class="cancel-section">
+                        <p class="cancel-text">
+                            Want to cancel your subscription? You will retain access until the end of your billing
+                            period.
+                        </p>
+                        <button id="cancelSubscriptionBtn" onclick="cancelSubscription()" class="cancel-btn">
+                            Cancel Subscription
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Settings Modal Logic
+        const settingsModal = document.getElementById('settingsModal');
+        const closeSettings = document.getElementsByClassName('close-settings')[0];
+
+        if (closeSettings) {
+            closeSettings.onclick = function () {
+                settingsModal.style.display = "none";
+            }
+        }
+
+        window.onclick = function (event) {
+            if (event.target == settingsModal) {
+                settingsModal.style.display = "none";
+            }
+        }
+
+        async function cancelSubscription() {
+            const user = JSON.parse(localStorage.getItem('aviaUser'));
+            if (!user || !user.subscriptionId) {
+                alert('No active subscription found.');
+                return;
+            }
+
+            if (!confirm('Are you sure you want to cancel? You will keep access until the end of the period.')) {
+                return;
+            }
+
+            const btn = document.getElementById('cancelSubscriptionBtn');
+            const originalText = btn.innerText;
+            btn.innerText = 'Cancelling...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('http://localhost:3001/api/cancel-subscription', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        subscriptionId: user.subscriptionId,
+                        email: user.email
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert(data.message);
+                    // Update UI
+                    document.getElementById('settingsStatus').innerText = `Cancels on ${data.endDate}`;
+                    document.getElementById('planBadge').innerText = 'CANCELLING';
+                    document.getElementById('planBadge').style.color = '#f59e0b';
+                    document.getElementById('planBadge').style.backgroundColor = 'rgba(245, 158, 11, 0.1)';
+                    document.getElementById('planBadge').style.borderColor = 'rgba(245, 158, 11, 0.2)';
+                    btn.style.display = 'none';
+
+                    // Update local storage
+                    user.subscriptionStatus = 'cancelling';
+                    user.accessUntil = data.endDate;
+                    localStorage.setItem('aviaUser', JSON.stringify(user));
+                } else {
+                    alert('Error: ' + (data.error || 'Could not cancel subscription'));
+                }
+            } catch (error) {
+                console.error('Error cancelling:', error);
+                alert('Error connecting to server');
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+
+</html>

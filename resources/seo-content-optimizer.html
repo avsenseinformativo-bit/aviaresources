@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Rank #1 on Google with the SEO Content Optimizer. Real-time keyword analysis, meta tag generation, and readability scoring. Premium AI tool.">
+    <title>SEO Content Optimizer: Rank Higher with AI</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="blog-template-styles.css">
+
+    <!-- Premium Styles (SEO Theme) -->
+    <style>
+        :root {
+            --seo-gradient: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --neon-glow: 0 0 20px rgba(16, 185, 129, 0.4);
+        }
+
+        body {
+            background-color: #f0fdf4;
+        }
+
+        /* Premium Hero */
+        .premium-hero {
+            background: #064e3b;
+            color: white;
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+        }
+
+        .hero-badge {
+            background: var(--seo-gradient);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            box-shadow: var(--neon-glow);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #d1fae5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        /* SEO Scorer Tool */
+        .seo-tool-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            margin: 3rem 0;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tool-header {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            min-height: 600px;
+        }
+
+        .editor-section {
+            padding: 2rem;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        .analysis-section {
+            padding: 2rem;
+            background: #f8fafc;
+        }
+
+        .seo-input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            resize: vertical;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .seo-input:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: conic-gradient(var(--score-color, #ef4444) var(--score-percent, 0%), #e2e8f0 0);
+            z-index: -1;
+        }
+
+        .score-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1e293b;
+        }
+
+        .score-label {
+            font-size: 0.875rem;
+            color: #64748b;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+        }
+
+        .status-pass {
+            background: #10b981;
+        }
+
+        .status-fail {
+            background: #ef4444;
+        }
+
+        .status-warn {
+            background: #f59e0b;
+        }
+
+        /* Meta Tag Generator */
+        .meta-preview {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+            margin-top: 2rem;
+            font-family: arial, sans-serif;
+        }
+
+        .google-title {
+            color: #1a0dab;
+            font-size: 20px;
+            line-height: 1.3;
+            margin-bottom: 4px;
+            cursor: pointer;
+        }
+
+        .google-url {
+            color: #202124;
+            font-size: 14px;
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+
+        .google-desc {
+            color: #4d5156;
+            font-size: 14px;
+            line-height: 1.58;
+        }
+
+        @media (max-width: 768px) {
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .editor-section {
+                border-right: none;
+                border-bottom: 1px solid #e2e8f0;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta property="og:image" content="https://avfinanzas.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../free.html" class="nav-link">Free</a>
+                <a href="../premium.html" class="nav-link active">Premium</a>
+                <a href="../pro.html" class="nav-link">Pro</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="premium-hero">
+        <div class="container">
+            <span class="hero-badge">Premium Tool</span>
+            <h1 class="hero-title">SEO Content Optimizer</h1>
+            <p style="font-size: 1.25rem; color: #d1fae5; max-width: 600px; margin-bottom: 2rem;">
+                Analyze your content in real-time. Optimize for keywords, readability, and search intent to rank #1 on
+                Google.
+            </p>
+            <button onclick="document.getElementById('tool').scrollIntoView({behavior: 'smooth'})" class="btn-primary"
+                style="background: white; color: #064e3b;">Start Optimizing</button>
+        </div>
+    </header>
+
+    <main class="content-section" style="padding: 4rem 0;">
+        <div class="container">
+
+            <!-- Instructions -->
+            <div
+                style="margin-bottom: 2rem; background: #ecfdf5; padding: 1.5rem; border-radius: 12px; border-left: 5px solid #10b981;">
+                <h3 style="color: #064e3b; margin-top: 0;">🛠️ How to use the SEO Optimizer</h3>
+                <ol style="margin-bottom: 0; color: #065f46; padding-left: 1.5rem;">
+                    <li><strong>Set Keyword:</strong> Enter your main target keyword in the top input field.</li>
+                    <li><strong>Write or Paste:</strong> Type your content in the main editor.</li>
+                    <li><strong>Check Score:</strong> Watch the score circle and checklist update in real-time.</li>
+                    <li><strong>Optimize:</strong> Follow the AI suggestions to reach a score of 90+.</li>
+                </ol>
+            </div>
+
+            <!-- SEO Tool -->
+            <section id="tool" class="seo-tool-container">
+                <div class="tool-header">
+                    <h2 style="margin: 0; font-size: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+                        ⚡ Live Content Analysis
+                    </h2>
+                    <div style="display: flex; gap: 1rem;">
+                        <input type="text" id="targetKeyword" placeholder="Target Keyword..."
+                            style="padding: 0.5rem; border-radius: 6px; border: 1px solid #cbd5e1;">
+                    </div>
+                </div>
+
+                <div class="tool-grid">
+                    <div class="editor-section">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Content Editor</label>
+                        <textarea id="contentEditor" class="seo-input" style="height: 400px;"
+                            placeholder="Paste your article here to begin analysis..."></textarea>
+
+                        <div style="margin-top: 2rem;">
+                            <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">Google SERP Preview</h3>
+                            <div style="display: grid; gap: 1rem;">
+                                <input type="text" id="metaTitle" class="seo-input" style="margin-bottom: 0;"
+                                    placeholder="Meta Title (60 chars)">
+                                <textarea id="metaDesc" class="seo-input" style="height: 80px; margin-bottom: 0;"
+                                    placeholder="Meta Description (160 chars)"></textarea>
+                            </div>
+
+                            <div class="meta-preview">
+                                <div class="google-url">https://yourwebsite.com › article</div>
+                                <div class="google-title" id="previewTitle">Your SEO Optimized Title Goes Here</div>
+                                <div class="google-desc" id="previewDesc">This is how your article will appear in Google
+                                    search results. Make sure to include your target keyword and a compelling call to
+                                    action.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-section">
+                        <div class="score-circle" id="scoreCircle">
+                            <span class="score-number" id="scoreValue">0</span>
+                            <span class="score-label">SEO Score</span>
+                        </div>
+
+                        <h3 style="font-size: 1rem; text-transform: uppercase; color: #64748b; margin-bottom: 1rem;">
+                            Optimization Checklist</h3>
+
+                        <div id="checklist">
+                            <div class="checklist-item">
+                                <div class="check-icon status-fail" id="status-keyword">✕</div>
+                                <div>
+                                    <div style="font-weight: 600;">Keyword in Title</div>
+                                    <div style="font-size: 0.8rem; color: #64748b;">Add target keyword to title</div>
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="check-icon status-fail" id="status-density">✕</div>
+                                <div>
+                                    <div style="font-weight: 600;">Keyword Density</div>
+                                    <div style="font-size: 0.8rem; color: #64748b;">Aim for 1-2%</div>
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="check-icon status-fail" id="status-length">✕</div>
+                                <div>
+                                    <div style="font-weight: 600;">Content Length</div>
+                                    <div style="font-size: 0.8rem; color: #64748b;">Min 300 words recommended</div>
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="check-icon status-fail" id="status-readability">✕</div>
+                                <div>
+                                    <div style="font-weight: 600;">Readability</div>
+                                    <div style="font-size: 0.8rem; color: #64748b;">Use shorter paragraphs</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            style="margin-top: 2rem; padding: 1rem; background: #dbeafe; border-radius: 8px; border: 1px solid #bfdbfe;">
+                            <strong style="color: #1e40af; display: block; margin-bottom: 0.5rem;">💡 AI
+                                Suggestion</strong>
+                            <p style="font-size: 0.9rem; color: #1e3a8a; margin: 0;" id="aiSuggestion">
+                                Start typing to get real-time AI recommendations for your content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" style="color: white;">
+                        <img src="../logo.png" alt="AV IA Resources" style="height: 40px; width: auto;">
+                        AV IA Resources
+                    </a>
+                    <p>Empowering creators and businesses with premium AI tools.</p>
+                </div>
+                <!-- ... Footer links ... -->
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AV IA Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Logic for SEO Tool
+        const editor = document.getElementById('contentEditor');
+        const keywordInput = document.getElementById('targetKeyword');
+        const titleInput = document.getElementById('metaTitle');
+        const descInput = document.getElementById('metaDesc');
+
+        // Listeners
+        [editor, keywordInput, titleInput, descInput].forEach(el => {
+            el.addEventListener('input', analyzeContent);
+        });
+
+        function analyzeContent() {
+            const content = editor.value;
+            const keyword = keywordInput.value.toLowerCase();
+            const title = titleInput.value;
+            const desc = descInput.value;
+
+            // Update Preview
+            document.getElementById('previewTitle').innerText = title || 'Your SEO Optimized Title Goes Here';
+            document.getElementById('previewDesc').innerText = desc || 'This is how your article will appear in Google search results...';
+
+            if (!content) return;
+
+            let score = 0;
+            let checks = 0;
+
+            // 1. Keyword in Title
+            const hasKeywordInTitle = title.toLowerCase().includes(keyword) && keyword.length > 0;
+            updateStatus('status-keyword', hasKeywordInTitle);
+            if (hasKeywordInTitle) score += 25;
+
+            // 2. Keyword Density
+            const wordCount = content.trim().split(/\s+/).length;
+            const keywordCount = (content.toLowerCase().match(new RegExp(keyword, 'g')) || []).length;
+            const density = (keywordCount / wordCount) * 100;
+            const densityOk = density >= 0.5 && density <= 2.5 && keyword.length > 0;
+            updateStatus('status-density', densityOk);
+            if (densityOk) score += 25;
+
+            // 3. Length
+            const lengthOk = wordCount >= 300;
+            updateStatus('status-length', lengthOk);
+            if (lengthOk) score += 25;
+            else if (wordCount > 100) score += 10;
+
+            // 4. Readability (Simple check: avg paragraph length)
+            const paragraphs = content.split('\n\n').filter(p => p.trim().length > 0);
+            const avgParaLength = paragraphs.reduce((acc, p) => acc + p.split(' ').length, 0) / paragraphs.length;
+            const readabilityOk = avgParaLength < 50; // Avg 50 words per paragraph
+            updateStatus('status-readability', readabilityOk);
+            if (readabilityOk) score += 25;
+
+            // Update Score UI
+            const scoreEl = document.getElementById('scoreValue');
+            const circle = document.getElementById('scoreCircle');
+
+            // Animate number
+            scoreEl.innerText = Math.round(score);
+
+            // Update color
+            let color = '#ef4444';
+            if (score >= 50) color = '#f59e0b';
+            if (score >= 80) color = '#10b981';
+
+            circle.style.setProperty('--score-color', color);
+            circle.style.setProperty('--score-percent', `${score}%`);
+
+            // AI Suggestions
+            updateSuggestions(score, keyword, wordCount, density);
+        }
+
+        function updateStatus(id, passed) {
+            const el = document.getElementById(id);
+            if (passed) {
+                el.className = 'check-icon status-pass';
+                el.innerText = '✓';
+            } else {
+                el.className = 'check-icon status-fail';
+                el.innerText = '✕';
+            }
+        }
+
+        function updateSuggestions(score, keyword, wordCount, density) {
+            const el = document.getElementById('aiSuggestion');
+
+            if (!keyword) {
+                el.innerText = "Please enter a target keyword to begin detailed analysis.";
+                return;
+            }
+
+            if (wordCount < 300) {
+                el.innerText = `Content is too short (${wordCount} words). Google prefers comprehensive content of at least 300 words. Try expanding on your key points.`;
+                return;
+            }
+
+            if (density > 2.5) {
+                el.innerText = "Warning: Keyword stuffing detected. Try using synonyms or LSI keywords instead of repeating the exact phrase.";
+                return;
+            }
+
+            if (score >= 90) {
+                el.innerText = "Excellent work! Your content is perfectly optimized. You are ready to publish.";
+                return;
+            }
+
+            el.innerText = "Keep writing! Focus on breaking up long paragraphs and ensuring your keyword appears naturally in the first 100 words.";
+        }
+    </script>
+<script src="../app.js"></script><script src="../auth.js"></script></body>
+
+</html>

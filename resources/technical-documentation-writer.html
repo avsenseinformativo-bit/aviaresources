@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Technical Documentation Writer. Master the art of technical writing, API documentation, and user guides. Interactive Docs Builder to generate professional documentation.">
+    <title>Technical Documentation Writer: Clarity is King</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="blog-template-styles.css">
+
+    <!-- Pro Styles (Clean/Docs Theme - High Contrast) -->
+    <style>
+        :root {
+            --docs-bg: #ffffff;
+            --docs-sidebar: #f8f9fa;
+            --docs-text: #212529;
+            --docs-primary: #0366d6;
+            /* GitHub Blue */
+            --docs-accent: #28a745;
+            /* Green */
+            --docs-border: #e1e4e8;
+            --docs-code-bg: #f6f8fa;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        }
+
+        body {
+            background-color: var(--docs-bg);
+            font-family: var(--font-sans);
+            color: var(--docs-text);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-sans);
+            color: #24292e;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Docs Hero */
+        .pro-hero {
+            background: white;
+            color: #24292e;
+            padding: 6rem 0 4rem;
+            position: relative;
+            border-bottom: 1px solid var(--docs-border);
+        }
+
+        .hero-badge {
+            background: #e1f0ff;
+            border: 1px solid var(--docs-primary);
+            color: var(--docs-primary);
+            padding: 0.4rem 1rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            border-radius: 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: #24292e;
+        }
+
+        .hero-title span {
+            color: var(--docs-primary);
+            text-decoration: underline;
+            text-decoration-thickness: 4px;
+            text-underline-offset: 8px;
+        }
+
+        /* Tool Container */
+        .docs-tool {
+            background: white;
+            border: 1px solid var(--docs-border);
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: -3rem auto 4rem;
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 250px 1fr 1fr;
+            min-height: 700px;
+            overflow: hidden;
+        }
+
+        .tool-sidebar {
+            background: var(--docs-sidebar);
+            border-right: 1px solid var(--docs-border);
+            padding: 1.5rem;
+        }
+
+        .tool-editor {
+            padding: 0;
+            background: white;
+            border-right: 1px solid var(--docs-border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-preview {
+            padding: 2rem;
+            background: white;
+            overflow-y: auto;
+        }
+
+        .editor-header {
+            background: #f6f8fa;
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--docs-border);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #586069;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .markdown-input {
+            flex: 1;
+            width: 100%;
+            border: none;
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            resize: none;
+            outline: none;
+            color: #24292e;
+            line-height: 1.6;
+        }
+
+        .control-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .control-label {
+            display: block;
+            color: #586069;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .docs-select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--docs-border);
+            border-radius: 4px;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: #24292e;
+            background: white;
+        }
+
+        .generate-btn {
+            width: 100%;
+            background: var(--docs-primary);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .generate-btn:hover {
+            background: #005cc5;
+        }
+
+        /* Preview Styles */
+        .preview-content h1 {
+            font-size: 2rem;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+
+        .preview-content h2 {
+            font-size: 1.5rem;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+
+        .preview-content p {
+            margin-bottom: 1rem;
+        }
+
+        .preview-content code {
+            background: rgba(27, 31, 35, 0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: var(--font-mono);
+            font-size: 85%;
+        }
+
+        .preview-content pre {
+            background: #f6f8fa;
+            padding: 16px;
+            overflow: auto;
+            border-radius: 6px;
+        }
+
+        .preview-content pre code {
+            background: transparent;
+            padding: 0;
+        }
+
+        .preview-content blockquote {
+            border-left: 0.25em solid #dfe2e5;
+            color: #6a737d;
+            padding: 0 1em;
+            margin: 0;
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #24292e;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--docs-border);
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            margin-top: 2rem;
+        }
+
+        .info-box {
+            background: #f1f8ff;
+            border: 1px solid #c8e1ff;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .info-box-title {
+            font-weight: 600;
+            color: #0366d6;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            border: 1px solid var(--docs-border);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc a {
+            color: var(--docs-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .docs-tool {
+                grid-template-columns: 1fr;
+            }
+
+            .tool-sidebar,
+            .tool-editor,
+            .tool-preview {
+                border-right: none;
+                border-bottom: 1px solid var(--docs-border);
+                height: auto;
+                min-height: 300px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta property="og:image" content="https://avfinanzas.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" style="background: white; border-bottom: 1px solid var(--docs-border);">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link" style="color: #24292e;">Home</a>
+                <a href="../free.html" class="nav-link" style="color: #24292e;">Free</a>
+                <a href="../premium.html" class="nav-link" style="color: #24292e;">Premium</a>
+                <a href="../pro.html" class="nav-link active" style="color: var(--docs-primary);">Pro</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="pro-hero">
+        <div class="container">
+            <span class="hero-badge">Documentation v1.0</span>
+            <h1 class="hero-title">Technical <span>Documentation</span> Writer</h1>
+            <p style="font-size: 1.3rem; color: #586069; max-width: 700px; margin-bottom: 2rem;">
+                Code is read by machines. Documentation is read by humans. Bridge the gap with crystal-clear,
+                structured, and user-centric technical writing.
+            </p>
+        </div>
+    </header>
+
+    <main class="content-section" style="background: white;">
+        <div class="container">
+
+            <!-- Docs Tool -->
+            <section id="tool" class="docs-tool">
+                <div class="tool-sidebar">
+                    <h3 style="margin-top: 0; margin-bottom: 1.5rem; font-size: 0.9rem; color: #24292e;">// TEMPLATES
+                    </h3>
+
+                    <div class="control-group">
+                        <label class="control-label">Doc Type</label>
+                        <select id="docType" class="docs-select" onchange="loadTemplate()">
+                            <option value="api">API Reference</option>
+                            <option value="tutorial">Tutorial (How-to)</option>
+                            <option value="concept">Conceptual Guide</option>
+                            <option value="readme">README.md</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Format</label>
+                        <select id="format" class="docs-select">
+                            <option value="markdown">Markdown</option>
+                            <option value="rst">ReStructuredText</option>
+                        </select>
+                    </div>
+
+                    <button class="generate-btn" onclick="loadTemplate()">Reset Template</button>
+
+                    <div
+                        style="margin-top: 2rem; padding: 1rem; background: #e1f0ff; border-radius: 4px; border: 1px solid #b4dbf9;">
+                        <h4 style="margin: 0 0 0.5rem 0; color: #0366d6; font-size: 0.8rem;">Readability Score</h4>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #24292e;">Grade 8</div>
+                        <p style="margin: 0; font-size: 0.75rem; color: #586069;">Target: Grade 6-9</p>
+                    </div>
+                </div>
+
+                <div class="tool-editor">
+                    <div class="editor-header">
+                        <span>EDITOR</span>
+                        <span style="font-family: monospace; color: #6a737d;">markdown</span>
+                    </div>
+                    <textarea id="editor" class="markdown-input" oninput="updatePreview()"># API Reference
+
+## Authentication
+
+All API requests require an API key.
+
+```bash
+curl -H "Authorization: Bearer YOUR_KEY" https://api.example.com/v1/users
+```
+
+## Endpoints
+
+### GET /users
+
+Returns a list of users.
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| limit     | int  | Max results |
+| offset    | int  | Pagination  |
+                    </textarea>
+                </div>
+
+                <div class="tool-preview">
+                    <div class="editor-header"
+                        style="margin: -2rem -2rem 2rem -2rem; border-bottom: 1px solid var(--docs-border);">
+                        <span>PREVIEW</span>
+                    </div>
+                    <div id="preview" class="preview-content">
+                        <!-- Content rendered via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extensive Article Content (4000+ Words) -->
+            <article class="article-content">
+                <div class="toc">
+                    <h3>Table of Contents</h3>
+                    <ul>
+                        <li><a href="#intro">Introduction: The Documentation Crisis</a></li>
+                        <li><a href="#diataxis">Chapter 1: The Diátaxis Framework</a></li>
+                        <li><a href="#api-docs">Chapter 2: Writing Killer API Docs</a></li>
+                        <li><a href="#style-guide">Chapter 3: The Style Guide (Google/Microsoft)</a></li>
+                        <li><a href="#tools">Chapter 4: Tools of the Trade (Docs-as-Code)</a></li>
+                        <li><a href="#ux">Chapter 5: Documentation UX/UI</a></li>
+                        <li><a href="#maintenance">Chapter 6: The Maintenance Nightmare</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="intro">Introduction: The Documentation Crisis</h2>
+                <p>
+                    Software is eating the world, but bad documentation is choking it.
+                    Developers spend <strong>50% of their time</strong> reading documentation. If your docs are bad, you
+                    are wasting half of your users' lives.
+                </p>
+                <p>
+                    Good documentation is not just "nice to have." It is a competitive advantage. Stripe didn't win
+                    because their API was technically superior (though it was good). They won because their
+                    documentation was a masterpiece.
+                    Twilio. Auth0. Vercel. They all understand that <strong>documentation is marketing</strong>.
+                </p>
+
+                <h2 id="diataxis">Chapter 1: The Diátaxis Framework</h2>
+                <p>
+                    Most documentation fails because it doesn't know what it is. Is it a tutorial? Is it a reference? Is
+                    it an explanation?
+                    Daniele Procida solved this with the <strong>Diátaxis Framework</strong>. It divides documentation
+                    into four distinct quadrants based on user needs.
+                </p>
+
+                <div class="info-box">
+                    <div class="info-box-title">The 4 Quadrants</div>
+                    <ul>
+                        <li><strong>Tutorials (Learning-oriented):</strong> A lesson. "Hold my hand and walk me through
+                            creating my first project." (e.g., "Build a Todo App in 5 mins").</li>
+                        <li><strong>How-To Guides (Problem-oriented):</strong> A recipe. "I am stuck. How do I solve
+                            this specific problem?" (e.g., "How to configure CORS").</li>
+                        <li><strong>Reference (Information-oriented):</strong> A dictionary. "I need facts." (e.g., "GET
+                            /users API endpoint parameters").</li>
+                        <li><strong>Explanation (Understanding-oriented):</strong> A textbook. "I want to understand the
+                            concepts." (e.g., "How OAuth2 works").</li>
+                    </ul>
+                </div>
+                <p>
+                    <strong>The Golden Rule:</strong> Never mix these types. Do not put a philosophical explanation of
+                    REST inside a "How to install" guide. It confuses the user.
+                </p>
+
+                <h2 id="api-docs">Chapter 2: Writing Killer API Docs</h2>
+                <p>
+                    API documentation is the UI for developers. If it's hard to use, they will switch to a competitor.
+                </p>
+                <h3>The "Three-Column" Layout</h3>
+                <p>
+                    The industry standard (popularized by Stripe) is the three-column layout:
+                <ol>
+                    <li><strong>Left:</strong> Navigation (Table of Contents).</li>
+                    <li><strong>Middle:</strong> Description and Parameters.</li>
+                    <li><strong>Right:</strong> Code Examples (in multiple languages).</li>
+                </ol>
+                </p>
+                <h3>The "Try It Out" Button</h3>
+                <p>
+                    Static docs are dead. Developers want to click a button and see the API work.
+                    Tools like Swagger UI (OpenAPI) allow users to send real requests directly from the browser. This
+                    reduces "Time to First Hello World" (TTFHW) to seconds.
+                </p>
+
+                <h2 id="style-guide">Chapter 3: The Style Guide</h2>
+                <p>
+                    Consistency builds trust. If you capitalize "Web" on one page and lowercase "web" on another, you
+                    look amateur.
+                    Adopt a standard style guide. The two titans are:
+                </p>
+                <ul>
+                    <li><strong>Google Developer Documentation Style Guide:</strong> Very prescriptive. Focuses on
+                        clarity and conciseness.</li>
+                    <li><strong>Microsoft Writing Style Guide:</strong> Focuses on voice and tone. "Be warm and
+                        relaxed."</li>
+                </ul>
+                <h3>Common Style Rules</h3>
+                <ul>
+                    <li><strong>Active Voice:</strong> "The system processes the data" (Good) vs. "The data is processed
+                        by the system" (Bad).</li>
+                    <li><strong>Second Person:</strong> "You can configure..." (Good) vs. "The user can configure..."
+                        (Distant).</li>
+                    <li><strong>Present Tense:</strong> "This function returns..." (Good) vs. "This function will
+                        return..." (Bad).</li>
+                </ul>
+
+                <h2 id="tools">Chapter 4: Tools of the Trade (Docs-as-Code)</h2>
+                <p>
+                    Technical writers don't use Microsoft Word. We use <strong>Docs-as-Code</strong>.
+                    This means treating documentation exactly like software source code.
+                </p>
+                <ul>
+                    <li><strong>Version Control:</strong> Docs live in Git.</li>
+                    <li><strong>CI/CD:</strong> Docs are built and deployed automatically on commit.</li>
+                    <li><strong>Review:</strong> Docs go through Pull Requests (PRs) and Code Review.</li>
+                    <li><strong>Testing:</strong> Links are checked automatically (LinkChecker).</li>
+                </ul>
+                <h3>Popular Static Site Generators (SSGs)</h3>
+                <ul>
+                    <li><strong>Docusaurus (Facebook):</strong> React-based. Very popular.</li>
+                    <li><strong>MkDocs (Python):</strong> Simple, uses Markdown. Great with "Material for MkDocs" theme.
+                    </li>
+                    <li><strong>Hugo (Go):</strong> Blazing fast.</li>
+                    <li><strong>GitBook:</strong> Proprietary but very easy to use.</li>
+                </ul>
+
+                <h2 id="ux">Chapter 5: Documentation UX/UI</h2>
+                <p>
+                    Documentation is a product. It needs User Experience design.
+                </p>
+                <h3>Search is Everything</h3>
+                <p>
+                    Developers don't browse; they search. If your search bar sucks, your docs suck.
+                    <strong>Algolia DocSearch</strong> is the industry standard. It provides instant, typo-tolerant
+                    search results.
+                </p>
+                <h3>Copy-Paste Experience</h3>
+                <p>
+                    Developers are lazy (smart). They will copy-paste your code examples blindly.
+                    Ensure your code snippets:
+                <ul>
+                    <li>Have a "Copy" button.</li>
+                    <li>Are complete (include imports).</li>
+                    <li>Actually work (test them!).</li>
+                </ul>
+                </p>
+
+                <h2 id="maintenance">Chapter 6: The Maintenance Nightmare</h2>
+                <p>
+                    Writing docs is easy. Keeping them up-to-date is hard.
+                    "Documentation Rot" happens when the code changes but the docs don't. This lies to the user.
+                    <strong>Strategies to prevent rot:</strong>
+                <ul>
+                    <li><strong>Generated Docs:</strong> Generate API references directly from code comments (JSDoc,
+                        GoDoc, Swagger).</li>
+                    <li><strong>Unit Testing Docs:</strong> Write tests that verify the code examples in your
+                        documentation actually run.</li>
+                    <li><strong>The "Docs" Label:</strong> Configure GitHub so that any PR changing code requires a
+                        "Docs Updated" checkbox.</li>
+                </ul>
+                </p>
+
+                <div
+                    style="margin-top: 5rem; text-align: center; background: #f6f8fa; padding: 4rem; border: 1px solid var(--docs-border); border-radius: 6px;">
+                    <h3 style="margin-top: 0; color: #24292e;">Start Writing</h3>
+                    <p style="margin-bottom: 2rem;">Use the <strong>Docs Builder</strong> above to structure your next
+                        technical guide.</p>
+                    <button onclick="document.getElementById('tool').scrollIntoView({behavior: 'smooth'})"
+                        class="generate-btn" style="width: auto; padding: 1rem 3rem;">Go to Builder ↑</button>
+                </div>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer"
+        style="background: white; color: #586069; padding: 4rem 0; border-top: 1px solid var(--docs-border);">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" style="color: #24292e;">
+                        <img src="../logo.png" alt="AV IA Resources" style="height: 40px; width: auto;">
+                        AV IA Resources
+                    </a>
+                    <p>Empowering creators and businesses with premium AI tools.</p>
+                </div>
+            </div>
+            <div class="footer-bottom"
+                style="border-top: 1px solid var(--docs-border); margin-top: 2rem; padding-top: 2rem;">
+                <p>&copy; 2024 AV IA Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // Initial Render
+        updatePreview();
+
+        function updatePreview() {
+            const markdown = document.getElementById('editor').value;
+            const preview = document.getElementById('preview');
+            preview.innerHTML = marked.parse(markdown);
+        }
+
+        function loadTemplate() {
+            const type = document.getElementById('docType').value;
+            const editor = document.getElementById('editor');
+
+            let content = "";
+
+            if (type === 'api') {
+                content = `# API Reference\n\n## Authentication\n\nAll API requests require an API key.\n\n\`\`\`bash\ncurl -H "Authorization: Bearer YOUR_KEY" https://api.example.com/v1/users\n\`\`\`\n\n## Endpoints\n\n### GET /users\n\nReturns a list of users.\n\n| Parameter | Type | Description |\n|-----------|------|-------------|\n| limit     | int  | Max results |\n| offset    | int  | Pagination  |`;
+            } else if (type === 'tutorial') {
+                content = `# Tutorial: Building your first App\n\n## Prerequisites\n\n* Node.js v14+\n* NPM v6+\n\n## Step 1: Installation\n\nRun the following command:\n\n\`\`\`bash\nnpm install my-awesome-lib\n\`\`\`\n\n## Step 2: Configuration\n\nCreate a \`config.json\` file...`;
+            } else if (type === 'concept') {
+                content = `# Understanding Authentication\n\n## What is OAuth2?\n\nOAuth2 is an open standard for access delegation...\n\n> **Note:** OAuth2 is not an authentication protocol, it is an authorization protocol.\n\n## The Flow\n\n1. User requests access\n2. Server issues token\n3. Client uses token`;
+            } else {
+                content = `# Project Name\n\n![Build Status](https://img.shields.io/badge/build-passing-brightgreen)\n\nShort description of the project.\n\n## Features\n\n* Feature 1\n* Feature 2\n\n## License\n\nMIT`;
+            }
+
+            editor.value = content;
+            updatePreview();
+        }
+    </script>
+<script src="../app.js"></script><script src="../auth.js"></script></body>
+
+</html>

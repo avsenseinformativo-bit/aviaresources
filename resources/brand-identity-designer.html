@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI-powered Brand Identity Designer. Generate professional color palettes, typography pairings, and brand guidelines instantly based on your brand's personality.">
+    <title>Brand Identity Designer: Create Your Brand DNA</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="blog-template-styles.css">
+    <!-- Google Fonts for Preview -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&family=Montserrat:wght@700&family=Open+Sans&family=Space+Grotesk:wght@700&family=Inter&display=swap"
+        rel="stylesheet">
+
+    <!-- Premium Styles (Design Theme) -->
+    <style>
+        :root {
+            --design-primary: #ff3366;
+            --design-secondary: #2d3436;
+            --design-bg: #fff0f3;
+            --glass-border: rgba(255, 255, 255, 0.5);
+        }
+
+        body {
+            background-color: #fafafa;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
+        }
+
+        /* Artistic Hero */
+        .premium-hero {
+            background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
+            color: white;
+            padding: 6rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 51, 102, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(-30px, 30px);
+            }
+        }
+
+        .hero-badge {
+            background: linear-gradient(90deg, #ff3366, #ff6b6b);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(255, 51, 102, 0.3);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title span {
+            background: linear-gradient(to right, #ff3366, #ff9f43);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Brand Tool Container */
+        .brand-tool {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            margin: -3rem auto 4rem;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            max-width: 1200px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tool-sidebar {
+            background: #f8f9fa;
+            padding: 2.5rem;
+            border-right: 1px solid #eee;
+        }
+
+        .tool-preview {
+            padding: 3rem;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Controls */
+        .vibe-slider {
+            margin-bottom: 2rem;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--design-primary);
+            height: 4px;
+            background: #ddd;
+            border-radius: 2px;
+            appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--design-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(255, 51, 102, 0.4);
+        }
+
+        .generate-btn {
+            width: 100%;
+            background: #111;
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Preview Elements */
+        .preview-header {
+            text-align: center;
+            padding: 3rem;
+            border-radius: 16px;
+            transition: all 0.5s ease;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            height: 100px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-swatch {
+            height: 100%;
+            cursor: pointer;
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.1);
+            z-index: 2;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .color-code {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .color-swatch:hover .color-code {
+            opacity: 1;
+        }
+
+        .typography-preview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .font-card {
+            padding: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: 12px;
+        }
+
+        /* Article Content */
+        .article-content h2 {
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #111;
+        }
+
+        .article-content p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #444;
+            margin-bottom: 2rem;
+        }
+
+        .quote-box {
+            border-left: 4px solid var(--design-primary);
+            padding-left: 2rem;
+            font-style: italic;
+            font-size: 1.4rem;
+            color: #555;
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 900px) {
+            .brand-tool {
+                grid-template-columns: 1fr;
+            }
+
+            .tool-sidebar {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta property="og:image" content="https://avfinanzas.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../free.html" class="nav-link">Free</a>
+                <a href="../premium.html" class="nav-link active">Premium</a>
+                <a href="../pro.html" class="nav-link">Pro</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="premium-hero">
+        <div class="container">
+            <span class="hero-badge">Design Intelligence</span>
+            <h1 class="hero-title">Brand Identity <span>Architect</span></h1>
+            <p style="font-size: 1.3rem; color: #ccc; max-width: 600px; margin-bottom: 4rem;">
+                Don't just pick colors. Build a psychological profile for your brand.
+                Our AI analyzes industry trends and color theory to generate a cohesive identity system.
+            </p>
+        </div>
+    </header>
+
+    <main class="content-section">
+        <div class="container">
+
+            <!-- Brand DNA Tool -->
+            <section id="tool" class="brand-tool">
+                <div class="tool-sidebar">
+                    <h3 style="margin-top: 0; margin-bottom: 2rem;">🎛️ Brand Parameters</h3>
+
+                    <div class="control-group">
+                        <label class="control-label">Brand Name</label>
+                        <input type="text" id="brandName" class="control-input" value="Lumina" placeholder="e.g. Nike">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Industry</label>
+                        <select id="industry" class="control-input">
+                            <option value="tech">Technology & SaaS</option>
+                            <option value="fashion">Fashion & Luxury</option>
+                            <option value="food">Food & Beverage</option>
+                            <option value="health">Health & Wellness</option>
+                            <option value="finance">Finance & Crypto</option>
+                        </select>
+                    </div>
+
+                    <div class="vibe-slider">
+                        <div class="slider-label"><span>Playful</span> <span>Serious</span></div>
+                        <input type="range" id="vibeSerious" min="0" max="100" value="50">
+                    </div>
+
+                    <div class="vibe-slider">
+                        <div class="slider-label"><span>Modern</span> <span>Classic</span></div>
+                        <input type="range" id="vibeClassic" min="0" max="100" value="20">
+                    </div>
+
+                    <div class="vibe-slider">
+                        <div class="slider-label"><span>Warm</span> <span>Cool</span></div>
+                        <input type="range" id="vibeTemp" min="0" max="100" value="80">
+                    </div>
+
+                    <button onclick="generateIdentity()" class="generate-btn">
+                        ✨ Generate Identity
+                    </button>
+                </div>
+
+                <div class="tool-preview" id="previewArea">
+                    <div id="brandHeader" class="preview-header" style="background: #111; color: white;">
+                        <h2 id="previewName" style="font-family: 'Montserrat', sans-serif; font-size: 3rem; margin: 0;">
+                            Lumina</h2>
+                        <p id="previewTagline" style="opacity: 0.8; margin-top: 0.5rem;">Illuminating the Future</p>
+                    </div>
+
+                    <div>
+                        <h4
+                            style="text-transform: uppercase; letter-spacing: 1px; color: #999; font-size: 0.8rem; margin-bottom: 1rem;">
+                            Color Palette (Click to Copy)</h4>
+                        <div class="color-palette" id="paletteContainer">
+                            <!-- Swatches generated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="typography-preview">
+                        <div class="font-card">
+                            <h4 style="color: #999; font-size: 0.8rem; margin-bottom: 0.5rem;">Primary Font (Headings)
+                            </h4>
+                            <p id="fontPrimaryName" style="font-weight: bold; font-size: 1.2rem;">Montserrat</p>
+                            <p id="fontPrimaryPreview" style="font-size: 2rem; line-height: 1;">Aa Bb Cc</p>
+                        </div>
+                        <div class="font-card">
+                            <h4 style="color: #999; font-size: 0.8rem; margin-bottom: 0.5rem;">Secondary Font (Body)
+                            </h4>
+                            <p id="fontSecondaryName" style="font-weight: bold; font-size: 1.2rem;">Open Sans</p>
+                            <p id="fontSecondaryPreview" style="font-size: 1rem; line-height: 1.5;">The quick brown fox
+                                jumps over the lazy dog.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extensive Article Content -->
+            <article class="article-content" style="max-width: 800px; margin: 0 auto;">
+                <h2>The Psychology of Brand Identity</h2>
+                <p>
+                    A brand is not just a logo. It is a gut feeling. When you see the color <strong>Tiffany
+                        Blue</strong>, you immediately think of luxury and exclusivity.
+                    When you see the <strong>Coca-Cola Red</strong>, you feel energy and passion. This is not
+                    accidental; it is engineered.
+                </p>
+
+                <div class="quote-box">
+                    "Design is the silent ambassador of your brand." — Paul Rand
+                </div>
+
+                <h3>1. The Science of Color</h3>
+                <p>
+                    Colors evoke specific biological and psychological reactions. Understanding this is crucial for
+                    selecting a palette that aligns with your business goals.
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                    <div>
+                        <h4 style="color: #2980b9;">🔵 Blue: Trust & Logic</h4>
+                        <p style="font-size: 1rem;">Used by banks (Chase, Amex) and tech giants (Facebook, IBM) to
+                            convey stability, security, and intelligence.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #c0392b;">🔴 Red: Urgency & Passion</h4>
+                        <p style="font-size: 1rem;">Stimulates appetite and creates urgency. Used by fast food chains
+                            (McDonald's) and clearance sales (Target).</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #27ae60;">🟢 Green: Growth & Health</h4>
+                        <p style="font-size: 1rem;">Synonymous with nature and money. Dominates the organic food
+                            industry (Whole Foods) and finance apps (Robinhood).</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #2c3e50;">⚫ Black: Luxury & Power</h4>
+                        <p style="font-size: 1rem;">The absence of color suggests sophistication. Used by high-end
+                            fashion (Chanel, Prada) and premium tiers (Uber Black).</p>
+                    </div>
+                </div>
+
+                <h3>2. Typography: The Voice of Your Brand</h3>
+                <p>
+                    If color is the emotion, typography is the voice. The font you choose determines <em>how</em> your
+                    message is "heard" by the reader.
+                </p>
+                <ul>
+                    <li><strong>Serif Fonts (e.g., Times New Roman, Playfair):</strong> Traditional, respectable, and
+                        reliable. Perfect for law firms and luxury brands.</li>
+                    <li><strong>Sans-Serif Fonts (e.g., Helvetica, Inter):</strong> Modern, clean, and approachable. The
+                        standard for tech startups and digital products.</li>
+                    <li><strong>Script Fonts:</strong> Creative, elegant, and personal. Often used for wedding
+                        photography or boutique crafts.</li>
+                </ul>
+
+                <h3>3. Building a Design System</h3>
+                <p>
+                    Consistency is the key to branding. A Design System ensures that your brand looks the same on a
+                    mobile app, a billboard, and a business card.
+                    It acts as a single source of truth for your team.
+                </p>
+                <p>
+                    Start small: define your primary color, your secondary accent, your two core fonts, and your logo
+                    usage rules.
+                    As you grow, expand this into a comprehensive UI kit with button styles, spacing grids, and tone of
+                    voice guidelines.
+                </p>
+
+                <div
+                    style="margin-top: 4rem; text-align: center; padding: 3rem; background: #f8f9fa; border-radius: 16px;">
+                    <h3>Ready to define your legacy?</h3>
+                    <p>Scroll up to the <strong>Brand Architect</strong> and generate your unique identity system now.
+                    </p>
+                    <button onclick="document.getElementById('tool').scrollIntoView({behavior: 'smooth'})"
+                        class="btn-primary"
+                        style="background: #111; color: white; border: none; display: inline-block;">Go to Tool
+                        ↑</button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" style="color: white;">
+                        <img src="../logo.png" alt="AV IA Resources" style="height: 40px; width: auto;">
+                        AV IA Resources
+                    </a>
+                    <p>Empowering creators and businesses with premium AI tools.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AV IA Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data for generation
+        const palettes = {
+            tech: [
+                ['#2d3436', '#0984e3', '#74b9ff', '#dfe6e9', '#ffffff'], // Blue/Grey
+                ['#2d3436', '#6c5ce7', '#a29bfe', '#dfe6e9', '#ffffff'], // Purple/Grey
+                ['#000000', '#00b894', '#55efc4', '#f1f2f6', '#ffffff']  // Green/Black
+            ],
+            fashion: [
+                ['#2d3436', '#d63031', '#ff7675', '#fab1a0', '#ffffff'], // Red/Pink
+                ['#1e272e', '#ff9f43', '#feca57', '#f5f6fa', '#ffffff'], // Gold/Black
+                ['#000000', '#ffffff', '#b2bec3', '#636e72', '#dfe6e9']  // Monochrome
+            ],
+            food: [
+                ['#d35400', '#e67e22', '#f39c12', '#f1c40f', '#ffffff'], // Warm/Orange
+                ['#27ae60', '#2ecc71', '#badc58', '#f6e58d', '#ffffff'], // Fresh/Green
+                ['#c0392b', '#e74c3c', '#fab1a0', '#ffffff', '#2d3436']  // Red/White
+            ]
+        };
+
+        const fonts = {
+            tech: { primary: 'Space Grotesk', secondary: 'Inter' },
+            fashion: { primary: 'Playfair Display', secondary: 'Lato' },
+            food: { primary: 'Montserrat', secondary: 'Open Sans' },
+            finance: { primary: 'Lato', secondary: 'Inter' },
+            health: { primary: 'Montserrat', secondary: 'Lato' }
+        };
+
+        function generateIdentity() {
+            const name = document.getElementById('brandName').value || 'Brand';
+            const industry = document.getElementById('industry').value;
+            const serious = document.getElementById('vibeSerious').value;
+            const temp = document.getElementById('vibeTemp').value;
+
+            // Update Text
+            document.getElementById('previewName').innerText = name;
+
+            // Select Palette based on industry and temp
+            let selectedPalette;
+            if (industry === 'tech' || industry === 'finance') {
+                selectedPalette = palettes.tech[Math.floor(Math.random() * palettes.tech.length)];
+            } else if (industry === 'fashion' || industry === 'health') {
+                selectedPalette = palettes.fashion[Math.floor(Math.random() * palettes.fashion.length)];
+            } else {
+                selectedPalette = palettes.food[Math.floor(Math.random() * palettes.food.length)];
+            }
+
+            // Adjust palette based on Temperature slider (simple shift)
+            if (temp > 70) {
+                // Warmer: shift towards reds/oranges if possible (mock logic)
+            }
+
+            // Render Palette
+            const container = document.getElementById('paletteContainer');
+            container.innerHTML = '';
+            selectedPalette.forEach(color => {
+                const div = document.createElement('div');
+                div.className = 'color-swatch';
+                div.style.backgroundColor = color;
+                div.innerHTML = `<span class="color-code">${color}</span>`;
+                div.onclick = () => {
+                    navigator.clipboard.writeText(color);
+                    alert(`Copied ${color}!`);
+                };
+                container.appendChild(div);
+            });
+
+            // Update Header Background
+            document.getElementById('brandHeader').style.background = selectedPalette[0];
+            document.getElementById('brandHeader').style.color = selectedPalette[4]; // Usually white/light
+
+            // Select Fonts
+            const fontPair = fonts[industry] || fonts.tech;
+
+            document.getElementById('fontPrimaryName').innerText = fontPair.primary;
+            document.getElementById('fontPrimaryPreview').style.fontFamily = `'${fontPair.primary}', sans-serif`;
+            document.getElementById('previewName').style.fontFamily = `'${fontPair.primary}', sans-serif`;
+
+            document.getElementById('fontSecondaryName').innerText = fontPair.secondary;
+            document.getElementById('fontSecondaryPreview').style.fontFamily = `'${fontPair.secondary}', sans-serif`;
+        }
+
+        // Initial run
+        generateIdentity();
+    </script>
+<script src="../app.js"></script><script src="../auth.js"></script></body>
+
+</html>

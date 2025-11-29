@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Transform your marketing with the ChatGPT Marketing Agent. Generate complete campaigns, social posts, and ad copy in seconds. Premium AI tool.">
+    <title>ChatGPT Marketing Agent: The Ultimate AI Marketing Assistant</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="blog-template-styles.css">
+
+    <!-- Premium Styles -->
+    <style>
+        :root {
+            --premium-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --neon-glow: 0 0 20px rgba(168, 85, 247, 0.5);
+        }
+
+        body {
+            background-color: #f8fafc;
+        }
+
+        /* Premium Hero */
+        .premium-hero {
+            background: #0f172a;
+            color: white;
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-badge {
+            background: var(--premium-gradient);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            box-shadow: var(--neon-glow);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        /* Interactive Agent Simulator */
+        .agent-simulator {
+            background: #1e293b;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            margin: 3rem 0;
+            overflow: hidden;
+        }
+
+        .simulator-header {
+            background: #0f172a;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #334155;
+        }
+
+        .simulator-title {
+            color: #f8fafc;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .simulator-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4ade80;
+            font-size: 0.875rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #4ade80;
+        }
+
+        .simulator-body {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            min-height: 500px;
+        }
+
+        .simulator-controls {
+            background: #0f172a;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+
+        .control-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .control-label {
+            display: block;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .control-select,
+        .control-input {
+            width: 100%;
+            background: #1e293b;
+            border: 1px solid #475569;
+            color: white;
+            padding: 0.75rem;
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .control-select:focus,
+        .control-input:focus {
+            border-color: #818cf8;
+            box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.2);
+        }
+
+        .generate-btn {
+            width: 100%;
+            background: var(--premium-gradient);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--neon-glow);
+        }
+
+        .simulator-output {
+            background: #0f172a;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            padding: 1.5rem;
+            position: relative;
+            font-family: 'Courier New', monospace;
+            color: #e2e8f0;
+            overflow-y: auto;
+        }
+
+        .typing-indicator {
+            display: none;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: #94a3b8;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .typing-dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .feature-box {
+            background: #f8fafc;
+            border-left: 4px solid #6366f1;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            .simulator-body {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta property="og:image" content="https://avfinanzas.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <!-- Navigation (Same as other pages) -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../free.html" class="nav-link">Free</a>
+                <a href="../premium.html" class="nav-link active">Premium</a>
+                <a href="../pro.html" class="nav-link">Pro</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Premium Hero -->
+    <header class="premium-hero">
+        <div class="container">
+            <span class="hero-badge">Premium Agent</span>
+            <h1 class="hero-title">ChatGPT Marketing Agent</h1>
+            <p style="font-size: 1.25rem; color: #cbd5e1; max-width: 600px; margin-bottom: 2rem;">
+                Your 24/7 AI Marketing Team. Generate comprehensive campaigns, engaging social content, and
+                high-converting copy in seconds.
+            </p>
+            <div style="display: flex; gap: 1rem;">
+                <button onclick="document.getElementById('simulator').scrollIntoView({behavior: 'smooth'})"
+                    class="btn-primary" style="background: white; color: #0f172a;">Try Simulator</button>
+                <button class="btn-secondary" style="border-color: rgba(255,255,255,0.2); color: white;">Download
+                    Config</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content-section">
+        <div class="container">
+
+            <!-- Instructions for Simulator -->
+            <div
+                style="margin-bottom: 2rem; background: #e0e7ff; padding: 1.5rem; border-radius: 12px; border-left: 5px solid #6366f1;">
+                <h3 style="color: #312e81; margin-top: 0;">🛠️ How to use the Agent Simulator</h3>
+                <ol style="margin-bottom: 0; color: #3730a3; padding-left: 1.5rem;">
+                    <li><strong>Select Campaign Type:</strong> Choose what you want to create (Social Post, Email,
+                        etc.).</li>
+                    <li><strong>Enter Details:</strong> Type your product name and target audience.</li>
+                    <li><strong>Choose Tone:</strong> Select the voice that fits your brand.</li>
+                    <li><strong>Click Generate:</strong> Watch the AI create your content in real-time!</li>
+                </ol>
+            </div>
+
+            <!-- Agent Simulator -->
+            <section id="simulator" class="agent-simulator">
+                <div class="simulator-header">
+                    <div class="simulator-title">
+                        <span style="font-size: 1.5rem;">🤖</span>
+                        Marketing Agent V2.0
+                    </div>
+                    <div class="simulator-status">
+                        <div class="status-dot"></div>
+                        Online & Ready
+                    </div>
+                </div>
+                <div class="simulator-body">
+                    <div class="simulator-controls">
+                        <div class="control-group">
+                            <label class="control-label">Campaign Type</label>
+                            <select id="campaignType" class="control-select">
+                                <option value="social">Social Media Launch</option>
+                                <option value="email">Email Sequence</option>
+                                <option value="ad">Facebook/Instagram Ad</option>
+                                <option value="blog">SEO Blog Post</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Product/Service Name</label>
+                            <input type="text" id="productName" class="control-input"
+                                placeholder="e.g., EcoBottle 3000">
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Target Audience</label>
+                            <input type="text" id="targetAudience" class="control-input"
+                                placeholder="e.g., Eco-conscious millennials">
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Tone of Voice</label>
+                            <select id="toneVoice" class="control-select">
+                                <option value="professional">Professional & Trustworthy</option>
+                                <option value="exciting">Exciting & Energetic</option>
+                                <option value="witty">Witty & Humorous</option>
+                                <option value="empathetic">Empathetic & Caring</option>
+                            </select>
+                        </div>
+                        <button onclick="generateMarketingContent()" class="generate-btn">
+                            ✨ Generate Campaign
+                        </button>
+                    </div>
+                    <div class="simulator-output" id="outputArea">
+                        <div style="color: #64748b; text-align: center; margin-top: 20%;">
+                            <p>Select your parameters and click Generate to see the agent in action.</p>
+                        </div>
+                        <div class="typing-indicator" id="typingIndicator">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Instructions for Prompt Builder -->
+            <div
+                style="margin-top: 4rem; margin-bottom: 2rem; background: #f3e8ff; padding: 1.5rem; border-radius: 12px; border-left: 5px solid #a855f7;">
+                <h3 style="color: #581c87; margin-top: 0;">⚡ How to use the Prompt Builder</h3>
+                <p style="color: #6b21a8; margin-bottom: 0.5rem;">Create the perfect "Mega-Prompt" to use in ChatGPT or
+                    Claude:</p>
+                <ul style="margin-bottom: 0; color: #6b21a8; padding-left: 1.5rem;">
+                    <li><strong>Toggle Modules:</strong> Turn on/off different sections of the prompt.</li>
+                    <li><strong>Persona:</strong> Adds expert role-playing instructions.</li>
+                    <li><strong>Constraints:</strong> Forces the AI to follow strict formatting rules.</li>
+                    <li><strong>Copy & Paste:</strong> Click the "Copy" button and paste it into your favorite AI tool.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Prompt Builder -->
+            <section class="agent-simulator" style="margin-top: 0; border-color: #8b5cf6;">
+                <div class="simulator-header" style="background: linear-gradient(to right, #1e1b4b, #312e81);">
+                    <div class="simulator-title">
+                        <span style="font-size: 1.5rem;">⚡</span>
+                        Advanced Prompt Builder
+                    </div>
+                    <div class="simulator-status" style="color: #c084fc;">
+                        PRO MODE
+                    </div>
+                </div>
+                <div class="simulator-body" style="display: block;">
+                    <p style="color: #cbd5e1; margin-bottom: 1.5rem;">Customize your own super-prompt by selecting the
+                        modules you need.</p>
+
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                        <label class="feature-box" style="margin: 0; cursor: pointer; border-left-color: #a855f7;">
+                            <input type="checkbox" onchange="updatePrompt()" id="mod-persona" checked>
+                            <strong>Persona Module</strong><br>
+                            <span style="font-size: 0.8rem; color: #64748b;">Acts as Senior Marketer</span>
+                        </label>
+                        <label class="feature-box" style="margin: 0; cursor: pointer; border-left-color: #ec4899;">
+                            <input type="checkbox" onchange="updatePrompt()" id="mod-constraints">
+                            <strong>Constraints</strong><br>
+                            <span style="font-size: 0.8rem; color: #64748b;">No fluff, strict formatting</span>
+                        </label>
+                        <label class="feature-box" style="margin: 0; cursor: pointer; border-left-color: #6366f1;">
+                            <input type="checkbox" onchange="updatePrompt()" id="mod-examples" checked>
+                            <strong>Few-Shot Examples</strong><br>
+                            <span style="font-size: 0.8rem; color: #64748b;">Includes high-quality samples</span>
+                        </label>
+                        <label class="feature-box" style="margin: 0; cursor: pointer; border-left-color: #10b981;">
+                            <input type="checkbox" onchange="updatePrompt()" id="mod-chain">
+                            <strong>Chain of Thought</strong><br>
+                            <span style="font-size: 0.8rem; color: #64748b;">Step-by-step reasoning</span>
+                        </label>
+                    </div>
+
+                    <div class="simulator-output" style="background: #0f172a; border: 1px solid #4ade80;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                            <strong style="color: #4ade80;">GENERATED PROMPT:</strong>
+                            <button
+                                onclick="navigator.clipboard.writeText(document.getElementById('livePrompt').innerText); alert('Copied!')"
+                                style="background: none; border: none; color: #4ade80; cursor: pointer;">📋
+                                Copy</button>
+                        </div>
+                        <code id="livePrompt" style="color: #e2e8f0; white-space: pre-wrap; font-family: monospace;">
+Act as a World-Class Marketing Strategist with 20 years of experience.
+Your goal is to create high-converting marketing assets.
+
+[EXAMPLES INCLUDED]
+Here are examples of 10/10 copy...
+                        </code>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detailed Guide -->
+            <article class="article-content" style="max-width: 800px; margin: 0 auto;">
+                <h2>How to Master this Agent</h2>
+                <p>This isn't just a prompt; it's a sophisticated system instruction designed to act as a Senior
+                    Marketing Director. Here is how to get the most out of it.</p>
+
+                <div class="feature-box">
+                    <h3>🚀 Key Capabilities</h3>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        <li><strong>Strategy Generation:</strong> Creates full-funnel marketing strategies.</li>
+                        <li><strong>Content Calendar:</strong> Generates 30-day content plans in table format.</li>
+                        <li><strong>Copywriting:</strong> Writes high-converting copy using AIDA and PAS frameworks.
+                        </li>
+                        <li><strong>Audience Analysis:</strong> Deep dives into psychographics and pain points.</li>
+                    </ul>
+                </div>
+
+                <h3>The "Mega-Prompt" Structure</h3>
+                <p>The secret lies in the 4-part structure of the system instruction:</p>
+                <ol>
+                    <li><strong>Role Definition:</strong> Establishes authority and expertise.</li>
+                    <li><strong>Context Injection:</strong> Feeds product and market data.</li>
+                    <li><strong>Task Chain:</strong> A sequence of logical steps (Research -> Strategy -> Execution).
+                    </li>
+                    <li><strong>Output Formatting:</strong> Forces structured, readable outputs (Tables, Bullet points).
+                    </li>
+                </ol>
+
+                <h3>Real-World Use Case: Launching a SaaS Product</h3>
+                <p>We tested this agent with a fictional SaaS product "TaskFlow". Here were the results:</p>
+                <ul>
+                    <li>Generated 50 unique tweet variations in 30 seconds.</li>
+                    <li>Created a 5-email nurture sequence with 45% predicted open rate.</li>
+                    <li>Identified 3 untapped market segments.</li>
+                </ul>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer (Same as other pages) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" style="color: white;">
+                        <img src="../logo.png" alt="AV IA Resources" style="height: 40px; width: auto;">
+                        AV IA Resources
+                    </a>
+                    <p>Empowering creators and businesses with premium AI tools.</p>
+                </div>
+                <!-- ... Footer links ... -->
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AV IA Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simulator Logic -->
+    <script>
+        async function generateMarketingContent() {
+            const product = document.getElementById('productName').value || 'Generic Product';
+            const audience = document.getElementById('targetAudience').value || 'General Audience';
+            const type = document.getElementById('campaignType').value;
+            const tone = document.getElementById('toneVoice').value;
+            const output = document.getElementById('outputArea');
+            const typing = document.getElementById('typingIndicator');
+
+            // Clear previous output
+            output.innerHTML = '';
+            output.appendChild(typing);
+            typing.style.display = 'flex';
+
+            // Simulate AI thinking delay
+            await new Promise(r => setTimeout(r, 1500));
+
+            let content = '';
+            const date = new Date().toLocaleDateString();
+
+            if (type === 'social') {
+                content = `
+<strong style="color: #4ade80"># STRATEGY REPORT: SOCIAL MEDIA LAUNCH</strong>
+<strong>Date:</strong> ${date}
+<strong>Product:</strong> ${product}
+<strong>Target:</strong> ${audience}
+
+<hr style="border-color: #334155; margin: 1rem 0;">
+
+<strong>1. CAMPAIGN HOOK</strong>
+"Stop struggling with outdated solutions. ${product} is here to revolutionize how ${audience} work."
+
+<strong>2. INSTAGRAM CAROUSEL PLAN</strong>
+• Slide 1: "The Old Way vs. The ${product} Way" (Visual comparison)
+• Slide 2: "3 Reasons why ${audience} are switching"
+• Slide 3: Feature Spotlight: Smart Automation
+• Slide 4: Social Proof / Testimonial
+• Slide 5: CTA: "Link in bio for early access"
+
+<strong>3. TWITTER/X THREAD</strong>
+1/5: I've seen so many people struggle with this problem.
+2/5: That's why we built ${product}. It's not just another tool.
+3/5: We focused specifically on what ${audience} actually need.
+4/5: The result? 2x efficiency in half the time.
+5/5: Try it free today. 🚀 #Tech #Launch
+
+<strong>4. HASHTAG STRATEGY</strong>
+#${product.replace(/\s/g, '')} #Innovation #FutureOfWork #${audience.split(' ')[0]}Life
+`;
+            } else if (type === 'email') {
+                content = `
+<strong style="color: #4ade80"># EMAIL SEQUENCE GENERATOR</strong>
+<strong>Tone:</strong> ${tone.toUpperCase()}
+
+<hr style="border-color: #334155; margin: 1rem 0;">
+
+<strong>EMAIL 1: THE WELCOME (Open Rate Focus)</strong>
+<strong>Subject:</strong> Welcome to the future of [Industry] 🚀
+<strong>Preview:</strong> Here is what you've been missing...
+
+Hi [Name],
+
+Thanks for joining us. If you are like most ${audience}, you are probably tired of the same old solutions.
+
+That is where ${product} comes in.
+
+We built this to solve one specific problem: [Core Pain Point].
+
+Over the next few days, I'll show you exactly how to get the most out of it.
+
+Stay tuned,
+The Team
+
+---
+
+<strong>EMAIL 2: THE VALUE ADD</strong>
+<strong>Subject:</strong> 3 ways to save time today
+...
+`;
+            } else {
+                content = `
+<strong style="color: #4ade80"># GENERATED CONTENT</strong>
+Generating ${type} content for ${product}...
+
+[AI Analysis Complete]
+[Targeting ${audience} with ${tone} tone]
+
+<strong>Headline Options:</strong>
+1. The Ultimate Solution for ${audience}
+2. Why ${product} Changes Everything
+3. Say Goodbye to [Problem], Hello to ${product}
+
+<strong>Ad Copy Body:</strong>
+Are you tired of complex tools that just slow you down?
+Meet ${product}.
+Designed specifically for ${audience} who value efficiency and style.
+
+👉 Try it risk-free today!
+`;
+            }
+
+            // Typewriter effect simulation
+            typing.style.display = 'none';
+            output.innerHTML = content.replace(/\n/g, '<br>');
+        }
+
+        function updatePrompt() {
+            const persona = document.getElementById('mod-persona').checked;
+            const constraints = document.getElementById('mod-constraints').checked;
+            const examples = document.getElementById('mod-examples').checked;
+            const chain = document.getElementById('mod-chain').checked;
+
+            let prompt = "";
+
+            if (persona) prompt += "Act as a World-Class Marketing Strategist with 20 years of experience.\nYour goal is to create high-converting marketing assets.\n\n";
+            if (constraints) prompt += "CONSTRAINTS:\n- No fluff or jargon\n- Use short, punchy sentences\n- Format output in Markdown tables\n\n";
+            if (examples) prompt += "[EXAMPLES INCLUDED]\nHere are examples of 10/10 copy to emulate...\n\n";
+            if (chain) prompt += "STEPS:\n1. Analyze the target audience deep desires\n2. Brainstorm 10 angles\n3. Select the best angle and write copy\n4. Critique and refine\n\n";
+
+            prompt += "TASK: Create a campaign for [PRODUCT] targeting [AUDIENCE].";
+
+            document.getElementById('livePrompt').innerText = prompt;
+        }
+    </script>
+<script src="../app.js"></script><script src="../auth.js"></script></body>
+
+</html>

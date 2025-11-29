@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI-powered Copywriting Genius. Generate high-converting sales copy using proven frameworks like AIDA, PAS, and FAB. Master the art of persuasion.">
+    <title>Copywriting Genius: The Persuasion Engine</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="blog-template-styles.css">
+
+    <!-- Premium Styles (Marketing Theme) -->
+    <style>
+        :root {
+            --copy-primary: #f59e0b;
+            /* Amber-500 */
+            --copy-dark: #111827;
+            --copy-light: #fffbeb;
+            --copy-accent: #d97706;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
+            color: var(--copy-dark);
+        }
+
+        /* Marketing Hero */
+        .premium-hero {
+            background: var(--copy-dark);
+            color: white;
+            padding: 6rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-hero::after {
+            content: '$';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 30rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            transform: rotate(15deg);
+        }
+
+        .hero-badge {
+            background: var(--copy-primary);
+            color: var(--copy-dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 800;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            /* Explicitly white for visibility */
+        }
+
+        .hero-title span {
+            color: var(--copy-primary);
+        }
+
+        /* Tool Container */
+        .copy-tool {
+            background: white;
+            border: 2px solid var(--copy-dark);
+            box-shadow: 10px 10px 0 var(--copy-dark);
+            margin: -3rem auto 4rem;
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            padding: 0;
+            border-radius: 0;
+            /* Brutalist style */
+        }
+
+        .tool-header {
+            background: var(--copy-primary);
+            padding: 1.5rem;
+            border-bottom: 2px solid var(--copy-dark);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tool-body {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .input-field,
+        .input-select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            background: #f9fafb;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.2s;
+            border-radius: 0;
+        }
+
+        .input-field:focus,
+        .input-select:focus {
+            outline: none;
+            border-color: var(--copy-dark);
+            background: white;
+        }
+
+        .generate-btn {
+            width: 100%;
+            background: var(--copy-dark);
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.1s;
+            margin-top: 1rem;
+        }
+
+        .generate-btn:active {
+            transform: translateY(2px);
+        }
+
+        .output-area {
+            background: var(--copy-light);
+            border: 2px solid var(--copy-primary);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .output-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--copy-primary);
+            color: var(--copy-dark);
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 0.25rem 0.5rem;
+        }
+
+        .copy-result h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--copy-primary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .copy-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .copy-label {
+            font-weight: 800;
+            color: var(--copy-accent);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        /* Article Content */
+        .article-content h2 {
+            font-weight: 900;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--copy-dark);
+            letter-spacing: -0.03em;
+        }
+
+        .article-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #374151;
+            margin-bottom: 2rem;
+        }
+
+        .framework-card {
+            border: 2px solid #e5e7eb;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: border-color 0.3s;
+        }
+
+        .framework-card:hover {
+            border-color: var(--copy-primary);
+        }
+
+        .framework-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            background: var(--copy-dark);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .tool-body {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta property="og:image" content="https://avfinanzas.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../free.html" class="nav-link">Free</a>
+                <a href="../premium.html" class="nav-link active">Premium</a>
+                <a href="../pro.html" class="nav-link">Pro</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="premium-hero">
+        <div class="container">
+            <span class="hero-badge">Conversion Master</span>
+            <h1 class="hero-title">Copywriting <span>Genius</span></h1>
+            <p style="font-size: 1.25rem; color: #d1d5db; max-width: 600px; margin-bottom: 2rem;">
+                Words that sell. Use proven psychological frameworks to turn visitors into obsessed customers.
+            </p>
+        </div>
+    </header>
+
+    <main class="content-section">
+        <div class="container">
+
+            <!-- Copy Tool -->
+            <section id="tool" class="copy-tool">
+                <div class="tool-header">
+                    <span>Persuasion Engine v1.0</span>
+                    <span>⚡ AI Ready</span>
+                </div>
+                <div class="tool-body">
+                    <div class="input-area">
+                        <div class="input-group">
+                            <label class="input-label">Product Name</label>
+                            <input type="text" id="productName" class="input-field" value="Luminary"
+                                placeholder="e.g. SuperCoffee">
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Target Audience</label>
+                            <input type="text" id="audience" class="input-field" value="Freelancers"
+                                placeholder="e.g. Tired Moms">
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Main Benefit</label>
+                            <input type="text" id="benefit" class="input-field" value="Focus for 10 hours"
+                                placeholder="e.g. Energy without crash">
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Framework</label>
+                            <select id="framework" class="input-select">
+                                <option value="aida">AIDA (Attention, Interest, Desire, Action)</option>
+                                <option value="pas">PAS (Problem, Agitation, Solution)</option>
+                                <option value="fab">FAB (Features, Advantages, Benefits)</option>
+                            </select>
+                        </div>
+
+                        <button onclick="generateCopy()" class="generate-btn">
+                            Generate Copy
+                        </button>
+                    </div>
+
+                    <div class="output-area" id="output">
+                        <div class="output-tag">PREVIEW</div>
+                        <div
+                            style="display: flex; align-items: center; justify-content: center; height: 100%; color: #666; text-align: center;">
+                            <p>Fill the form and hit Generate to see the magic happen.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extensive Article Content -->
+            <article class="article-content" style="max-width: 800px; margin: 0 auto;">
+                <h2>The Psychology of Selling</h2>
+                <p>
+                    People don't buy products; they buy <strong>better versions of themselves</strong>.
+                    Great copywriting isn't about being clever. It's about clarity, empathy, and psychology.
+                </p>
+
+                <div
+                    style="background: #fffbeb; border-left: 4px solid var(--copy-primary); padding: 1.5rem; margin: 2rem 0;">
+                    <h3 style="margin-top: 0; color: var(--copy-accent);">💡 The Golden Rule</h3>
+                    <p style="margin-bottom: 0;">
+                        "Nobody cares about your product. They care about their problems." — Start every sentence with
+                        "You", not "We".
+                    </p>
+                </div>
+
+                <h3>1. The AIDA Framework</h3>
+                <p>The oldest and most reliable formula in marketing. Used for everything from TV commercials to
+                    TikToks.</p>
+                <div class="framework-card">
+                    <div class="framework-title">AIDA <span class="badge">Best for Landing Pages</span></div>
+                    <ul>
+                        <li><strong>Attention:</strong> Stop the scroll. (e.g., "Stop drinking poison.")</li>
+                        <li><strong>Interest:</strong> Engage with facts. (e.g., "Most coffee has mold toxins.")</li>
+                        <li><strong>Desire:</strong> Show the dream. (e.g., "Imagine waking up fully energized.")</li>
+                        <li><strong>Action:</strong> Tell them what to do. (e.g., "Click here to buy.")</li>
+                    </ul>
+                </div>
+
+                <h3>2. The PAS Framework</h3>
+                <p>Fear is a stronger motivator than gain. PAS leverages this by highlighting the pain before offering
+                    relief.</p>
+                <div class="framework-card">
+                    <div class="framework-title">PAS <span class="badge">Best for Emails & Ads</span></div>
+                    <ul>
+                        <li><strong>Problem:</strong> Identify the pain. (e.g., "Tired of the 2 PM crash?")</li>
+                        <li><strong>Agitation:</strong> Twist the knife. (e.g., "It ruins your productivity and mood.")
+                        </li>
+                        <li><strong>Solution:</strong> Save the day. (e.g., "Drink SuperCoffee for sustained focus.")
+                        </li>
+                    </ul>
+                </div>
+
+                <h3>3. Power Words</h3>
+                <p>Certain words bypass the logical brain and trigger emotion. Sprinkle these into your copy:</p>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div style="background: #f3f4f6; padding: 1rem; text-align: center; font-weight: bold;">Free</div>
+                    <div style="background: #f3f4f6; padding: 1rem; text-align: center; font-weight: bold;">Instantly
+                    </div>
+                    <div style="background: #f3f4f6; padding: 1rem; text-align: center; font-weight: bold;">Secret</div>
+                    <div style="background: #f3f4f6; padding: 1rem; text-align: center; font-weight: bold;">Guaranteed
+                    </div>
+                </div>
+
+                <div style="margin-top: 4rem; text-align: center;">
+                    <h3>Ready to convert?</h3>
+                    <p style="margin-bottom: 2rem;">Use the <strong>Persuasion Engine</strong> above to write your next
+                        ad.</p>
+                    <button onclick="document.getElementById('tool').scrollIntoView({behavior: 'smooth'})"
+                        class="generate-btn" style="display: inline-block; width: auto; padding: 1rem 3rem;">Go to Tool
+                        ↑</button>
+                </div>
+
+                <h3>4. Headline Formulas That Work</h3>
+                <p>David Ogilvy famously said, "On the average, five times as many people read the headline as read the
+                    body copy." If your headline fails, you've wasted your money.</p>
+                <div
+                    style="background: #f9fafb; padding: 1.5rem; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 2rem;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><strong>The "How To" Headline:</strong> <br><em>"How to
+                                [Achieve Benefit] Without [Pain Point]"</em></li>
+                        <li style="margin-bottom: 1rem;"><strong>The Listicle:</strong> <br><em>"[Number] Ways to
+                                [Achieve Benefit] in [Timeframe]"</em></li>
+                        <li><strong>The Secret:</strong> <br><em>"The Little-Known Secret to [Desirable Outcome]"</em>
+                        </li>
+                    </ul>
+                </div>
+
+                <h3>5. Cognitive Biases in Marketing</h3>
+                <p>Great copywriters are amateur psychologists. They understand the glitches in the human brain and use
+                    them ethically.</p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                    <div>
+                        <h4 style="color: var(--copy-accent);">⚓ Anchoring</h4>
+                        <p>People rely heavily on the first piece of information they see. <br><strong>Tactic:</strong>
+                            Show the "Regular Price" ($199) next to the "Sale Price" ($99). The $99 feels like a steal.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--copy-accent);">🏃 Scarcity</h4>
+                        <p>We value things more when they are rare. <br><strong>Tactic:</strong> "Only 3 spots left" or
+                            "Offer expires at midnight."</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--copy-accent);">🤝 Social Proof</h4>
+                        <p>We look to others to determine correct behavior. <br><strong>Tactic:</strong> "Join 10,000+
+                            happy customers."</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--copy-accent);">📉 Loss Aversion</h4>
+                        <p>The pain of losing is twice as powerful as the pleasure of gaining.
+                            <br><strong>Tactic:</strong> "Don't lose your chance to save 50%."</p>
+                    </div>
+                </div>
+
+                <h3>6. The "So What?" Test</h3>
+                <p>This is the ultimate editing tool. Read every sentence of your copy and ask "So what?".</p>
+                <div
+                    style="border-left: 4px solid var(--copy-dark); padding-left: 1.5rem; margin: 2rem 0; font-style: italic;">
+                    <p><strong>Draft 1:</strong> "Our phone has a 5000mAh battery." (So what?)</p>
+                    <p><strong>Draft 2:</strong> "It lasts 24 hours." (So what?)</p>
+                    <p><strong>Final Copy:</strong> "Stop worrying about your charger. Go all day and night on a single
+                        charge." (Sold.)</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" style="color: white;">
+                        <img src="../logo.png" alt="AV IA Resources" style="height: 40px; width: auto;">
+                        AV IA Resources
+                    </a>
+                    <p>Empowering creators and businesses with premium AI tools.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AV IA Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function generateCopy() {
+            const product = document.getElementById('productName').value;
+            const audience = document.getElementById('audience').value;
+            const benefit = document.getElementById('benefit').value;
+            const framework = document.getElementById('framework').value;
+
+            const output = document.getElementById('output');
+            output.innerHTML = '<p style="text-align: center; margin-top: 40%;">Writing persuasive copy...</p>';
+
+            setTimeout(() => {
+                let html = '<div class="copy-result">';
+
+                if (framework === 'aida') {
+                    html += `
+                        <h3>AIDA Framework</h3>
+                        <div class="copy-section">
+                            <span class="copy-label">Attention</span>
+                            <p>Are you a ${audience} struggling to stay ahead of the game?</p>
+                        </div>
+                        <div class="copy-section">
+                            <span class="copy-label">Interest</span>
+                            <p>Most solutions out there promise the world but deliver nothing but headaches. You deserve better.</p>
+                        </div>
+                        <div class="copy-section">
+                            <span class="copy-label">Desire</span>
+                            <p>Imagine having <strong>${benefit}</strong> every single day. With ${product}, this isn't just a dream—it's your new reality.</p>
+                        </div>
+                        <div class="copy-section">
+                            <span class="copy-label">Action</span>
+                            <p>Don't wait. Get ${product} today and transform your workflow.</p>
+                        </div>
+                    `;
+                } else if (framework === 'pas') {
+                    html += `
+                        <h3>PAS Framework</h3>
+                        <div class="copy-section">
+                            <span class="copy-label">Problem</span>
+                            <p>Being a ${audience} is hard. You constantly face the pressure to perform, but you lack the tools to do it.</p>
+                        </div>
+                        <div class="copy-section">
+                            <span class="copy-label">Agitation</span>
+                            <p>It's frustrating, isn't it? Watching others succeed while you're stuck, knowing you have the potential but not the means.</p>
+                        </div>
+                        <div class="copy-section">
+                            <span class="copy-label">Solution</span>
+                            <p>Enter <strong>${product}</strong>. The only tool designed to give you ${benefit} instantly.</p>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <h3>FAB Framework</h3>
+                        <div class="copy-section">
+                            <span class="copy-label">Features</span>
+                            <p>${product} comes with state-of-the-art technology tailored for ${audience}.</p>
+                        </div>
+                        <div class="copy-section">
+                            <span class="copy-label">Advantages</span>
+                            <p>Unlike competitors, we focus purely on ensuring you get ${benefit} without the hassle.</p>
+                        </div>
+                        <div class="copy-section">
+                            <span class="copy-label">Benefits</span>
+                            <p>This means you can finally relax and enjoy the success you've worked so hard for.</p>
+                        </div>
+                    `;
+                }
+
+                html += '</div>';
+                output.innerHTML = html;
+            }, 800);
+        }
+    </script>
+<script src="../app.js"></script><script src="../auth.js"></script></body>
+
+</html>

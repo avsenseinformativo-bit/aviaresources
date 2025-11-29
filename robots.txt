@@ -1,0 +1,30 @@
+# AI Resources - Robots.txt
+# Optimized for SEO and AdSense
+
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /resource.html
+Allow: /styles.css
+Allow: /app.js
+Allow: /blog/
+
+# Block admin and private areas (when added)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /*.json$
+
+# Allow Google AdSense bot
+User-agent: Mediapartners-Google
+Allow: /
+
+# Allow Google Image bot
+User-agent: Googlebot-Image
+Allow: /
+
+# Sitemap location
+Sitemap: https://yourwebsite.com/sitemap.xml
+
+# Crawl delay (optional - remove if you want faster crawling)
+# Crawl-delay: 1

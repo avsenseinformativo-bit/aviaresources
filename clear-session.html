@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpiar Sesión - AV IA Resources</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .success {
+            background: #10b981;
+            padding: 1rem;
+            border-radius: 8px;
+            color: white;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .info {
+            background: #f3f4f6;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🔧 Limpiar Sesión</h1>
+        <p>Parece que tienes una sesión guardada de pruebas anteriores. Haz clic en el botón para limpiar todo y empezar
+            de cero.</p>
+
+        <button onclick="clearSession()">🗑️ Limpiar Todo</button>
+        <button onclick="viewData()">👁️ Ver Datos Guardados</button>
+
+        <div class="success" id="success">
+            ✅ ¡Sesión limpiada! Ahora puedes cerrar esta pestaña y recargar tu página.
+        </div>
+
+        <div class="info" id="info"></div>
+    </div>
+
+    <script>
+        function clearSession() {
+            // Limpiar todo el localStorage relacionado con autenticación
+            localStorage.removeItem('aviaUser');
+            localStorage.removeItem('aviaUsers');
+            localStorage.removeItem('hasPremiumAccess');
+
+            document.getElementById('success').style.display = 'block';
+            document.getElementById('info').innerHTML = '<strong>Limpiado:</strong><br>- Sesión actual<br>- Usuarios registrados<br>- Acceso premium';
+
+            setTimeout(() => {
+                window.close();
+            }, 3000);
+        }
+
+        function viewData() {
+            const user = localStorage.getItem('aviaUser');
+            const users = localStorage.getItem('aviaUsers');
+
+            let html = '<strong>Datos guardados:</strong><br><br>';
+
+            if (user) {
+                html += '👤 <strong>Usuario actual:</strong><br>' + user + '<br><br>';
+            } else {
+                html += '👤 <strong>Usuario actual:</strong> Ninguno<br><br>';
+            }
+
+            if (users) {
+                const userList = JSON.parse(users);
+                html += '📋 <strong>Usuarios registrados:</strong> ' + userList.length + '<br>';
+                userList.forEach((u, i) => {
+                    html += `${i + 1}. ${u.name} (${u.email})<br>`;
+                });
+            } else {
+                html += '📋 <strong>Usuarios registrados:</strong> Ninguno';
+            }
+
+            document.getElementById('info').innerHTML = html;
+            document.getElementById('info').style.display = 'block';
+        }
+
+        // Mostrar datos al cargar
+        window.onload = viewData;
+    </script>
+</body>
+
+</html>

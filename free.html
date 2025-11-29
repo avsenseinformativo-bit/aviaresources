@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Access 6 FREE premium AI resources. Start your journey with essential tools for marketing, coding, design, and writing. No credit card required.">
+    <title>Free AI Resources | AV Finanzas</title>
+    <link rel="canonical" href="https://avfinanzas.com/free.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avfinanzas.com/free.html">
+    <meta property="og:title" content="Free AI Resources | AV Finanzas">
+    <meta property="og:description"
+        content="Access 6 FREE premium AI resources. Start your journey with essential tools for marketing, coding, design, and writing.">
+    <meta property="og:image" content="https://avfinanzas.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free AI Resources | AV Finanzas">
+    <meta name="twitter:description"
+        content="Access 6 FREE premium AI resources. Start your journey with essential tools.">
+    <meta name="twitter:image" content="https://avfinanzas.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="free.html" class="nav-link active">Free</a>
+                <a href="premium.html" class="nav-link">Premium</a>
+                <a href="pro.html" class="nav-link">Pro</a>
+                <a href="index.html#pricing" class="nav-link">Pricing</a>
+                <button class="btn-primary btn-small" id="loginBtn">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">🆓 <span class="gradient-text">FREE</span> Resources</h1>
+            <p class="hero-description">
+                Start your AI journey with our 6 free resources. Perfect for beginners and those exploring AI tools
+                without any cost.
+            </p>
+            <div class="hero-buttons">
+                <a href="premium.html" class="btn-primary">Upgrade to Premium →</a>
+                <a href="#resources" class="btn-secondary">Explore Free Resources</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources-section" id="resources">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">6 Free Resources</h2>
+                <p class="section-description">Essential AI tools to get you started - completely free</p>
+            </div>
+
+            <div class="resources-grid" id="resourcesGrid">
+                <!-- Resources will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Upgrade CTA -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title">Ready for More?</h2>
+                <p class="newsletter-description">Upgrade to Premium and get access to 16 resources (6 free + 10
+                    premium) with advanced configurations, downloadable files, and video tutorials.</p>
+                <div class="hero-buttons" style="justify-content: center; margin-top: 2rem;">
+                    <a href="premium.html" class="btn-primary">View Premium →</a>
+                    <a href="pro.html" class="btn-secondary">View Pro</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AV IA Resources</h3>
+                    <p>Recursos de IA curados para profesionales</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Planes</h4>
+                    <div class="footer-links">
+                        <a href="free.html">Free</a>
+                        <a href="premium.html">Premium</a>
+                        <a href="pro.html">Pro</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <div class="footer-links">
+                        <a href="#">Privacidad</a>
+                        <a href="#">Términos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AV IA Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="analytics.js"></script>
+    <script src="adsense-config.js"></script>
+    <script src="app.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        // Load only FREE resources
+        const freeResources = [
+            {
+                id: 1,
+                title: "Social Media Post Generator",
+                category: "marketing",
+                tier: "free",
+                description: "📱 Quick social posts! Generate engaging content for Instagram, Twitter, and LinkedIn. Perfect for daily posting and maintaining consistency.",
+                image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=400&fit=crop",
+                link: "resources/social-media-generator.html"
+            },
+            {
+                id: 2,
+                title: "JavaScript Debugger",
+                category: "coding",
+                tier: "free",
+                description: "🐛 Fix bugs fast! Analyzes JavaScript errors, explains what went wrong, and suggests fixes. Great for beginners learning to code.",
+                image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=800&h=400&fit=crop",
+                link: "resources/javascript-debugger.html"
+            },
+            {
+                id: 3,
+                title: "Color Palette Generator",
+                category: "design",
+                tier: "free",
+                description: "🌈 Beautiful color schemes! Creates harmonious color palettes for your projects. Includes hex codes and accessibility checks.",
+                image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=400&fit=crop",
+                link: "resources/color-palette-generator.html"
+            },
+            {
+                id: 4,
+                title: "Blog Post Outliner",
+                category: "writing",
+                tier: "free",
+                description: "📝 Never stare at blank pages! Creates detailed blog post outlines with headers, subheaders, and key points to cover.",
+                image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=400&fit=crop",
+                link: "resources/blog-post-outliner.html"
+            },
+            {
+                id: 5,
+                title: "Excel Formula Helper",
+                category: "data",
+                tier: "free",
+                description: "📊 Excel made easy! Explains formulas, suggests functions, and helps create complex calculations. No more formula frustration.",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
+                link: "resources/excel-formula-helper.html"
+            },
+            {
+                id: 6,
+                title: "Email Subject Line Creator",
+                category: "marketing",
+                tier: "free",
+                description: "📧 Boost open rates! Creates catchy email subject lines that get clicks. Includes A/B testing suggestions and emoji recommendations.",
+                image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&h=400&fit=crop",
+                link: "resources/email-subject-creator.html"
+            }
+        ];
+
+        // Render resources
+        const resourcesGrid = document.getElementById('resourcesGrid');
+        resourcesGrid.innerHTML = freeResources.map(resource => `
+            <div class="resource-card">
+                <img src="${resource.image}" alt="${resource.title}" class="resource-thumbnail">
+                <div class="resource-content">
+                    <span class="tier-badge tier-${resource.tier}">${resource.tier.toUpperCase()}</span>
+                    <h3 class="resource-title">${resource.title}</h3>
+                    <p class="resource-description">${resource.description}</p>
+                    <a href="${resource.link}" class="btn-primary">Ver Recurso</a>
+                </div>
+            </div>
+        `).join('');
+
+        // Scroll progress
+        function updateScrollProgress() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            if (!scrollProgress) return;
+
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        }
+
+        window.addEventListener('scroll', updateScrollProgress);
+        updateScrollProgress();
+    </script>
+</body>
+
+</html>

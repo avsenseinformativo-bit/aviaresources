@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Full-Stack Code Architect. Generate enterprise-grade project structures, Dockerfiles, and system architectures. Master modern web development patterns.">
+    <title>Full-Stack Code Architect: Build Scalable Systems</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="blog-template-styles.css">
+
+    <!-- Pro Styles (Light Cyber Theme) -->
+    <style>
+        :root {
+            --neon-green: #00a86b;
+            /* Darker green for white bg */
+            --neon-purple: #8a2be2;
+            --cyber-dark: #ffffff;
+            /* White background */
+            --cyber-gray: #f3f4f6;
+            /* Light gray for containers */
+            --cyber-text: #111827;
+            /* Dark text */
+            --cyber-border: #e5e7eb;
+            --code-font: 'Fira Code', 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--cyber-dark);
+            font-family: 'Inter', system-ui, sans-serif;
+            color: var(--cyber-text);
+        }
+
+        /* Cyber Hero (Light) */
+        .pro-hero {
+            background: #ffffff;
+            color: var(--cyber-text);
+            padding: 8rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--cyber-border);
+        }
+
+        .pro-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(rgba(0, 168, 107, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 168, 107, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(500px) rotateX(60deg);
+            transform-origin: top;
+            opacity: 0.5;
+        }
+
+        .hero-badge {
+            background: rgba(0, 168, 107, 0.1);
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 0.5rem 1.5rem;
+            font-family: var(--code-font);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(0, 168, 107, 0.1);
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1;
+            color: var(--cyber-text);
+            text-shadow: none;
+        }
+
+        .hero-title span {
+            color: var(--neon-purple);
+            text-shadow: none;
+        }
+
+        /* Tool Container */
+        .arch-tool {
+            background: white;
+            border: 1px solid var(--cyber-border);
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin: -4rem auto 4rem;
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            min-height: 600px;
+        }
+
+        .tool-sidebar {
+            background: #f9fafb;
+            border-right: 1px solid var(--cyber-border);
+            padding: 2rem;
+        }
+
+        .tool-main {
+            padding: 2rem;
+            background: white;
+            overflow-y: auto;
+        }
+
+        .control-group {
+            margin-bottom: 2rem;
+        }
+
+        .control-label {
+            display: block;
+            color: #6b7280;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            font-family: var(--code-font);
+            font-weight: bold;
+        }
+
+        .cyber-select {
+            width: 100%;
+            background: white;
+            border: 1px solid #d1d5db;
+            color: var(--cyber-text);
+            padding: 0.8rem;
+            font-family: var(--code-font);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .cyber-select:hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 5px rgba(0, 168, 107, 0.2);
+        }
+
+        .generate-btn {
+            width: 100%;
+            background: var(--neon-green);
+            color: white;
+            border: none;
+            padding: 1rem;
+            font-weight: bold;
+            font-family: var(--code-font);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.2s;
+            margin-top: 2rem;
+        }
+
+        .generate-btn:hover {
+            background: #008a55;
+            box-shadow: 0 5px 15px rgba(0, 168, 107, 0.3);
+        }
+
+        /* Architecture Diagram */
+        .diagram-container {
+            display: grid;
+            gap: 2rem;
+            padding: 2rem;
+            background: #f9fafb;
+            border: 1px solid var(--cyber-border);
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .arch-layer {
+            border: 1px dashed #d1d5db;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .layer-label {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: #f9fafb;
+            padding: 0 5px;
+            color: #6b7280;
+            font-size: 0.8rem;
+            font-family: var(--code-font);
+        }
+
+        .arch-box {
+            background: white;
+            border: 1px solid var(--neon-purple);
+            padding: 1rem;
+            text-align: center;
+            color: var(--cyber-text);
+            font-family: var(--code-font);
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(138, 43, 226, 0.1);
+        }
+
+        .connection-line {
+            height: 20px;
+            width: 2px;
+            background: #d1d5db;
+            margin: 0 auto;
+        }
+
+        /* File Tree */
+        .file-tree {
+            font-family: var(--code-font);
+            color: #4b5563;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .tree-item {
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tree-item::before {
+            content: '├─';
+            position: absolute;
+            left: 0;
+            color: #9ca3af;
+        }
+
+        .tree-item.last::before {
+            content: '└─';
+        }
+
+        .folder {
+            color: var(--neon-green);
+            font-weight: bold;
+        }
+
+        .file {
+            color: #6b7280;
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #374151;
+        }
+
+        .article-content h2 {
+            font-size: 2.5rem;
+            color: var(--cyber-text);
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--neon-green);
+            padding-left: 1rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.8rem;
+            color: var(--neon-green);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            font-family: var(--code-font);
+        }
+
+        .code-block {
+            background: #1f2937;
+            border: 1px solid #374151;
+            padding: 1.5rem;
+            border-radius: 4px;
+            font-family: var(--code-font);
+            color: #f3f4f6;
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .tech-card {
+            background: white;
+            border: 1px solid var(--cyber-border);
+            padding: 1.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .tech-card:hover {
+            border-color: var(--neon-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.1);
+        }
+
+        .tech-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-title {
+            color: var(--cyber-text);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-desc {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        @media (max-width: 900px) {
+            .arch-tool {
+                grid-template-columns: 1fr;
+            }
+
+            .tool-sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--cyber-border);
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+        }
+    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta property="og:image" content="https://avfinanzas.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" style="background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link" style="color: white;">Home</a>
+                <a href="../free.html" class="nav-link" style="color: white;">Free</a>
+                <a href="../premium.html" class="nav-link" style="color: white;">Premium</a>
+                <a href="../pro.html" class="nav-link active" style="color: var(--eng-primary);">Pro</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="pro-hero">
+        <div class="container">
+            <span class="hero-badge">System Design v2.0</span>
+            <h1 class="hero-title">Full-Stack <span>Architect</span></h1>
+            <p
+                style="font-size: 1.4rem; color: #aaa; max-width: 700px; margin-bottom: 2rem; font-family: var(--code-font);">
+                &lt;Build&gt; scalable systems from scratch. Generate production-ready file structures, Docker configs,
+                and architecture diagrams. &lt;/Build&gt;
+            </p>
+        </div>
+    </header>
+
+    <main class="content-section" style="background: var(--cyber-dark);">
+        <div class="container">
+
+            <!-- Architecture Tool -->
+            <section id="tool" class="arch-tool">
+                <div class="tool-sidebar">
+                    <h3 style="color: white; margin-top: 0; margin-bottom: 2rem; font-family: var(--code-font);">//
+                        CONFIGURATION</h3>
+
+                    <div class="control-group">
+                        <label class="control-label">PROJECT TYPE</label>
+                        <select id="projectType" class="cyber-select">
+                            <option value="saas">SaaS Platform</option>
+                            <option value="ecommerce">E-commerce Store</option>
+                            <option value="social">Social Network</option>
+                            <option value="api">High-Performance API</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">SCALE TARGET</label>
+                        <select id="scaleTarget" class="cyber-select">
+                            <option value="mvp">MVP (Speed)</option>
+                            <option value="scale">Scale-up (100k users)</option>
+                            <option value="enterprise">Enterprise (1M+ users)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">TECH STACK</label>
+                        <select id="techStack" class="cyber-select">
+                            <option value="next">Next.js + Node + Postgres</option>
+                            <option value="mern">MERN (Mongo + Express + React)</option>
+                            <option value="python">React + Django + Postgres</option>
+                        </select>
+                    </div>
+
+                    <button class="generate-btn" onclick="generateArchitecture()">Initialize System</button>
+                </div>
+
+                <div class="tool-main" id="outputArea">
+                    <div style="text-align: center; padding-top: 4rem; color: #444;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem; color: #222;">⚙️</div>
+                        <p style="font-family: var(--code-font);">Waiting for configuration...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extensive Article Content -->
+            <article class="article-content">
+                <p class="lead"
+                    style="font-size: 1.3rem; color: #fff; border-bottom: 1px solid #333; padding-bottom: 2rem; margin-bottom: 3rem;">
+                    The difference between a junior developer and a senior architect isn't code speed. It's
+                    <strong>system design</strong>.
+                    Writing code is easy; designing systems that don't collapse under load is hard.
+                </p>
+
+                <h2>Chapter 1: The Modern Stack (2025 Edition)</h2>
+                <p>
+                    The days of the LAMP stack are long gone. Even the MERN stack is showing its age.
+                    Today, we live in the era of <strong>Meta-Frameworks</strong> and <strong>Serverless Edge
+                        Computing</strong>.
+                </p>
+
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <div class="tech-icon">⚡</div>
+                        <div class="tech-title">The Frontend</div>
+                        <div class="tech-desc">Next.js 15+ or Remix. Server Components (RSC) are mandatory for
+                            performance. Client-side rendering is only for interactivity.</div>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">🦀</div>
+                        <div class="tech-title">The Backend</div>
+                        <div class="tech-desc">Rust for high-performance microservices. Node.js/Bun for general API
+                            logic. Python for AI/ML pipelines.</div>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">🗄️</div>
+                        <div class="tech-title">The Data</div>
+                        <div class="tech-desc">PostgreSQL (Supabase/Neon) is the default. Redis for caching. Vector DBs
+                            (Pinecone) for AI memory.</div>
+                    </div>
+                </div>
+
+                <h3>Monolith vs. Microservices: The Eternal War</h3>
+                <p>
+                    <strong>Stop building microservices for your MVP.</strong> You are not Google.
+                    A "Modular Monolith" is the correct choice for 99% of startups.
+                </p>
+                <p>
+                    Microservices introduce "distributed system problems" (network latency, eventual consistency,
+                    complex debugging).
+                    Only split your services when you have a specific bottleneck (e.g., your video processing service is
+                    crashing your auth service).
+                </p>
+
+                <h2>Chapter 2: Scalability Patterns</h2>
+                <p>
+                    Scalability is not about buying bigger servers (Vertical Scaling); it's about designing stateless
+                    systems that can run on 1,000 cheap servers (Horizontal Scaling).
+                </p>
+
+                <div class="code-block">
+                    // BAD: Stateful Server (Memory)
+                    let users = [];
+                    app.post('/login', (req, res) => {
+                    users.push(req.body); // Lost if server restarts
+                    });
+
+                    // GOOD: Stateless Server (Redis/DB)
+                    app.post('/login', async (req, res) => {
+                    await redis.set('session:' + id, data); // Persists across restarts/servers
+                    });
+                </div>
+
+                <h3>Caching Strategies</h3>
+                <p>
+                    The fastest query is the one you never make.
+                </p>
+                <ul>
+                    <li><strong>Browser Cache:</strong> HTTP headers (Cache-Control). Free speed.</li>
+                    <li><strong>CDN Cache:</strong> Cloudflare/Vercel Edge. Caches static assets close to the user.</li>
+                    <li><strong>Application Cache:</strong> Redis/Memcached. Caches expensive DB queries.</li>
+                </ul>
+
+                <h2>Chapter 3: CI/CD & DevOps</h2>
+                <p>
+                    If you are SSH-ing into a server to deploy, you are doing it wrong.
+                    Automated pipelines are the safety net that allows you to ship on Fridays.
+                </p>
+                <p>
+                    Your pipeline should:
+                    1. Lint & Format (Prettier/ESLint)
+                    2. Run Unit Tests (Jest/Vitest)
+                    3. Build Docker Image
+                    4. Push to Registry
+                    5. Deploy to Staging (Auto) / Production (Manual Approval)
+                </p>
+
+                <h2>Chapter 4: Database Design for Scale</h2>
+                <p>
+                    SQL or NoSQL? The answer is usually SQL (Postgres), unless you have a specific reason not to.
+                    JSONB columns in Postgres give you 80% of the flexibility of MongoDB with 100% of the reliability of
+                    ACID transactions.
+                </p>
+
+                <div
+                    style="margin-top: 5rem; text-align: center; border: 1px solid var(--neon-green); padding: 4rem; border-radius: 8px; background: rgba(0,255,157,0.05);">
+                    <h3 style="margin-top: 0;">Architect your next unicorn</h3>
+                    <p style="margin-bottom: 2rem;">Use the <strong>Architecture Forge</strong> above to generate your
+                        project blueprint.</p>
+                    <button onclick="document.getElementById('tool').scrollIntoView({behavior: 'smooth'})"
+                        class="generate-btn" style="width: auto; padding: 1rem 3rem;">Go to Tool ↑</button>
+                </div>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="background: #000; border-top: 1px solid #333;">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" style="color: white;">
+                        <img src="../logo.png" alt="AV IA Resources" style="height: 40px; width: auto;">
+                        AV IA Resources
+                    </a>
+                    <p style="color: #666;">Empowering creators and businesses with premium AI tools.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="color: #444;">&copy; 2024 AV IA Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function generateArchitecture() {
+            const type = document.getElementById('projectType').value;
+            const scale = document.getElementById('scaleTarget').value;
+            const stack = document.getElementById('techStack').value;
+            const output = document.getElementById('outputArea');
+
+            // Simulate processing
+            output.innerHTML = '<div style="text-align: center; padding-top: 4rem; color: var(--neon-green); font-family: var(--code-font); font-weight: bold;">INITIALIZING NEURAL NET...<br>OPTIMIZING TOPOLOGY...</div>';
+
+            setTimeout(() => {
+                let archDiagram = '';
+                let fileTree = '';
+                let dockerfile = '';
+
+                // Logic for Architecture Diagram
+                if (scale === 'enterprise') {
+                    archDiagram = `
+                        <div class="diagram-container">
+                            <div class="layer-label">CLIENT LAYER</div>
+                            <div style="display: flex; justify-content: center; gap: 1rem;">
+                                <div class="arch-box">Web App (CDN)</div>
+                                <div class="arch-box">Mobile App</div>
+                            </div>
+                        </div>
+                        <div class="connection-line"></div>
+                        <div class="diagram-container">
+                            <div class="layer-label">GATEWAY LAYER</div>
+                            <div style="display: flex; justify-content: center;">
+                                <div class="arch-box" style="width: 100%;">Load Balancer / API Gateway</div>
+                            </div>
+                        </div>
+                        <div class="connection-line"></div>
+                        <div class="diagram-container">
+                            <div class="layer-label">SERVICE LAYER</div>
+                            <div style="display: flex; justify-content: center; gap: 1rem;">
+                                <div class="arch-box">Auth Service</div>
+                                <div class="arch-box">Core API</div>
+                                <div class="arch-box">Worker Nodes</div>
+                            </div>
+                        </div>
+                        <div class="connection-line"></div>
+                        <div class="diagram-container">
+                            <div class="layer-label">DATA LAYER</div>
+                            <div style="display: flex; justify-content: center; gap: 1rem;">
+                                <div class="arch-box" style="border-color: #ff0055;">Redis Cluster</div>
+                                <div class="arch-box" style="border-color: #00aaff;">Postgres Primary</div>
+                                <div class="arch-box" style="border-color: #00aaff;">Read Replicas</div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    archDiagram = `
+                        <div class="diagram-container">
+                            <div class="layer-label">FULL STACK APP</div>
+                            <div style="display: flex; justify-content: center; gap: 2rem;">
+                                <div class="arch-box">Frontend (Vercel)</div>
+                                <div class="arch-box">Backend API</div>
+                            </div>
+                        </div>
+                        <div class="connection-line"></div>
+                        <div class="diagram-container">
+                            <div class="layer-label">DATA LAYER</div>
+                            <div style="display: flex; justify-content: center; gap: 1rem;">
+                                <div class="arch-box" style="border-color: #00aaff;">Postgres DB</div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Logic for File Tree
+                fileTree = `
+                    <div class="file-tree">
+                        <div class="tree-item folder">/src</div>
+                        <div class="tree-item folder">/components</div>
+                        <div class="tree-item file">Button.tsx</div>
+                        <div class="tree-item folder">/lib</div>
+                        <div class="tree-item file">db.ts</div>
+                        <div class="tree-item file">utils.ts</div>
+                        <div class="tree-item folder">/app (Routes)</div>
+                        <div class="tree-item file">page.tsx</div>
+                        <div class="tree-item file">layout.tsx</div>
+                        <div class="tree-item file">Dockerfile</div>
+                        <div class="tree-item file last">package.json</div>
+                    </div>
+                `;
+
+                // Logic for Dockerfile
+                dockerfile = `
+# Base Image
+FROM node:18-alpine AS base
+
+# Dependencies
+FROM base AS deps
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
+
+# Builder
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN yarn build
+
+# Runner
+FROM base AS runner
+WORKDIR /app
+ENV NODE_ENV production
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+
+EXPOSE 3000
+CMD ["yarn", "start"]
+                `;
+
+                output.innerHTML = `
+                    <h3 style="color: var(--cyber-text); font-family: var(--code-font); margin-top: 0;">// SYSTEM BLUEPRINT GENERATED</h3>
+                    ${archDiagram}
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+                        <div>
+                            <h4 style="color: #6b7280; font-family: var(--code-font);">FILE STRUCTURE</h4>
+                            <div style="background: #f9fafb; padding: 1rem; border: 1px solid var(--cyber-border); border-radius: 4px;">
+                                ${fileTree}
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: #6b7280; font-family: var(--code-font);">DOCKER CONFIG</h4>
+                            <div style="background: #1f2937; padding: 1rem; border: 1px solid #374151; border-radius: 4px; font-family: monospace; font-size: 0.8rem; color: #f3f4f6; white-space: pre-wrap;">${dockerfile}</div>
+                        </div>
+                    </div>
+                `;
+            }, 1000);
+        }
+    </script>
+<script src="../app.js"></script><script src="../auth.js"></script></body>
+
+</html>

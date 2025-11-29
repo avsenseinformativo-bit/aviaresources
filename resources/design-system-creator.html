@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Design System Creator. Generate comprehensive design systems, color palettes, typography scales, and component libraries. Master Atomic Design.">
+    <title>Design System Creator: Build Scalable UIs</title>
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="blog-template-styles.css">
+
+    <!-- Pro Styles (Studio Theme) -->
+    <style>
+        :root {
+            --studio-black: #111111;
+            --studio-white: #ffffff;
+            --studio-accent: #ff3366;
+            /* Vibrant Pink/Red */
+            --studio-gray: #f4f4f4;
+            --studio-border: #e0e0e0;
+            --font-sans: 'Inter', system-ui, sans-serif;
+            --font-serif: 'Playfair Display', serif;
+        }
+
+        body {
+            background-color: var(--studio-white);
+            font-family: var(--font-sans);
+            color: var(--studio-black);
+        }
+
+        /* Studio Hero */
+        .pro-hero {
+            background: var(--studio-white);
+            color: var(--studio-black);
+            padding: 8rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--studio-border);
+        }
+
+        .pro-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(255, 51, 102, 0.05) 0%, transparent 60%);
+            z-index: 0;
+        }
+
+        .hero-badge {
+            background: var(--studio-black);
+            color: var(--studio-white);
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1;
+            color: var(--studio-black);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title span {
+            color: var(--studio-accent);
+            font-style: italic;
+        }
+
+        /* Tool Container */
+        .design-tool {
+            background: var(--studio-white);
+            border: 1px solid var(--studio-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            margin: -4rem auto 4rem;
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            min-height: 700px;
+        }
+
+        .tool-sidebar {
+            background: #fafafa;
+            border-right: 1px solid var(--studio-border);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .tool-main {
+            padding: 3rem;
+            background: var(--studio-white);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .control-group {
+            margin-bottom: 2rem;
+        }
+
+        .control-label {
+            display: block;
+            color: #666;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .color-picker-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .color-input {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .range-slider {
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Live Preview Area */
+        .preview-section {
+            border: 1px dashed var(--studio-border);
+            padding: 2rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .preview-label {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 0 10px;
+            color: #999;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Generated Components */
+        .btn-preview {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .card-preview {
+            padding: 2rem;
+            border: 1px solid;
+            margin-top: 1rem;
+            max-width: 300px;
+        }
+
+        .input-preview {
+            padding: 0.8rem;
+            border: 1px solid;
+            width: 100%;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .article-content h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--studio-black);
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: var(--studio-black);
+        }
+
+        .quote-box {
+            border-left: 4px solid var(--studio-accent);
+            padding-left: 2rem;
+            margin: 3rem 0;
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #555;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .concept-card {
+            background: #fafafa;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .concept-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .design-tool {
+                grid-template-columns: 1fr;
+            }
+
+            .tool-sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--studio-border);
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta property="og:image" content="https://avfinanzas.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar"
+        style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #eee;">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.png" alt="AV IA Resources" style="height: 60px; width: auto;">
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link" style="color: #333;">Home</a>
+                <a href="../free.html" class="nav-link" style="color: #333;">Free</a>
+                <a href="../premium.html" class="nav-link" style="color: #333;">Premium</a>
+                <a href="../pro.html" class="nav-link active" style="color: var(--studio-accent);">Pro</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="pro-hero">
+        <div class="container">
+            <span class="hero-badge">Design Systems v1.0</span>
+            <h1 class="hero-title">Design System <span>Creator</span></h1>
+            <p style="font-size: 1.4rem; color: #666; max-width: 600px; margin-bottom: 2rem; font-weight: 300;">
+                Stop designing pages. Start designing <strong>systems</strong>. Generate atomic components, accessible
+                color palettes, and typography scales instantly.
+            </p>
+        </div>
+    </header>
+
+    <main class="content-section" style="background: #fff;">
+        <div class="container">
+
+            <!-- Design Tool -->
+            <section id="tool" class="design-tool">
+                <div class="tool-sidebar">
+                    <h3 style="margin-top: 0; margin-bottom: 2rem; font-size: 1.2rem;">// TOKENS</h3>
+
+                    <div class="control-group">
+                        <label class="control-label">Primary Color</label>
+                        <div class="color-picker-wrapper">
+                            <input type="color" id="primaryColor" class="color-input" value="#2563eb"
+                                oninput="updateSystem()">
+                            <span id="primaryHex" style="font-family: monospace; color: #666;">#2563eb</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Border Radius</label>
+                        <input type="range" id="borderRadius" class="range-slider" min="0" max="24" value="8"
+                            oninput="updateSystem()">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #999;">
+                            <span>Sharp (0px)</span>
+                            <span>Round (24px)</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Typography Base</label>
+                        <select id="fontFamily"
+                            style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;"
+                            onchange="updateSystem()">
+                            <option value="'Inter', sans-serif">Inter (Modern Sans)</option>
+                            <option value="'Playfair Display', serif">Playfair (Elegant Serif)</option>
+                            <option value="'Courier New', monospace">Courier (Tech Mono)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Export</label>
+                        <button onclick="copyCSS()"
+                            style="width: 100%; padding: 1rem; background: #111; color: white; border: none; font-weight: 600; cursor: pointer;">COPY
+                            CSS VARIABLES</button>
+                    </div>
+                </div>
+
+                <div class="tool-main">
+                    <!-- Buttons -->
+                    <div class="preview-section">
+                        <span class="preview-label">Atoms: Buttons</span>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <button id="btnPrimary" class="btn-preview">Primary Action</button>
+                            <button id="btnSecondary" class="btn-preview"
+                                style="background: transparent; border: 1px solid #ddd;">Secondary</button>
+                        </div>
+                    </div>
+
+                    <!-- Cards -->
+                    <div class="preview-section">
+                        <span class="preview-label">Molecules: Cards</span>
+                        <div id="cardPreview" class="card-preview">
+                            <h4 style="margin-top: 0;">Component Title</h4>
+                            <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">This is a card component
+                                generated by your design tokens. It inherits border-radius and typography settings.</p>
+                            <button id="btnCard" class="btn-preview" style="margin-top: 1rem; font-size: 0.8rem;">Learn
+                                More</button>
+                        </div>
+                    </div>
+
+                    <!-- Inputs -->
+                    <div class="preview-section">
+                        <span class="preview-label">Atoms: Inputs</span>
+                        <div style="max-width: 300px;">
+                            <label style="font-size: 0.8rem; font-weight: 600; color: #333;">Email Address</label>
+                            <input type="text" id="inputPreview" class="input-preview" placeholder="user@example.com">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extensive Article Content -->
+            <article class="article-content">
+                <p class="lead" style="font-size: 1.3rem; color: #555; margin-bottom: 3rem;">
+                    A Design System is not a UI Kit. A UI Kit is a collection of assets. A Design System is the
+                    <strong>single source of truth</strong> that groups elements into reusable components, guided by
+                    clear standards, that can be assembled to build any number of applications.
+                </p>
+
+                <h2>Chapter 1: The Atomic Methodology</h2>
+                <p>
+                    Brad Frost's "Atomic Design" is the gold standard for organizing design systems. It borrows from
+                    chemistry to create a hierarchy of components.
+                </p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <div class="concept-title">⚛️ Atoms</div>
+                        <p>The smallest building blocks. Buttons, Inputs, Labels, Icons. They cannot be broken down
+                            further without losing functionality.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-title">🧬 Molecules</div>
+                        <p>Groups of atoms functioning together. A Search Form (Input + Button) is a molecule.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-title">🦠 Organisms</div>
+                        <p>Complex UI sections composed of molecules and atoms. A Header, a Footer, or a Product Grid.
+                        </p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-title">📄 Templates</div>
+                        <p>Page-level layout structures without real content. The "wireframe" of the actual page.</p>
+                    </div>
+                </div>
+
+                <h2>Chapter 2: Design Tokens</h2>
+                <p>
+                    Design Tokens are the "sub-atomic" particles of your system. They are variables that store visual
+                    design attributes.
+                    Instead of hardcoding `#2563eb` everywhere, you define `primary-color`.
+                </p>
+                <div class="quote-box">
+                    "Tokens allow you to change the visual language of your entire product suite by updating a single
+                    JSON file."
+                </div>
+                <p>
+                    This is crucial for theming (Dark Mode) and multi-brand support. If your company acquires another
+                    brand, you simply swap the token set, and the same React components render with the new brand's
+                    identity.
+                </p>
+
+                <h2>Chapter 3: Accessibility (a11y) as a Foundation</h2>
+                <p>
+                    Accessibility is not a feature; it's a constraint. Your design system must enforce accessible
+                    contrast ratios by default.
+                    If a designer picks a yellow text on a white background, the system should reject it.
+                </p>
+                <p>
+                    <strong>The WCAG 2.1 Standard:</strong>
+                <ul>
+                    <li><strong>AA Level:</strong> 4.5:1 contrast ratio for normal text.</li>
+                    <li><strong>AAA Level:</strong> 7:1 contrast ratio for maximum accessibility.</li>
+                </ul>
+                </p>
+
+                <h2>Chapter 4: Documentation is the Product</h2>
+                <p>
+                    A design system without documentation is just a component library.
+                    Your documentation site (like Storybook or Zeroheight) is the product you sell to your internal
+                    developers.
+                </p>
+                <p>
+                    It must include:
+                    1. <strong>Do's and Don'ts:</strong> When to use a primary button vs. a secondary one.
+                    2. <strong>Code Snippets:</strong> Copy-paste ready code for React/Vue/HTML.
+                    3. <strong>Live Playground:</strong> Let devs tweak props and see results (like the tool above).
+                </p>
+
+                <div
+                    style="margin-top: 5rem; text-align: center; background: #fafafa; padding: 4rem; border-radius: 8px;">
+                    <h3 style="margin-top: 0;">Start building your system</h3>
+                    <p style="margin-bottom: 2rem;">Use the <strong>Design System Forge</strong> above to generate your
+                        base tokens.</p>
+                    <button onclick="document.getElementById('tool').scrollIntoView({behavior: 'smooth'})"
+                        style="padding: 1rem 2rem; background: var(--studio-accent); color: white; border: none; font-weight: 600; cursor: pointer;">Go
+                        to Tool ↑</button>
+                </div>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="background: #111; color: white; padding: 4rem 0;">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" style="color: white;">
+                        <img src="../logo.png" alt="AV IA Resources" style="height: 40px; width: auto;">
+                        AV IA Resources
+                    </a>
+                    <p style="color: #999;">Empowering creators and businesses with premium AI tools.</p>
+                </div>
+            </div>
+            <div class="footer-bottom"
+                style="border-top: 1px solid #333; margin-top: 2rem; padding-top: 2rem; color: #666;">
+                <p>&copy; 2024 AV IA Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initial Render
+        updateSystem();
+
+        function updateSystem() {
+            const primary = document.getElementById('primaryColor').value;
+            const radius = document.getElementById('borderRadius').value;
+            const font = document.getElementById('fontFamily').value;
+
+            // Update Hex Label
+            document.getElementById('primaryHex').innerText = primary;
+
+            // Update CSS Variables for Preview
+            const root = document.documentElement;
+
+            // Buttons
+            const btnPrimary = document.getElementById('btnPrimary');
+            btnPrimary.style.backgroundColor = primary;
+            btnPrimary.style.color = getContrastColor(primary);
+            btnPrimary.style.borderRadius = radius + 'px';
+            btnPrimary.style.fontFamily = font;
+
+            const btnSecondary = document.getElementById('btnSecondary');
+            btnSecondary.style.color = primary;
+            btnSecondary.style.borderColor = primary;
+            btnSecondary.style.borderRadius = radius + 'px';
+            btnSecondary.style.fontFamily = font;
+
+            const btnCard = document.getElementById('btnCard');
+            btnCard.style.backgroundColor = primary;
+            btnCard.style.color = getContrastColor(primary);
+            btnCard.style.borderRadius = radius + 'px';
+            btnCard.style.border = 'none';
+            btnCard.style.fontFamily = font;
+
+            // Card
+            const card = document.getElementById('cardPreview');
+            card.style.borderRadius = radius + 'px';
+            card.style.borderColor = '#e0e0e0';
+            card.style.fontFamily = font;
+
+            // Input
+            const input = document.getElementById('inputPreview');
+            input.style.borderRadius = radius + 'px';
+            input.style.borderColor = '#ccc';
+            input.style.fontFamily = font;
+
+            // Add focus effect listener
+            input.onfocus = () => { input.style.borderColor = primary; input.style.outline = 'none'; };
+            input.onblur = () => { input.style.borderColor = '#ccc'; };
+        }
+
+        function getContrastColor(hex) {
+            // Convert hex to RGB
+            const r = parseInt(hex.substr(1, 2), 16);
+            const g = parseInt(hex.substr(3, 2), 16);
+            const b = parseInt(hex.substr(5, 2), 16);
+
+            // Calculate luminance
+            const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+            return (yiq >= 128) ? 'black' : 'white';
+        }
+
+        function copyCSS() {
+            const primary = document.getElementById('primaryColor').value;
+            const radius = document.getElementById('borderRadius').value;
+            const font = document.getElementById('fontFamily').value;
+
+            const css = `
+:root {
+    --primary-color: ${primary};
+    --border-radius: ${radius}px;
+    --font-family: ${font};
+}
+            `;
+
+            navigator.clipboard.writeText(css);
+            alert('CSS Variables copied to clipboard!');
+        }
+    </script>
+<script src="../app.js"></script><script src="../auth.js"></script></body>
+
+</html>
